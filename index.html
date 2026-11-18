@@ -3,37 +3,41 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tạp Hóa Shop 2.0 - Mega Digital Marketplace</title>
+<title>Tạp Hóa Shop 3.0 - Siêu Thị Số Đẳng Cấp</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
 <style>
-/* ============ CSS VARIABLES & RESET ============ */
+/* ========== VARIABLES ========== */
 :root{
-  --bg-dark:#0a0a0f;--bg-card:#12121a;--bg-card-hover:#1a1a2e;--bg-header:rgba(10,10,15,.95);
-  --text-primary:#fff;--text-secondary:#a0a0b0;--text-muted:#6b6b80;
-  --neon-blue:#00d4ff;--neon-purple:#a855f7;--neon-pink:#ec4899;--neon-green:#10b981;--neon-orange:#f97316;
+  --bg-dark:#08080d;--bg-card:#111119;--bg-card-hover:#1a1a2e;--bg-header:rgba(8,8,13,.96);
+  --text-primary:#fff;--text-secondary:#a8a8b8;--text-muted:#666680;
+  --neon-blue:#00d4ff;--neon-purple:#a855f7;--neon-pink:#ec4899;--neon-green:#10b981;--neon-orange:#f97316;--neon-red:#ef4444;
+  --gold:#fbbf24;--gold-dark:#d97706;--royal-purple:#7c3aed;
   --gradient-main:linear-gradient(135deg,#00d4ff 0%,#a855f7 50%,#ec4899 100%);
   --gradient-btn:linear-gradient(90deg,#00d4ff,#a855f7);
-  --gradient-gold:linear-gradient(135deg,#fbbf24,#f59e0b,#d97706);
+  --gradient-gold:linear-gradient(135deg,#fbbf24 0%,#f59e0b 40%,#d97706 100%);
+  --gradient-royal:linear-gradient(135deg,#7c3aed 0%,#a855f7 50%,#ec4899 100%);
+  --gradient-vip:linear-gradient(135deg,#1a1a2e 0%,#2d1b4e 50%,#1a1a2e 100%);
   --border-color:rgba(255,255,255,.08);--glass-bg:rgba(255,255,255,.05);
-  --shadow-glow:0 0 20px rgba(0,212,255,.3);--shadow-purple:0 0 30px rgba(168,85,247,.4);
-  --font-family:'Inter',sans-serif;--radius-sm:8px;--radius-md:12px;--radius-lg:20px;
+  --shadow-glow:0 0 20px rgba(0,212,255,.3);
+  --font-family:'Inter',sans-serif;--font-display:'Orbitron',sans-serif;
+  --radius-sm:8px;--radius-md:12px;--radius-lg:20px;--radius-xl:28px;
   --transition:all .3s cubic-bezier(.4,0,.2,1);
 }
 [data-theme="light"]{
-  --bg-dark:#f0f0f5;--bg-card:#fff;--bg-card-hover:#f5f5fa;--bg-header:rgba(255,255,255,.95);
+  --bg-dark:#f0f0f5;--bg-card:#fff;--bg-card-hover:#f5f5fa;--bg-header:rgba(255,255,255,.96);
   --text-primary:#1a1a2e;--text-secondary:#555570;--text-muted:#8888a0;
-  --border-color:rgba(0,0,0,.08);--glass-bg:rgba(0,0,0,.03);--shadow-glow:0 0 20px rgba(168,85,247,.2);
+  --border-color:rgba(0,0,0,.08);--glass-bg:rgba(0,0,0,.03);
 }
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:var(--font-family);background:var(--bg-dark);color:var(--text-primary);line-height:1.6;overflow-x:hidden;transition:background-color .3s,color .3s}
+body{font-family:var(--font-family);background:var(--bg-dark);color:var(--text-primary);line-height:1.6;overflow-x:hidden;transition:background .3s,color .3s}
 a{text-decoration:none;color:inherit}ul{list-style:none}img{max-width:100%;display:block}
 button{cursor:pointer;font-family:inherit;border:none;outline:none}
 input,select,textarea{font-family:inherit;outline:none}
 ::-webkit-scrollbar{width:8px;height:8px}::-webkit-scrollbar-track{background:var(--bg-dark)}
 ::-webkit-scrollbar-thumb{background:var(--gradient-main);border-radius:4px}
 
-/* ============ UTILITIES ============ */
+/* ========== UTILITIES ========== */
 .container{max-width:1400px;margin:0 auto;padding:0 20px}
 .flex{display:flex}.flex-center{display:flex;align-items:center;justify-content:center}
 .flex-between{display:flex;align-items:center;justify-content:space-between}
@@ -48,6 +52,8 @@ input,select,textarea{font-family:inherit;outline:none}
 .btn-success{background:#10b981;color:#fff}.btn-success:hover{background:#059669}
 .btn-gold{background:var(--gradient-gold);color:#1a1a2e;font-weight:700}
 .btn-gold:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(251,191,36,.5)}
+.btn-vip{background:linear-gradient(135deg,#7c3aed,#ec4899);color:#fff;font-weight:700;box-shadow:0 0 20px rgba(168,85,247,.5)}
+.btn-vip:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(168,85,247,.7)}
 .btn-sm{padding:8px 16px;font-size:.85rem}.btn-xs{padding:4px 10px;font-size:.75rem}
 .btn-block{width:100%}
 .badge{padding:4px 10px;border-radius:20px;font-size:.75rem;font-weight:600}
@@ -55,36 +61,39 @@ input,select,textarea{font-family:inherit;outline:none}
 .badge-new{background:linear-gradient(135deg,#10b981,#059669);color:#fff}
 .badge-sale{background:linear-gradient(135deg,#a855f7,#ec4899);color:#fff}
 .badge-vip{background:var(--gradient-gold);color:#1a1a2e}
-.glass{background:var(--glass-bg);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid var(--border-color)}
+.glass{background:var(--glass-bg);backdrop-filter:blur(12px);border:1px solid var(--border-color)}
 .section{margin-bottom:40px}
 .section-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}
 .section-header h2{font-size:1.5rem;font-weight:700;display:flex;align-items:center;gap:10px}
 .section-header h2 i{color:var(--neon-blue)}
 .view-all{font-size:.9rem;color:var(--neon-blue);cursor:pointer;display:flex;align-items:center;gap:5px}
 .view-all:hover{text-decoration:underline}
+@keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+@keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
+@keyframes spinSlow{0%{transform:rotate(0)}100%{transform:rotate(360deg)}}
+@keyframes glowPulse{0%,100%{box-shadow:0 0 20px rgba(251,191,36,.4)}50%{box-shadow:0 0 40px rgba(251,191,36,.8)}}
 
-/* ============ TOP EVENT BAR ============ */
-.event-bar{background:linear-gradient(90deg,#a855f7,#ec4899,#f97316,#fbbf24,#10b981,#00d4ff);background-size:300% 100%;animation:gradientMove 8s ease infinite;color:#fff;padding:0;overflow:hidden;position:relative}
+/* ========== EVENT BAR ========== */
+.event-bar{background:linear-gradient(90deg,#7c3aed,#a855f7,#ec4899,#f97316,#fbbf24,#10b981,#00d4ff,#7c3aed);background-size:400% 100%;animation:gradientMove 10s ease infinite;color:#fff;overflow:hidden}
 @keyframes gradientMove{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
-.event-slider{display:flex;animation:eventSlide 30s linear infinite;white-space:nowrap}
+.event-slider{display:flex;animation:eventSlide 40s linear infinite;white-space:nowrap}
 @keyframes eventSlide{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 .event-item{display:inline-flex;align-items:center;gap:8px;padding:10px 40px;font-size:.85rem;font-weight:600}
-.event-item i{font-size:1rem;animation:pulse 2s infinite}
-@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.2)}}
+.event-item i{font-size:1rem;animation:float 2s ease infinite}
 
-/* ============ TOP BAR ============ */
+/* ========== TOP BAR ========== */
 .top-bar{background:var(--bg-card);border-bottom:1px solid var(--border-color);padding:6px 0;font-size:.8rem;color:var(--text-muted)}
 .top-bar .container{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
-.top-bar-links{display:flex;gap:20px;align-items:center}
+.top-bar-links{display:flex;gap:20px;align-items:center;flex-wrap:wrap}
+.top-bar-links a{cursor:pointer}
 .top-bar-links a:hover{color:var(--neon-blue)}
 
-/* ============ HEADER ============ */
-header{position:sticky;top:0;z-index:1000;background:var(--bg-header);backdrop-filter:blur(20px);border-bottom:1px solid var(--border-color);transition:var(--transition)}
+/* ========== HEADER ========== */
+header{position:sticky;top:0;z-index:1000;background:var(--bg-header);backdrop-filter:blur(20px);border-bottom:1px solid var(--border-color)}
 .header-inner{display:flex;align-items:center;justify-content:space-between;padding:12px 0;gap:20px}
 .logo{display:flex;align-items:center;gap:10px;font-size:1.5rem;font-weight:800;white-space:nowrap;cursor:pointer}
-.logo i{color:var(--neon-blue);font-size:1.8rem}
-
-/* Search */
+.logo i{color:var(--neon-blue);font-size:1.8rem;animation:glowPulse 3s infinite}
 .search-container{flex:1;max-width:600px;position:relative}
 .search-box{display:flex;align-items:center;background:var(--bg-card);border:1px solid var(--border-color);border-radius:50px;padding:8px 8px 8px 20px;transition:var(--transition)}
 .search-box:focus-within{border-color:var(--neon-blue);box-shadow:var(--shadow-glow)}
@@ -99,23 +108,20 @@ header{position:sticky;top:0;z-index:1000;background:var(--bg-header);backdrop-f
 .suggestion-item img{width:40px;height:40px;border-radius:6px;object-fit:cover}
 .suggestion-item .info h4{font-size:.9rem;font-weight:500}
 .suggestion-item .info p{font-size:.8rem;color:var(--text-muted)}
-
-/* Header Actions */
 .header-actions{display:flex;align-items:center;gap:12px}
 .action-btn{position:relative;background:var(--bg-card);border:1px solid var(--border-color);color:var(--text-primary);width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;transition:var(--transition);font-size:1.1rem}
 .action-btn:hover{border-color:var(--neon-blue);color:var(--neon-blue);box-shadow:var(--shadow-glow)}
 .action-btn .count{position:absolute;top:-4px;right:-4px;background:var(--neon-pink);color:#fff;font-size:.65rem;width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700}
 .mobile-menu-btn{display:none}
 
-/* User Menu */
+/* ========== USER MENU ========== */
 .user-menu-wrapper{position:relative}
 .user-btn{display:flex;align-items:center;gap:10px;padding:6px 14px 6px 6px;background:var(--bg-card);border:1px solid var(--border-color);border-radius:50px;cursor:pointer;transition:var(--transition)}
 .user-btn:hover{border-color:var(--neon-blue);box-shadow:var(--shadow-glow)}
 .user-avatar{width:32px;height:32px;border-radius:50%;background:var(--gradient-main);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:.85rem;flex-shrink:0}
 .user-name-header{font-size:.85rem;font-weight:600;max-width:100px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.user-dropdown{position:absolute;top:calc(100% + 10px);right:0;background:var(--bg-card);border:1px solid var(--border-color);border-radius:var(--radius-md);min-width:280px;box-shadow:0 20px 60px rgba(0,0,0,.5);display:none;z-index:1500;overflow:hidden}
-.user-dropdown.active{display:block;animation:dropdownFade .2s}
-@keyframes dropdownFade{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:translateY(0)}}
+.user-dropdown{position:absolute;top:calc(100% + 10px);right:0;background:var(--bg-card);border:1px solid var(--border-color);border-radius:var(--radius-md);min-width:300px;box-shadow:0 20px 60px rgba(0,0,0,.5);display:none;z-index:1500;overflow:hidden}
+.user-dropdown.active{display:block;animation:fadeIn .2s}
 .user-dropdown-header{padding:20px;background:var(--gradient-main);color:#fff}
 .user-dropdown-header .avatar-lg{width:50px;height:50px;border-radius:50%;background:rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;font-size:1.3rem;font-weight:800;margin-bottom:10px}
 .user-dropdown-header h4{font-size:1rem;font-weight:700;margin-bottom:2px}
@@ -123,7 +129,7 @@ header{position:sticky;top:0;z-index:1000;background:var(--bg-header);backdrop-f
 .user-dropdown-balance{padding:12px 20px;background:rgba(0,212,255,.1);border-bottom:1px solid var(--border-color);display:flex;justify-content:space-between;align-items:center}
 .user-dropdown-balance span{font-size:.85rem;color:var(--text-muted)}
 .user-dropdown-balance strong{color:var(--neon-blue);font-size:1rem}
-.user-dropdown-menu{padding:8px 0;max-height:300px;overflow-y:auto}
+.user-dropdown-menu{padding:8px 0;max-height:350px;overflow-y:auto}
 .dropdown-item{display:flex;align-items:center;gap:12px;padding:12px 20px;color:var(--text-secondary);font-size:.9rem;transition:var(--transition);cursor:pointer;border-left:3px solid transparent}
 .dropdown-item:hover{background:var(--bg-card-hover);color:var(--neon-blue);border-left-color:var(--neon-blue)}
 .dropdown-item i{width:20px;text-align:center;font-size:1rem}
@@ -131,9 +137,9 @@ header{position:sticky;top:0;z-index:1000;background:var(--bg-header);backdrop-f
 .dropdown-item.logout{color:#ef4444}
 .dropdown-item.logout:hover{background:rgba(239,68,68,.1);color:#ef4444;border-left-color:#ef4444}
 
-/* ============ MAIN LAYOUT ============ */
+/* ========== MAIN LAYOUT ========== */
 .main-wrapper{display:flex;min-height:calc(100vh - 120px)}
-.sidebar{width:260px;background:var(--bg-card);border-right:1px solid var(--border-color);padding:20px 0;flex-shrink:0;overflow-y:auto;height:calc(100vh - 70px);position:sticky;top:70px;transition:var(--transition)}
+.sidebar{width:260px;background:var(--bg-card);border-right:1px solid var(--border-color);padding:20px 0;flex-shrink:0;overflow-y:auto;height:calc(100vh - 70px);position:sticky;top:70px}
 .sidebar-category{padding:0 15px}
 .sidebar-category h3{font-size:.8rem;text-transform:uppercase;color:var(--text-muted);letter-spacing:1px;margin-bottom:10px;padding-left:10px}
 .sidebar-item{display:flex;align-items:center;gap:12px;padding:10px 12px;border-radius:var(--radius-sm);color:var(--text-secondary);font-size:.9rem;cursor:pointer;transition:var(--transition)}
@@ -142,7 +148,7 @@ header{position:sticky;top:0;z-index:1000;background:var(--bg-header);backdrop-f
 .sidebar-item .arrow{margin-left:auto;font-size:.7rem}
 .content-area{flex:1;padding:30px;min-width:0}
 
-/* ============ HERO / BANNER ============ */
+/* ========== HERO ========== */
 .hero-banner{position:relative;border-radius:var(--radius-lg);overflow:hidden;height:350px;background:var(--gradient-main);display:flex;align-items:center;padding:40px;margin-bottom:30px;box-shadow:var(--shadow-glow)}
 .hero-banner::before{content:'';position:absolute;inset:0;background:url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></svg>');background-size:100px;opacity:.3}
 .hero-content{position:relative;z-index:1;max-width:600px}
@@ -151,14 +157,14 @@ header{position:sticky;top:0;z-index:1000;background:var(--bg-header);backdrop-f
 .hero-content .btn{background:#fff;color:var(--bg-dark);font-weight:700}
 .hero-content .btn:hover{background:#f0f0f0;transform:scale(1.05)}
 
-/* Event Banner Slider */
-.event-banner-slider{position:relative;border-radius:var(--radius-lg);overflow:hidden;margin-bottom:30px;box-shadow:var(--shadow-purple)}
+/* ========== EVENT SLIDER ========== */
+.event-banner-slider{position:relative;border-radius:var(--radius-lg);overflow:hidden;margin-bottom:30px;box-shadow:0 10px 40px rgba(168,85,247,.3)}
 .event-slide{display:none;padding:40px;min-height:220px;align-items:center;position:relative}
 .event-slide.active{display:flex;animation:fadeIn .5s}
-@keyframes fadeIn{from{opacity:0}to{opacity:1}}
 .event-slide-bg-1{background:linear-gradient(135deg,#ef4444,#f97316)}
 .event-slide-bg-2{background:linear-gradient(135deg,#a855f7,#ec4899)}
 .event-slide-bg-3{background:linear-gradient(135deg,#00d4ff,#10b981)}
+.event-slide-bg-4{background:linear-gradient(135deg,#fbbf24,#d97706)}
 .event-slide-content{color:#fff;max-width:70%}
 .event-slide-content h2{font-size:2rem;font-weight:800;margin-bottom:10px;text-shadow:0 2px 10px rgba(0,0,0,.3)}
 .event-slide-content p{font-size:1rem;margin-bottom:20px;opacity:.95}
@@ -167,14 +173,76 @@ header{position:sticky;top:0;z-index:1000;background:var(--bg-header);backdrop-f
 .event-dot{width:30px;height:6px;border-radius:3px;background:rgba(255,255,255,.4);cursor:pointer;transition:var(--transition)}
 .event-dot.active{background:#fff;width:50px}
 
-/* ============ CATEGORY GRID ============ */
-.category-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:15px}
-.category-card{background:var(--bg-card);border:1px solid var(--border-color);border-radius:var(--radius-md);padding:20px 15px;text-align:center;cursor:pointer;transition:var(--transition)}
-.category-card:hover{transform:translateY(-5px);border-color:var(--neon-blue);box-shadow:var(--shadow-glow)}
-.category-card i{font-size:2rem;margin-bottom:10px;color:var(--neon-blue)}
-.category-card span{font-size:.85rem;font-weight:500;display:block}
+/* ========== MEGA CATEGORY GRID (NEW VERSION) ========== */
+.mega-cat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:15px}
+.mega-cat-card{position:relative;border-radius:var(--radius-md);padding:22px 18px;text-align:center;cursor:pointer;transition:var(--transition);overflow:hidden;border:2px solid transparent;min-height:140px;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.mega-cat-card::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 30% 20%,rgba(255,255,255,.25),transparent 60%);opacity:0;transition:opacity .3s}
+.mega-cat-card:hover::before{opacity:1}
+.mega-cat-card:hover{transform:translateY(-8px) scale(1.03);border-color:rgba(255,255,255,.4);box-shadow:0 15px 40px rgba(0,0,0,.4)}
+.mega-cat-card .cat-icon-box{width:60px;height:60px;border-radius:16px;background:rgba(255,255,255,.18);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;font-size:1.8rem;color:#fff;margin-bottom:12px;transition:transform .4s;position:relative;z-index:1;border:1px solid rgba(255,255,255,.2)}
+.mega-cat-card:hover .cat-icon-box{transform:rotate(-10deg) scale(1.15)}
+.mega-cat-card .cat-name{font-size:.9rem;font-weight:700;color:#fff;position:relative;z-index:1;text-shadow:0 2px 4px rgba(0,0,0,.3);line-height:1.2;margin-bottom:4px}
+.mega-cat-card .cat-count{font-size:.72rem;color:rgba(255,255,255,.8);position:relative;z-index:1}
+.mega-cat-card .cat-glow{position:absolute;width:100px;height:100px;background:rgba(255,255,255,.2);border-radius:50%;filter:blur(30px);top:-30px;right:-30px;transition:all .4s}
+.mega-cat-card:hover .cat-glow{width:200px;height:200px;top:-50px;right:-50px}
 
-/* ============ PRODUCT GRID ============ */
+/* Color variants for categories */
+.cat-color-1{background:linear-gradient(135deg,#00d4ff,#0099cc)}
+.cat-color-2{background:linear-gradient(135deg,#a855f7,#7c3aed)}
+.cat-color-3{background:linear-gradient(135deg,#ec4899,#be185d)}
+.cat-color-4{background:linear-gradient(135deg,#10b981,#047857)}
+.cat-color-5{background:linear-gradient(135deg,#f97316,#c2410c)}
+.cat-color-6{background:linear-gradient(135deg,#ef4444,#b91c1c)}
+.cat-color-7{background:linear-gradient(135deg,#fbbf24,#d97706)}
+.cat-color-8{background:linear-gradient(135deg,#06b6d4,#0891b2)}
+.cat-color-9{background:linear-gradient(135deg,#8b5cf6,#6d28d9)}
+.cat-color-10{background:linear-gradient(135deg,#14b8a6,#0f766e)}
+.cat-color-11{background:linear-gradient(135deg,#f43f5e,#be123c)}
+.cat-color-12{background:linear-gradient(135deg,#84cc16,#4d7c0f)}
+
+/* ========== VIP MEMBER SECTION (PRO VERSION) ========== */
+.vip-section{position:relative;border-radius:var(--radius-xl);overflow:hidden;margin-bottom:30px;background:var(--gradient-vip);border:2px solid rgba(251,191,36,.3);box-shadow:0 0 50px rgba(251,191,36,.2),inset 0 0 80px rgba(124,58,237,.2)}
+.vip-section::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 20% 30%,rgba(251,191,36,.15),transparent 50%),radial-gradient(circle at 80% 70%,rgba(168,85,247,.15),transparent 50%);animation:glowPulse 4s ease infinite}
+.vip-section-inner{position:relative;z-index:1;padding:40px;display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.vip-left{position:relative}
+.vip-crown-large{font-size:5rem;color:var(--gold);filter:drop-shadow(0 0 30px rgba(251,191,36,.8));margin-bottom:20px;animation:float 3s ease infinite;display:inline-block}
+.vip-left h2{font-family:var(--font-display);font-size:2.5rem;font-weight:900;background:var(--gradient-gold);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;letter-spacing:2px;margin-bottom:10px;line-height:1.1}
+.vip-left .vip-subtitle{font-size:1.1rem;color:#fff;opacity:.85;margin-bottom:20px;font-weight:500}
+.vip-left .vip-desc{color:var(--text-secondary);margin-bottom:25px;line-height:1.7}
+.vip-left .vip-actions{display:flex;gap:12px;flex-wrap:wrap}
+.vip-right{position:relative}
+.vip-privilege-preview{background:rgba(0,0,0,.35);border:1px solid rgba(251,191,36,.3);border-radius:var(--radius-lg);padding:25px;backdrop-filter:blur(12px)}
+.vip-privilege-preview h4{color:var(--gold);font-size:1rem;text-transform:uppercase;letter-spacing:2px;margin-bottom:15px;display:flex;align-items:center;gap:8px}
+.vip-privilege-list{display:flex;flex-direction:column;gap:12px}
+.vip-privilege-item{display:flex;align-items:center;gap:12px;color:#fff;font-size:.9rem;padding:8px 0;border-bottom:1px dashed rgba(251,191,36,.15)}
+.vip-privilege-item:last-child{border-bottom:none}
+.vip-privilege-item i{width:32px;height:32px;border-radius:8px;background:var(--gradient-gold);color:#1a1a2e;display:flex;align-items:center;justify-content:center;font-size:.9rem;flex-shrink:0;box-shadow:0 0 15px rgba(251,191,36,.4)}
+.vip-privilege-item strong{color:var(--gold)}
+.vip-tiers-row{display:flex;justify-content:space-between;gap:10px;margin-top:20px;padding-top:20px;border-top:1px solid rgba(251,191,36,.2)}
+.vip-tier-badge{flex:1;text-align:center;padding:10px;border-radius:10px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);transition:var(--transition)}
+.vip-tier-badge:hover{transform:translateY(-3px);box-shadow:0 5px 20px rgba(251,191,36,.3)}
+.vip-tier-badge .tier-icon{font-size:1.5rem;margin-bottom:5px;display:block}
+.vip-tier-badge .tier-name{font-size:.7rem;font-weight:700;color:var(--text-secondary);text-transform:uppercase}
+.vip-tier-badge.active{background:rgba(251,191,36,.15);border-color:var(--gold);box-shadow:0 0 20px rgba(251,191,36,.3)}
+.vip-tier-badge.active .tier-name{color:var(--gold)}
+
+/* ========== VIP MODAL ========== */
+.vip-modal-content{max-width:900px;width:100%}
+.vip-modal-header{background:var(--gradient-vip);padding:40px;text-align:center;border-radius:var(--radius-lg) var(--radius-lg) 0 0;position:relative;overflow:hidden;border-bottom:2px solid rgba(251,191,36,.3)}
+.vip-modal-header::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 50% 50%,rgba(251,191,36,.2),transparent 70%)}
+.vip-modal-header i{font-size:3.5rem;color:var(--gold);filter:drop-shadow(0 0 20px rgba(251,191,36,.8));margin-bottom:15px;position:relative;z-index:1;animation:float 2s infinite;display:inline-block}
+.vip-modal-header h2{font-family:var(--font-display);font-size:2rem;font-weight:900;background:var(--gradient-gold);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;letter-spacing:2px;position:relative;z-index:1}
+.vip-modal-header p{color:var(--text-secondary);position:relative;z-index:1;margin-top:8px}
+.vip-modal-body{padding:30px;max-height:500px;overflow-y:auto}
+.vip-modal-body h3{color:var(--gold);margin-bottom:15px;font-size:1.1rem;display:flex;align-items:center;gap:8px;padding-bottom:8px;border-bottom:1px solid rgba(251,191,36,.2)}
+.vip-full-privileges{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:15px;margin-bottom:25px}
+.vip-full-privilege{display:flex;gap:12px;padding:15px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:var(--radius-md);transition:var(--transition)}
+.vip-full-privilege:hover{background:rgba(251,191,36,.05);border-color:rgba(251,191,36,.3);transform:translateY(-2px)}
+.vip-full-privilege .pv-icon{width:42px;height:42px;border-radius:10px;background:var(--gradient-gold);color:#1a1a2e;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;box-shadow:0 0 15px rgba(251,191,36,.3)}
+.vip-full-privilege .pv-info h4{font-size:.9rem;margin-bottom:4px;color:#fff}
+.vip-full-privilege .pv-info p{font-size:.78rem;color:var(--text-secondary);line-height:1.4}
+
+/* ========== PRODUCTS ========== */
 .product-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:20px}
 .product-card{background:var(--bg-card);border:1px solid var(--border-color);border-radius:var(--radius-md);overflow:hidden;transition:var(--transition);cursor:pointer;position:relative}
 .product-card:hover{transform:translateY(-5px);border-color:var(--neon-purple);box-shadow:0 10px 30px rgba(168,85,247,.2)}
@@ -194,122 +262,87 @@ header{position:sticky;top:0;z-index:1000;background:var(--bg-header);backdrop-f
 .product-card .info .rating{display:flex;align-items:center;gap:5px;margin-top:8px;font-size:.8rem;color:var(--text-secondary)}
 .product-card .info .rating i{color:#fbbf24}
 
-/* ============ CARD THEME / THẺ CÀO SECTION ============ */
+/* ========== CARD SYSTEM ========== */
 .card-system-section{background:linear-gradient(135deg,rgba(251,191,36,.1),rgba(239,68,68,.1));border:1px solid rgba(251,191,36,.3);border-radius:var(--radius-lg);padding:30px;margin-bottom:30px;position:relative;overflow:hidden}
 .card-system-section::before{content:'💳';position:absolute;font-size:200px;right:-30px;top:-50px;opacity:.05}
 .card-system-section h2{font-size:1.8rem;margin-bottom:10px;display:flex;align-items:center;gap:12px}
 .card-system-section h2 i{color:#fbbf24}
-.card-system-section p{color:var(--text-secondary);margin-bottom:25px}
 .card-system-tabs{display:flex;gap:10px;margin-bottom:25px;flex-wrap:wrap}
 .card-tab-btn{padding:12px 24px;background:var(--bg-card);border:1px solid var(--border-color);border-radius:50px;font-weight:600;font-size:.9rem;color:var(--text-secondary);transition:var(--transition);display:flex;align-items:center;gap:8px}
 .card-tab-btn.active{background:var(--gradient-gold);color:#1a1a2e;border-color:transparent;box-shadow:0 4px 15px rgba(251,191,36,.3)}
 .card-tab-btn:hover{border-color:#fbbf24;color:#fbbf24}
 .card-system-content{display:none}
-.card-system-content.active{display:block;animation:fadeIn .3s}
-
-/* Buy Card */
+.card-system-content.active{display:block}
 .buy-card-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:15px;margin-bottom:20px}
-.card-provider-card{background:var(--bg-card);border:1px solid var(--border-color);border-radius:var(--radius-md);padding:20px;text-align:center;cursor:pointer;transition:var(--transition);position:relative}
+.card-provider-card{background:var(--bg-card);border:1px solid var(--border-color);border-radius:var(--radius-md);padding:20px;text-align:center;cursor:pointer;transition:var(--transition)}
 .card-provider-card:hover{transform:translateY(-3px);border-color:#fbbf24;box-shadow:0 8px 25px rgba(251,191,36,.2)}
 .card-provider-card.selected{border-color:#fbbf24;background:rgba(251,191,36,.05);box-shadow:0 0 20px rgba(251,191,36,.3)}
-.card-provider-card .provider-logo{width:60px;height:60px;margin:0 auto 10px;border-radius:12px;background:var(--gradient-main);display:flex;align-items:center;justify-content:center;font-size:1.5rem;font-weight:800;color:#fff}
+.card-provider-card .provider-logo{width:60px;height:60px;margin:0 auto 10px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;font-weight:800;color:#fff}
 .card-provider-card h4{font-size:1rem;margin-bottom:5px}
-.card-provider-card .card-denom{font-size:.8rem;color:var(--text-muted)}
-.card-provider-card .card-price{font-size:1rem;font-weight:700;color:#fbbf24;margin-top:8px}
-
 .denom-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:12px;margin-bottom:20px}
 .denom-card{background:var(--bg-card);border:1px solid var(--border-color);border-radius:var(--radius-sm);padding:15px;text-align:center;cursor:pointer;transition:var(--transition)}
 .denom-card:hover{border-color:#fbbf24;transform:scale(1.03)}
 .denom-card.selected{border-color:#fbbf24;background:rgba(251,191,36,.1);box-shadow:0 0 15px rgba(251,191,36,.3)}
 .denom-card .denom-val{font-size:1.1rem;font-weight:700;color:#fbbf24}
 .denom-card .denom-price{font-size:.8rem;color:var(--text-muted);margin-top:5px}
-
 .card-purchase-panel{background:var(--bg-card);border:1px solid var(--border-color);border-radius:var(--radius-md);padding:25px}
-.card-purchase-panel h3{margin-bottom:20px;font-size:1.2rem;display:flex;align-items:center;gap:10px}
-.card-purchase-panel h3 i{color:#fbbf24}
 .card-summary-row{display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px dashed var(--border-color);font-size:.9rem}
-.card-summary-row:last-of-type{border-bottom:none}
 .card-summary-row.total{font-size:1.2rem;font-weight:700;color:#fbbf24;padding-top:15px;border-top:2px solid var(--border-color);margin-top:10px}
 .qty-selector{display:flex;align-items:center;gap:10px;margin:15px 0}
 .qty-selector button{width:36px;height:36px;border-radius:8px;background:var(--bg-card-hover);color:var(--text-primary);border:1px solid var(--border-color);font-size:1.1rem;font-weight:700;transition:var(--transition)}
 .qty-selector button:hover{background:#fbbf24;color:#1a1a2e;border-color:#fbbf24}
 .qty-selector span{width:50px;text-align:center;font-weight:700;font-size:1.1rem;padding:8px;background:var(--bg-card-hover);border-radius:8px;border:1px solid var(--border-color)}
-
-/* Exchange Card */
 .exchange-card-container{display:grid;grid-template-columns:1fr 1fr;gap:20px}
-@media(max-width:768px){.exchange-card-container{grid-template-columns:1fr}}
 .exchange-form{background:var(--bg-card);border:1px solid var(--border-color);border-radius:var(--radius-md);padding:25px}
-.exchange-form h3{margin-bottom:20px;display:flex;align-items:center;gap:10px}
-.exchange-form h3 i{color:#fbbf24}
-.form-group{margin-bottom:18px}
-.form-group label{display:block;font-size:.85rem;color:var(--text-secondary);margin-bottom:6px;font-weight:500}
-.form-group label .required{color:#ef4444}
-.form-group input,.form-group select,.form-group textarea{width:100%;padding:12px 15px;background:var(--bg-dark);border:1px solid var(--border-color);border-radius:var(--radius-sm);color:var(--text-primary);font-size:.95rem;transition:var(--transition)}
-.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:#fbbf24;box-shadow:0 0 0 3px rgba(251,191,36,.1)}
-.form-group small{display:block;margin-top:5px;color:var(--text-muted);font-size:.8rem}
 .exchange-result{background:linear-gradient(135deg,rgba(16,185,129,.15),rgba(0,212,255,.15));border:1px solid rgba(16,185,129,.3);border-radius:var(--radius-md);padding:25px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center}
 .exchange-result .big-amount{font-size:2.5rem;font-weight:800;background:var(--gradient-gold);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin:15px 0}
-.exchange-result .note{font-size:.85rem;color:var(--text-muted);margin-top:15px}
 .exchange-rate-info{background:rgba(0,212,255,.1);border:1px solid rgba(0,212,255,.3);border-radius:var(--radius-sm);padding:15px;margin-bottom:20px;font-size:.85rem}
 .exchange-rate-info strong{color:var(--neon-blue)}
-
-/* Exchange History */
 .exchange-history{margin-top:30px}
-.exchange-history h3{margin-bottom:15px;display:flex;align-items:center;gap:10px}
-.exchange-history h3 i{color:#fbbf24}
 .history-item{background:var(--bg-card);border:1px solid var(--border-color);border-radius:var(--radius-md);padding:15px 20px;margin-bottom:10px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;transition:var(--transition)}
 .history-item:hover{border-color:#fbbf24}
-.history-item .history-info h4{font-size:.95rem;margin-bottom:4px}
-.history-item .history-info p{font-size:.8rem;color:var(--text-muted)}
-.history-item .history-amount{font-weight:700;color:#10b981;font-size:1rem}
-.history-item .status-badge{padding:4px 12px;border-radius:20px;font-size:.75rem;font-weight:600}
+.status-badge{padding:4px 12px;border-radius:20px;font-size:.75rem;font-weight:600}
 .status-pending{background:rgba(251,191,36,.2);color:#fbbf24}
 .status-success{background:rgba(16,185,129,.2);color:#10b981}
 .status-failed{background:rgba(239,68,68,.2);color:#ef4444}
 
-/* ============ ACCOUNT PAGE ============ */
+/* ========== FORM ========== */
+.form-group{margin-bottom:18px}
+.form-group label{display:block;font-size:.85rem;color:var(--text-secondary);margin-bottom:6px;font-weight:500}
+.form-group input,.form-group select,.form-group textarea{width:100%;padding:12px 15px;background:var(--bg-dark);border:1px solid var(--border-color);border-radius:var(--radius-sm);color:var(--text-primary);font-size:.95rem;transition:var(--transition)}
+.form-group input:focus,.form-group select:focus{border-color:var(--neon-blue);box-shadow:0 0 0 3px rgba(0,212,255,.1)}
+.form-group small{display:block;margin-top:5px;color:var(--text-muted);font-size:.8rem}
+
+/* ========== ACCOUNT PAGE ========== */
 .account-page{max-width:1000px;margin:0 auto;padding:30px 20px}
-.account-header-card{background:linear-gradient(135deg,var(--neon-purple),var(--neon-pink));border-radius:var(--radius-lg);padding:35px;color:#fff;margin-bottom:25px;position:relative;overflow:hidden;box-shadow:var(--shadow-purple)}
+.account-header-card{background:linear-gradient(135deg,var(--neon-purple),var(--neon-pink));border-radius:var(--radius-lg);padding:35px;color:#fff;margin-bottom:25px;position:relative;overflow:hidden;box-shadow:0 20px 60px rgba(168,85,247,.3)}
 .account-header-card::before{content:'';position:absolute;top:-50%;right:-20%;width:300px;height:300px;background:rgba(255,255,255,.1);border-radius:50%}
-.account-header-card::after{content:'';position:absolute;bottom:-40%;left:-10%;width:200px;height:200px;background:rgba(255,255,255,.08);border-radius:50%}
 .account-header-inner{display:flex;align-items:center;gap:25px;position:relative;z-index:1;flex-wrap:wrap}
 .account-avatar{width:100px;height:100px;border-radius:50%;background:rgba(255,255,255,.2);backdrop-filter:blur(10px);display:flex;align-items:center;justify-content:center;font-size:2.5rem;font-weight:800;color:#fff;border:4px solid rgba(255,255,255,.3);flex-shrink:0;position:relative}
 .account-avatar .vip-crown{position:absolute;top:-10px;right:-5px;font-size:1.3rem;background:var(--gradient-gold);width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 0 15px rgba(251,191,36,.5)}
 .account-info h2{font-size:1.8rem;margin-bottom:5px;font-weight:800}
 .account-info .email-text{font-size:.95rem;opacity:.9;margin-bottom:10px}
 .account-info .member-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.2);padding:5px 15px;border-radius:20px;font-size:.85rem;font-weight:600;backdrop-filter:blur(10px)}
-.account-info .member-badge i{color:#fbbf24}
-
 .account-stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:15px;margin-bottom:25px}
-.account-stat-card{background:var(--bg-card);border:1px solid var(--border-color);border-radius:var(--radius-md);padding:25px;position:relative;overflow:hidden;transition:var(--transition)}
+.account-stat-card{background:var(--bg-card);border:1px solid var(--border-color);border-radius:var(--radius-md);padding:25px;transition:var(--transition)}
 .account-stat-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-glow);border-color:var(--neon-blue)}
 .account-stat-card .stat-icon{width:50px;height:50px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;margin-bottom:15px}
 .account-stat-card .stat-value{font-size:1.6rem;font-weight:800;margin-bottom:5px}
 .account-stat-card .stat-label{font-size:.85rem;color:var(--text-muted)}
-.account-stat-card .stat-action{margin-top:12px}
-
 .account-tabs{display:flex;gap:5px;border-bottom:1px solid var(--border-color);margin-bottom:25px;overflow-x:auto;scrollbar-width:none}
 .account-tabs::-webkit-scrollbar{display:none}
 .account-tab-btn{padding:12px 24px;background:transparent;color:var(--text-secondary);font-weight:600;border-bottom:2px solid transparent;transition:var(--transition);white-space:nowrap;display:flex;align-items:center;gap:8px}
 .account-tab-btn.active{color:var(--neon-blue);border-bottom-color:var(--neon-blue)}
-.account-tab-btn:hover{color:var(--neon-blue)}
 .account-tab-content{display:none}
 .account-tab-content.active{display:block;animation:fadeIn .3s}
-
-/* Wallet */
 .wallet-balance-card{background:linear-gradient(135deg,#00d4ff,#a855f7);border-radius:var(--radius-lg);padding:30px;color:#fff;margin-bottom:20px;position:relative;overflow:hidden;box-shadow:var(--shadow-glow)}
 .wallet-balance-card::before{content:'💰';position:absolute;font-size:150px;right:-20px;bottom:-40px;opacity:.1}
-.wallet-balance-card h3{font-size:1rem;opacity:.9;margin-bottom:5px}
 .wallet-balance-card .big-balance{font-size:2.5rem;font-weight:800;margin-bottom:5px}
-.wallet-balance-card .pending-balance{font-size:.9rem;opacity:.85}
 .wallet-balance-card .wallet-actions{display:flex;gap:10px;margin-top:20px;flex-wrap:wrap}
 .wallet-balance-card .wallet-actions .btn{background:#fff;color:var(--bg-dark);font-weight:700}
-.wallet-balance-card .wallet-actions .btn:hover{background:#f0f0f0}
-
 .transaction-list{background:var(--bg-card);border:1px solid var(--border-color);border-radius:var(--radius-md);overflow:hidden}
 .transaction-list-header{padding:15px 20px;background:var(--bg-card-hover);font-weight:600;border-bottom:1px solid var(--border-color)}
 .transaction-item{padding:15px 20px;border-bottom:1px solid var(--border-color);display:flex;justify-content:space-between;align-items:center;gap:15px;flex-wrap:wrap}
-.transaction-item:last-child{border-bottom:none}
 .transaction-item:hover{background:var(--bg-card-hover)}
 .transaction-info{display:flex;align-items:center;gap:15px;flex:1;min-width:200px}
 .transaction-icon{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0}
@@ -320,36 +353,35 @@ header{position:sticky;top:0;z-index:1000;background:var(--bg-header);backdrop-f
 .transaction-amount{font-weight:700;font-size:1rem;text-align:right}
 .transaction-amount.income{color:#10b981}
 .transaction-amount.expense{color:#ef4444}
-.transaction-date{font-size:.8rem;color:var(--text-muted);margin-top:3px;text-align:right}
 
-/* ============ AUTH MODAL ============ */
+/* ========== CART ========== */
+.cart-layout{display:grid;grid-template-columns:1fr 380px;gap:30px}
+.cart-item{display:flex;gap:15px;padding:15px;background:var(--bg-card);border-radius:var(--radius-md);margin-bottom:15px;border:1px solid var(--border-color)}
+.cart-item img{width:100px;height:100px;border-radius:8px;object-fit:cover}
+.cart-item .qty-controls{display:flex;align-items:center;gap:10px;margin-top:10px}
+.cart-item .qty-controls button{width:30px;height:30px;border-radius:6px;background:var(--bg-card-hover);color:var(--text-primary);border:1px solid var(--border-color)}
+.cart-summary{background:var(--bg-card);padding:25px;border-radius:var(--radius-md);border:1px solid var(--border-color);height:fit-content;position:sticky;top:100px}
+.summary-row{display:flex;justify-content:space-between;margin-bottom:12px;font-size:.95rem;color:var(--text-secondary)}
+.summary-row.total{font-size:1.2rem;font-weight:700;color:var(--text-primary);border-top:1px solid var(--border-color);padding-top:15px;margin-top:15px}
+
+/* ========== MODALS ========== */
 .modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.85);backdrop-filter:blur(8px);z-index:2000;display:none;align-items:center;justify-content:center;padding:20px;overflow-y:auto}
 .modal-overlay.active{display:flex}
-.modal-content{background:var(--bg-card);border:1px solid var(--border-color);border-radius:var(--radius-lg);padding:35px;width:100%;max-width:480px;position:relative;animation:modalSlide .3s;margin:auto}
-@keyframes modalSlide{from{opacity:0;transform:translateY(30px) scale(.95)}to{opacity:1;transform:translateY(0) scale(1)}}
+.modal-content{background:var(--bg-card);border:1px solid var(--border-color);border-radius:var(--radius-lg);padding:35px;width:100%;max-width:480px;position:relative;animation:fadeIn .3s;margin:auto}
 .modal-close{position:absolute;top:15px;right:15px;background:var(--bg-card-hover);color:var(--text-primary);width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1rem;transition:var(--transition);z-index:10}
 .modal-close:hover{background:var(--neon-pink);color:#fff;transform:rotate(90deg)}
 .modal-content h2{text-align:center;margin-bottom:8px;font-size:1.6rem}
 .modal-subtitle{text-align:center;color:var(--text-muted);font-size:.9rem;margin-bottom:25px}
-
 .auth-form .form-group{margin-bottom:16px}
-.auth-form .form-group label{display:block;font-size:.85rem;color:var(--text-secondary);margin-bottom:6px;font-weight:500}
-.auth-form .form-group input{width:100%;padding:12px 15px;background:var(--bg-dark);border:1px solid var(--border-color);border-radius:var(--radius-sm);color:var(--text-primary);font-size:.95rem;transition:var(--transition)}
-.auth-form .form-group input:focus{border-color:var(--neon-blue);box-shadow:0 0 0 3px rgba(0,212,255,.1)}
 .auth-form .password-strength{height:4px;border-radius:2px;background:var(--border-color);margin-top:8px;overflow:hidden}
 .auth-form .password-strength-bar{height:100%;width:0;transition:all .3s;border-radius:2px}
 .auth-switch{text-align:center;margin-top:20px;font-size:.9rem;color:var(--text-secondary)}
 .auth-switch span{color:var(--neon-blue);cursor:pointer;font-weight:600}
 .auth-switch span:hover{text-decoration:underline}
-.auth-divider{display:flex;align-items:center;gap:15px;margin:20px 0;color:var(--text-muted);font-size:.85rem}
-.auth-divider::before,.auth-divider::after{content:'';flex:1;height:1px;background:var(--border-color)}
-.auth-agreement{font-size:.8rem;color:var(--text-muted);text-align:center;margin-top:15px;line-height:1.5}
-.auth-agreement a{color:var(--neon-blue)}
 
-/* ============ ADMIN ============ */
+/* ========== ADMIN ========== */
 .admin-layout{display:grid;grid-template-columns:240px 1fr;min-height:100vh}
 .admin-sidebar{background:var(--bg-card);border-right:1px solid var(--border-color);padding:20px 0}
-.admin-sidebar .logo{padding:0 20px 20px;border-bottom:1px solid var(--border-color);margin-bottom:20px}
 .admin-nav-item{display:flex;align-items:center;gap:12px;padding:12px 20px;color:var(--text-secondary);cursor:pointer;transition:var(--transition);font-size:.9rem;border-left:3px solid transparent}
 .admin-nav-item:hover,.admin-nav-item.active{background:var(--glass-bg);color:var(--neon-blue);border-left-color:var(--neon-blue)}
 .admin-content{padding:30px;overflow-y:auto}
@@ -364,33 +396,64 @@ th,td{padding:15px 20px;text-align:left;font-size:.9rem;border-bottom:1px solid 
 th{background:var(--bg-card-hover);color:var(--text-secondary);font-weight:600;text-transform:uppercase;font-size:.75rem;letter-spacing:1px}
 tr:hover td{background:var(--bg-card-hover)}
 
-/* ============ TOAST ============ */
+/* ========== TOAST ========== */
 #toast-container{position:fixed;bottom:30px;right:30px;z-index:3000;display:flex;flex-direction:column;gap:10px}
-.toast{background:var(--bg-card);border:1px solid var(--border-color);border-radius:var(--radius-sm);padding:15px 25px;display:flex;align-items:center;gap:12px;min-width:300px;box-shadow:0 10px 40px rgba(0,0,0,.5);animation:toastSlide .3s}
-@keyframes toastSlide{from{opacity:0;transform:translateX(100%)}to{opacity:1;transform:translateX(0)}}
+.toast{background:var(--bg-card);border:1px solid var(--border-color);border-radius:var(--radius-sm);padding:15px 25px;display:flex;align-items:center;gap:12px;min-width:300px;box-shadow:0 10px 40px rgba(0,0,0,.5);animation:fadeIn .3s}
 .toast.success{border-left:4px solid #10b981}.toast.error{border-left:4px solid #ef4444}.toast.info{border-left:4px solid var(--neon-blue)}
 .toast.success i{color:#10b981}.toast.error i{color:#ef4444}.toast.info i{color:var(--neon-blue)}
 
-/* ============ RESPONSIVE ============ */
-@media(max-width:1200px){.cart-layout{grid-template-columns:1fr}.product-detail{grid-template-columns:1fr}}
-@media(max-width:992px){.sidebar{display:none}.mobile-menu-btn{display:flex}.admin-layout{grid-template-columns:1fr}.admin-sidebar{display:none}}
+/* ========== CHAT WIDGET ========== */
+.chat-widget{position:fixed;bottom:30px;left:30px;z-index:1500}
+.chat-toggle-btn{width:60px;height:60px;border-radius:50%;background:var(--gradient-btn);color:#fff;font-size:1.5rem;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 30px rgba(0,212,255,.5);transition:var(--transition);cursor:pointer;position:relative}
+.chat-toggle-btn:hover{transform:scale(1.1);box-shadow:0 12px 40px rgba(0,212,255,.7)}
+.chat-toggle-btn .chat-badge{position:absolute;top:-2px;right:-2px;width:20px;height:20px;background:#ef4444;border-radius:50%;font-size:.7rem;display:flex;align-items:center;justify-content:center;font-weight:700;animation:glowPulse 2s infinite}
+.chat-window{position:absolute;bottom:75px;left:0;width:350px;max-width:calc(100vw - 60px);background:var(--bg-card);border:1px solid var(--border-color);border-radius:var(--radius-lg);overflow:hidden;display:none;box-shadow:0 20px 60px rgba(0,0,0,.5)}
+.chat-window.active{display:block;animation:fadeIn .3s}
+.chat-header{background:var(--gradient-main);padding:15px 20px;color:#fff;display:flex;justify-content:space-between;align-items:center}
+.chat-header h4{font-size:.95rem;display:flex;align-items:center;gap:8px}
+.chat-header .chat-status{font-size:.7rem;background:rgba(255,255,255,.2);padding:2px 8px;border-radius:10px}
+.chat-messages{height:300px;overflow-y:auto;padding:15px;display:flex;flex-direction:column;gap:10px}
+.chat-msg{max-width:80%;padding:10px 14px;border-radius:12px;font-size:.85rem;line-height:1.5}
+.chat-msg.bot{background:var(--bg-card-hover);color:var(--text-primary);align-self:flex-start;border-bottom-left-radius:4px}
+.chat-msg.user{background:var(--gradient-btn);color:#fff;align-self:flex-end;border-bottom-right-radius:4px}
+.chat-input-area{padding:12px;border-top:1px solid var(--border-color);display:flex;gap:8px}
+.chat-input-area input{flex:1;padding:10px 14px;background:var(--bg-dark);border:1px solid var(--border-color);border-radius:50px;color:var(--text-primary);font-size:.85rem}
+.chat-input-area button{width:40px;height:40px;border-radius:50%;background:var(--gradient-btn);color:#fff;font-size:1rem;display:flex;align-items:center;justify-content:center}
+
+/* ========== FAQ / TICKET ========== */
+.faq-list{display:flex;flex-direction:column;gap:10px}
+.faq-item{background:var(--bg-card);border:1px solid var(--border-color);border-radius:var(--radius-md);overflow:hidden}
+.faq-question{padding:18px 20px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-weight:600;transition:var(--transition)}
+.faq-question:hover{background:var(--bg-card-hover)}
+.faq-answer{padding:0 20px;max-height:0;overflow:hidden;transition:max-height .3s,padding .3s;color:var(--text-secondary);font-size:.9rem}
+.faq-item.open .faq-answer{padding:0 20px 18px;max-height:500px}
+.faq-item.open .faq-question i{transform:rotate(180deg)}
+
+/* ========== RESPONSIVE ========== */
+@media(max-width:1200px){.cart-layout{grid-template-columns:1fr}}
+@media(max-width:992px){.sidebar{display:none}.mobile-menu-btn{display:flex}.admin-layout{grid-template-columns:1fr}.admin-sidebar{display:none}.vip-section-inner{grid-template-columns:1fr}}
 @media(max-width:768px){
   .header-inner{flex-wrap:wrap}.search-container{order:3;max-width:100%;flex-basis:100%}
   .hero-content h1{font-size:1.8rem}.hero-banner{height:250px;padding:25px}
   .product-grid{grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px}
   .product-card .img-wrapper{height:120px}.section-header h2{font-size:1.2rem}
   .content-area{padding:15px}.logo span{display:none}
+  .exchange-card-container{grid-template-columns:1fr}
+  .mega-cat-grid{grid-template-columns:repeat(auto-fill,minmax(130px,1fr))}
   .account-header-inner{flex-direction:column;text-align:center}
   .event-slide-content{max-width:100%}
-  .card-system-section{padding:20px}
   .user-name-header{display:none}
+  .vip-left h2{font-size:1.8rem}
+  .vip-modal-body .vip-full-privileges{grid-template-columns:1fr}
+  .chat-widget{bottom:20px;left:20px}
 }
 @media(max-width:480px){
   .product-grid{grid-template-columns:repeat(2,1fr);gap:10px}
   .product-card .info{padding:10px}.product-card .info h4{font-size:.8rem}
-  .product-card .info .price{font-size:.95rem}
   .hero-content h1{font-size:1.4rem}.hero-content p{font-size:.9rem}
-  .account-tabs{overflow-x:scroll}
+  .mega-cat-grid{grid-template-columns:repeat(2,1fr)}
+  .vip-tiers-row{flex-wrap:wrap}
+  .vip-tier-badge{flex:1 1 30%}
 }
 </style>
 </head>
@@ -400,17 +463,19 @@ tr:hover td{background:var(--bg-card-hover)}
 
 <!-- EVENT BAR -->
 <div class="event-bar">
-  <div class="event-slider" id="event-slider">
+  <div class="event-slider">
     <div class="event-item"><i class="fas fa-bolt"></i> SỰ KIỆN: Nạp thẻ lần đầu tặng 200% giá trị</div>
     <div class="event-item"><i class="fas fa-gift"></i> FLASH SALE: Giảm 50% tài khoản game Liên Quân</div>
     <div class="event-item"><i class="fas fa-crown"></i> THÀNH VIÊN VIP: Hoàn tiền 10% mọi giao dịch</div>
-    <div class="event-item"><i class="fas fa-fire"></i> ĐỔI THẺ CÀO: Tỷ giá 1:1, nhận tiền ngay lập tức</div>
+    <div class="event-item"><i class="fas fa-fire"></i> ĐỔI THẺ CÀO: Tỷ giá 1:1, nhận tiền ngay</div>
     <div class="event-item"><i class="fas fa-star"></i> TÍCH ĐIỂM: Đổi điểm lấy voucher giảm giá</div>
+    <div class="event-item"><i class="fas fa-users"></i> GIỚI THIỆU BẠN BÈ: Nhận 50.000đ mỗi người</div>
     <div class="event-item"><i class="fas fa-bolt"></i> SỰ KIỆN: Nạp thẻ lần đầu tặng 200% giá trị</div>
     <div class="event-item"><i class="fas fa-gift"></i> FLASH SALE: Giảm 50% tài khoản game Liên Quân</div>
     <div class="event-item"><i class="fas fa-crown"></i> THÀNH VIÊN VIP: Hoàn tiền 10% mọi giao dịch</div>
-    <div class="event-item"><i class="fas fa-fire"></i> ĐỔI THẺ CÀO: Tỷ giá 1:1, nhận tiền ngay lập tức</div>
+    <div class="event-item"><i class="fas fa-fire"></i> ĐỔI THẺ CÀO: Tỷ giá 1:1, nhận tiền ngay</div>
     <div class="event-item"><i class="fas fa-star"></i> TÍCH ĐIỂM: Đổi điểm lấy voucher giảm giá</div>
+    <div class="event-item"><i class="fas fa-users"></i> GIỚI THIỆU BẠN BÈ: Nhận 50.000đ mỗi người</div>
   </div>
 </div>
 
@@ -423,9 +488,12 @@ tr:hover td{background:var(--bg-card-hover)}
     </div>
     <div class="top-bar-links">
       <a onclick="app.showToast('Tải app DEMO','info')"><i class="fas fa-mobile-alt"></i> Tải App</a>
-      <a onclick="app.showToast('Trung tâm hỗ trợ DEMO','info')"><i class="fas fa-headset"></i> Hỗ trợ</a>
-      <a onclick="app.showToast('Tin tức DEMO','info')"><i class="fas fa-newspaper"></i> Tin tức</a>
+      <a onclick="app.showModal('faqModal')"><i class="fas fa-question-circle"></i> FAQ</a>
+      <a onclick="app.showModal('ticketModal')"><i class="fas fa-ticket-alt"></i> Hỗ trợ</a>
+      <a onclick="app.showModal('newsModal')"><i class="fas fa-newspaper"></i> Tin tức</a>
       <a onclick="app.navigate('cardSystem')"><i class="fas fa-credit-card"></i> Đổi thẻ</a>
+      <a onclick="app.showToast('🌐 Chuyển sang English (DEMO)','info')"><i class="fas fa-globe"></i> EN</a>
+      <a onclick="app.showToast('💵 Chuyển sang USD (DEMO)','info')"><i class="fas fa-dollar-sign"></i> USD</a>
     </div>
   </div>
 </div>
@@ -456,157 +524,172 @@ tr:hover td{background:var(--bg-card-hover)}
   </div>
 </header>
 
-<!-- MAIN APP ROOT -->
+<!-- APP ROOT -->
 <div id="app-root"></div>
 
-<!-- AUTH MODAL -->
-<div class="modal-overlay" id="auth-modal">
-  <div class="modal-content">
-    <button class="modal-close" onclick="app.closeAuthModal()"><i class="fas fa-times"></i></button>
-    <div id="auth-form-container"></div>
+<!-- CHAT WIDGET -->
+<div class="chat-widget">
+  <div class="chat-toggle-btn" onclick="app.toggleChat()">
+    <i class="fas fa-headset"></i>
+    <span class="chat-badge">1</span>
+  </div>
+  <div class="chat-window" id="chat-window">
+    <div class="chat-header">
+      <h4><i class="fas fa-headset"></i> Hỗ trợ trực tuyến <span class="chat-status">● Online</span></h4>
+      <button style="background:none;color:#fff" onclick="app.toggleChat()"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="chat-messages" id="chat-messages">
+      <div class="chat-msg bot">Xin chào! Tôi có thể giúp gì cho bạn? 👋</div>
+    </div>
+    <div class="chat-input-area">
+      <input type="text" id="chat-input" placeholder="Nhập tin nhắn..." onkeypress="if(event.key==='Enter')app.sendChat()">
+      <button onclick="app.sendChat()"><i class="fas fa-paper-plane"></i></button>
+    </div>
   </div>
 </div>
 
-<!-- QUICK VIEW MODAL -->
-<div class="modal-overlay" id="quickview-modal">
-  <div class="modal-content" style="max-width:800px" id="quickview-content"></div>
-</div>
+<!-- MODALS -->
+<div class="modal-overlay" id="auth-modal"><div class="modal-content"><button class="modal-close" onclick="app.closeModal('auth-modal')"><i class="fas fa-times"></i></button><div id="auth-form-container"></div></div></div>
+<div class="modal-overlay" id="quickview-modal"><div class="modal-content" style="max-width:800px" id="quickview-content"></div></div>
+<div class="modal-overlay" id="vipModal"><div class="modal-content vip-modal-content" id="vip-modal-content"></div></div>
+<div class="modal-overlay" id="faqModal"><div class="modal-content" style="max-width:700px" id="faq-modal-content"></div></div>
+<div class="modal-overlay" id="ticketModal"><div class="modal-content" style="max-width:600px" id="ticket-modal-content"></div></div>
+<div class="modal-overlay" id="newsModal"><div class="modal-content" style="max-width:800px" id="news-modal-content"></div></div>
 
 <script>
-// ==========================================
-// DB & STORAGE
-// ==========================================
+// ========== DB & STORAGE ==========
 const DB = {
-  users: JSON.parse(localStorage.getItem('ths2_users')) || [],
-  currentUser: JSON.parse(localStorage.getItem('ths2_currentUser')) || null,
-  products: [],
-  categories: [],
-  cart: [],
-  wishlist: [],
-  orders: JSON.parse(localStorage.getItem('ths2_orders')) || [],
-  walletBalance: 0,
-  pendingBalance: 0,
-  viewedProducts: [],
-  transactions: JSON.parse(localStorage.getItem('ths2_transactions')) || [],
-  exchangeHistory: JSON.parse(localStorage.getItem('ths2_exchangeHistory')) || [],
-  buyCardHistory: JSON.parse(localStorage.getItem('ths2_buyCardHistory')) || [],
-  memberLevel: JSON.parse(localStorage.getItem('ths2_memberLevel')) || { level: 'Bronze', points: 0 }
+  users: JSON.parse(localStorage.getItem('ths3_users')) || [],
+  currentUser: JSON.parse(localStorage.getItem('ths3_currentUser')) || null,
+  products: [], categories: [], cart: [], wishlist: [],
+  orders: JSON.parse(localStorage.getItem('ths3_orders')) || [],
+  walletBalance: 0, pendingBalance: 0, viewedProducts: [],
+  transactions: JSON.parse(localStorage.getItem('ths3_transactions')) || [],
+  exchangeHistory: JSON.parse(localStorage.getItem('ths3_exchangeHistory')) || [],
+  buyCardHistory: JSON.parse(localStorage.getItem('ths3_buyCardHistory')) || [],
+  memberLevel: JSON.parse(localStorage.getItem('ths3_memberLevel')) || { level:'Bronze', points:0 },
+  vouchers: JSON.parse(localStorage.getItem('ths3_vouchers')) || [],
+  tickets: JSON.parse(localStorage.getItem('ths3_tickets')) || []
 };
 
 function getUserKey() { return DB.currentUser ? DB.currentUser.email : 'guest'; }
 function saveAll() {
   const k = getUserKey();
-  localStorage.setItem('ths2_users', JSON.stringify(DB.users));
-  localStorage.setItem('ths2_currentUser', JSON.stringify(DB.currentUser));
-  localStorage.setItem('ths2_orders', JSON.stringify(DB.orders));
-  localStorage.setItem('ths2_transactions', JSON.stringify(DB.transactions));
-  localStorage.setItem('ths2_exchangeHistory', JSON.stringify(DB.exchangeHistory));
-  localStorage.setItem('ths2_buyCardHistory', JSON.stringify(DB.buyCardHistory));
-  localStorage.setItem('ths2_memberLevel', JSON.stringify(DB.memberLevel));
-  localStorage.setItem('ths2_cart_' + k, JSON.stringify(DB.cart));
-  localStorage.setItem('ths2_wishlist_' + k, JSON.stringify(DB.wishlist));
-  localStorage.setItem('ths2_wallet_' + k, JSON.stringify(DB.walletBalance));
-  localStorage.setItem('ths2_pending_' + k, JSON.stringify(DB.pendingBalance));
-  localStorage.setItem('ths2_viewed_' + k, JSON.stringify(DB.viewedProducts));
+  localStorage.setItem('ths3_users', JSON.stringify(DB.users));
+  localStorage.setItem('ths3_currentUser', JSON.stringify(DB.currentUser));
+  localStorage.setItem('ths3_orders', JSON.stringify(DB.orders));
+  localStorage.setItem('ths3_transactions', JSON.stringify(DB.transactions));
+  localStorage.setItem('ths3_exchangeHistory', JSON.stringify(DB.exchangeHistory));
+  localStorage.setItem('ths3_buyCardHistory', JSON.stringify(DB.buyCardHistory));
+  localStorage.setItem('ths3_memberLevel', JSON.stringify(DB.memberLevel));
+  localStorage.setItem('ths3_vouchers', JSON.stringify(DB.vouchers));
+  localStorage.setItem('ths3_tickets', JSON.stringify(DB.tickets));
+  localStorage.setItem('ths3_cart_' + k, JSON.stringify(DB.cart));
+  localStorage.setItem('ths3_wishlist_' + k, JSON.stringify(DB.wishlist));
+  localStorage.setItem('ths3_wallet_' + k, JSON.stringify(DB.walletBalance));
+  localStorage.setItem('ths3_pending_' + k, JSON.stringify(DB.pendingBalance));
+  localStorage.setItem('ths3_viewed_' + k, JSON.stringify(DB.viewedProducts));
 }
 function loadUserData() {
   const k = getUserKey();
-  DB.cart = JSON.parse(localStorage.getItem('ths2_cart_' + k)) || [];
-  DB.wishlist = JSON.parse(localStorage.getItem('ths2_wishlist_' + k)) || [];
-  DB.walletBalance = JSON.parse(localStorage.getItem('ths2_wallet_' + k)) || 0;
-  DB.pendingBalance = JSON.parse(localStorage.getItem('ths2_pending_' + k)) || 0;
-  DB.viewedProducts = JSON.parse(localStorage.getItem('ths2_viewed_' + k)) || [];
+  DB.cart = JSON.parse(localStorage.getItem('ths3_cart_' + k)) || [];
+  DB.wishlist = JSON.parse(localStorage.getItem('ths3_wishlist_' + k)) || [];
+  DB.walletBalance = JSON.parse(localStorage.getItem('ths3_wallet_' + k)) || 0;
+  DB.pendingBalance = JSON.parse(localStorage.getItem('ths3_pending_' + k)) || 0;
+  DB.viewedProducts = JSON.parse(localStorage.getItem('ths3_viewed_' + k)) || [];
 }
 
-// ==========================================
-// MOCK PRODUCTS GENERATOR
-// ==========================================
+// ========== MOCK DATA ==========
 function generateMockProducts() {
   const games = ['Liên Quân Mobile','Free Fire','PUBG Mobile','Valorant','Liên Minh Huyền Thoại','Genshin Impact','Honkai: Star Rail','Wuthering Waves','Minecraft','Roblox','Steam Game','Epic Games','PlayStation','Xbox','Nintendo','Đột Kích'];
   const socials = ['Facebook','TikTok','YouTube','Instagram','Telegram','Discord','X (Twitter)'];
   const digitals = ['Thiết kế Logo','Thiết kế Website','Hosting','Domain','VPS','Cloud','Phần mềm','Chỉnh sửa Video'];
   const cards = ['Viettel','Vinaphone','Mobifone','Vietnamobile','Garena','Zing','Steam Wallet','Google Play','App Store'];
-  const products = [];
-  let id = 1;
+  const products = []; let id = 1;
   games.forEach(g => {
-    for (let i=0; i<12; i++) {
-      products.push({
-        id: id++, name: `Tài khoản ${g} - ${['Full Skin','Rank Cao','Full Tướng','VIP','Cày Cuốc','Siêu Phẩm'][i%6]} #${i+1}`,
-        category: g, type:'account', price: Math.floor(Math.random()*5000000)+50000,
-        oldPrice: Math.floor(Math.random()*7000000)+500000, discount: Math.floor(Math.random()*50)+10,
-        image: `https://picsum.photos/seed/game${id}/400/300`, rating: (Math.random()*2+3).toFixed(1),
-        sold: Math.floor(Math.random()*500)+10, stock: Math.floor(Math.random()*50)+1,
-        description: `Tài khoản ${g} cực chất lượng, full vật phẩm, rank cao. Bảo hành trọn đời.`,
-        badges: i%3===0?['hot']:i%3===1?['new']:['sale']
-      });
-    }
+    for (let i=0; i<12; i++) products.push({
+      id:id++, name:`Tài khoản ${g} - ${['Full Skin','Rank Cao','Full Tướng','VIP','Cày Cuốc','Siêu Phẩm'][i%6]} #${i+1}`,
+      category:g, type:'account', price:Math.floor(Math.random()*5000000)+50000,
+      oldPrice:Math.floor(Math.random()*7000000)+500000, discount:Math.floor(Math.random()*50)+10,
+      image:`https://picsum.photos/seed/game${id}/400/300`, rating:(Math.random()*2+3).toFixed(1),
+      sold:Math.floor(Math.random()*500)+10, stock:Math.floor(Math.random()*50)+1,
+      description:`Tài khoản ${g} chất lượng cao, full vật phẩm.`,
+      badges:i%3===0?['hot']:i%3===1?['new']:['sale']
+    });
   });
   cards.forEach(c => {
     for (let i=0; i<6; i++) {
-      const denom = [10000,20000,50000,100000,200000,500000,1000000][i%7];
-      products.push({
-        id: id++, name: `Thẻ ${c} ${denom.toLocaleString('vi-VN')}đ`, category:'Thẻ cào', type:'card',
-        price: denom*0.95, oldPrice: denom, discount:5,
-        image: `https://picsum.photos/seed/card${id}/400/300`, rating:(Math.random()*2+3).toFixed(1),
-        sold: Math.floor(Math.random()*1000)+50, stock:999,
-        description: `Thẻ ${c} mệnh giá ${denom.toLocaleString('vi-VN')}đ. Giao ngay.`, badges:['hot']
-      });
+      const d = [10000,20000,50000,100000,200000,500000,1000000][i%7];
+      products.push({id:id++, name:`Thẻ ${c} ${d.toLocaleString('vi-VN')}đ`, category:'Thẻ cào', type:'card',
+        price:d*0.95, oldPrice:d, discount:5, image:`https://picsum.photos/seed/card${id}/400/300`,
+        rating:(Math.random()*2+3).toFixed(1), sold:Math.floor(Math.random()*1000)+50, stock:999,
+        description:`Thẻ ${c} mệnh giá ${d.toLocaleString('vi-VN')}đ.`, badges:['hot']});
     }
   });
   socials.forEach(s => {
-    for (let i=0; i<5; i++) {
-      products.push({
-        id: id++, name:`Dịch vụ ${s} - Gói ${['Cơ bản','Nâng cao','Chuyên nghiệp','VIP'][i%4]}`,
-        category:'Dịch vụ MXH', type:'service', price: Math.floor(Math.random()*2000000)+50000,
-        oldPrice: Math.floor(Math.random()*3000000)+100000, discount: Math.floor(Math.random()*40)+5,
-        image:`https://picsum.photos/seed/social${id}/400/300`, rating:(Math.random()*2+3).toFixed(1),
-        sold: Math.floor(Math.random()*300)+5, stock:99,
-        description:`Dịch vụ ${s} hợp pháp, tuân thủ chính sách.`, badges:i%2===0?['new']:['sale']
-      });
-    }
+    for (let i=0; i<5; i++) products.push({
+      id:id++, name:`Dịch vụ ${s} - Gói ${['Cơ bản','Nâng cao','Chuyên nghiệp','VIP'][i%4]}`,
+      category:'Dịch vụ MXH', type:'service', price:Math.floor(Math.random()*2000000)+50000,
+      oldPrice:Math.floor(Math.random()*3000000)+100000, discount:Math.floor(Math.random()*40)+5,
+      image:`https://picsum.photos/seed/social${id}/400/300`, rating:(Math.random()*2+3).toFixed(1),
+      sold:Math.floor(Math.random()*300)+5, stock:99, description:`Dịch vụ ${s} hợp pháp.`,
+      badges:i%2===0?['new']:['sale']
+    });
   });
   digitals.forEach(d => {
-    for (let i=0; i<4; i++) {
-      products.push({
-        id: id++, name:`${d} - Gói ${['Tiết kiệm','Tiêu chuẩn','Cao cấp'][i%3]}`,
-        category:'Dịch vụ số', type:'service', price: Math.floor(Math.random()*5000000)+100000,
-        oldPrice: Math.floor(Math.random()*7000000)+200000, discount: Math.floor(Math.random()*30)+5,
-        image:`https://picsum.photos/seed/digital${id}/400/300`, rating:(Math.random()*2+3).toFixed(1),
-        sold: Math.floor(Math.random()*200)+10, stock:50,
-        description:`Dịch vụ ${d} chuyên nghiệp, uy tín.`, badges:['sale']
-      });
-    }
+    for (let i=0; i<4; i++) products.push({
+      id:id++, name:`${d} - Gói ${['Tiết kiệm','Tiêu chuẩn','Cao cấp'][i%3]}`,
+      category:'Dịch vụ số', type:'service', price:Math.floor(Math.random()*5000000)+100000,
+      oldPrice:Math.floor(Math.random()*7000000)+200000, discount:Math.floor(Math.random()*30)+5,
+      image:`https://picsum.photos/seed/digital${id}/400/300`, rating:(Math.random()*2+3).toFixed(1),
+      sold:Math.floor(Math.random()*200)+10, stock:50, description:`Dịch vụ ${d} chuyên nghiệp.`,
+      badges:['sale']
+    });
   });
   return products;
 }
 
-// Card Provider Data for the Card System
 const CARD_PROVIDERS = [
-  { id:'viettel', name:'Viettel', color:'#ee0033', denoms:[10000,20000,50000,100000,200000,500000,1000000] },
-  { id:'vinaphone', name:'Vinaphone', color:'#0055a5', denoms:[10000,20000,50000,100000,200000,500000] },
-  { id:'mobifone', name:'Mobifone', color:'#005baa', denoms:[10000,20000,50000,100000,200000,500000] },
-  { id:'vietnamobile', name:'Vietnamobile', color:'#f7941d', denoms:[10000,20000,50000,100000,200000] },
-  { id:'garena', name:'Garena', color:'#e31e24', denoms:[20000,50000,100000,200000,500000] },
-  { id:'zing', name:'Zing', color:'#ff6900', denoms:[20000,50000,100000,200000] },
-  { id:'steam', name:'Steam Wallet', color:'#1b2838', denoms:[50000,100000,200000,500000,1000000] },
-  { id:'google', name:'Google Play', color:'#34a853', denoms:[50000,100000,200000,500000] },
-  { id:'appstore', name:'App Store', color:'#0d84ff', denoms:[50000,100000,200000,500000] }
+  {id:'viettel',name:'Viettel',color:'#ee0033',denoms:[10000,20000,50000,100000,200000,500000,1000000]},
+  {id:'vinaphone',name:'Vinaphone',color:'#0055a5',denoms:[10000,20000,50000,100000,200000,500000]},
+  {id:'mobifone',name:'Mobifone',color:'#005baa',denoms:[10000,20000,50000,100000,200000,500000]},
+  {id:'vietnamobile',name:'Vietnamobile',color:'#f7941d',denoms:[10000,20000,50000,100000,200000]},
+  {id:'garena',name:'Garena',color:'#e31e24',denoms:[20000,50000,100000,200000,500000]},
+  {id:'zing',name:'Zing',color:'#ff6900',denoms:[20000,50000,100000,200000]},
+  {id:'steam',name:'Steam Wallet',color:'#1b2838',denoms:[50000,100000,200000,500000,1000000]},
+  {id:'google',name:'Google Play',color:'#34a853',denoms:[50000,100000,200000,500000]},
+  {id:'appstore',name:'App Store',color:'#0d84ff',denoms:[50000,100000,200000,500000]}
 ];
 
-// ==========================================
-// APP CONTROLLER
-// ==========================================
+const VIP_PRIVILEGES = [
+  {icon:'fa-crown',title:'Hoàn tiền 10%',desc:'Hoàn 10% mọi giao dịch vào ví'},
+  {icon:'fa-bolt',title:'Ưu tiên hỗ trợ 24/7',desc:'Đội ngũ CSKH riêng, phản hồi < 1 phút'},
+  {icon:'fa-gift',title:'Quà tặng sinh nhật',desc:'Voucher 500.000đ vào ngày sinh nhật'},
+  {icon:'fa-tags',title:'Giảm giá độc quyền',desc:'Giảm thêm 5-15% mọi sản phẩm'},
+  {icon:'fa-rocket',title:'Miễn phí vận chuyển',desc:'Miễn phí mọi đơn hàng kỹ thuật số'},
+  {icon:'fa-star',title:'Điểm thưởng x2',desc:'Tích điểm gấp đôi khi mua hàng'},
+  {icon:'fa-shield-alt',title:'Bảo hành VIP',desc:'Bảo hành mở rộng gấp 3 lần'},
+  {icon:'fa-credit-card',title:'Tỷ giá đổi thẻ tốt hơn',desc:'Đổi thẻ cào tỷ giá 1:0.95'},
+  {icon:'fa-users',title:'Sự kiện độc quyền',desc:'Tham gia event riêng cho VIP'},
+  {icon:'fa-headset',title:'Hotline riêng',desc:'Đường dây nóng VIP ưu tiên'},
+  {icon:'fa-medal',title:'Huy hiệu VIP',desc:'Huy hiệu đặc biệt trên profile'},
+  {icon:'fa-fire',title:'Early Access',desc:'Mua trước sản phẩm mới 24h'},
+  {icon:'fa-percentage',title:'Voucher hàng tháng',desc:'Nhận voucher 100.000đ mỗi tháng'},
+  {icon:'fa-gem',title:'Quà tặng độc quyền',desc:'Nhận quà tặng giới hạn từ đối tác'},
+  {icon:'fa-chart-line',title:'Báo cáo chi tiêu',desc:'Báo cáo chi tiêu chi tiết hàng tháng'},
+  {icon:'fa-user-shield',title:'Bảo mật nâng cao',desc:'Xác thực 2 lớp, mã hóa dữ liệu'},
+  {icon:'fa-infinity',title:'Không giới hạn',desc:'Không giới hạn số lượng mua flash sale'},
+  {icon:'fa-trophy',title:'Bảng xếp hạng VIP',desc:'Vinh danh trên bảng xếp hạng VIP'},
+  {icon:'fa-plane',title:'Trải nghiệm đặc biệt',desc:'Mời tham gia sự kiện offline'},
+  {icon:'fa-diamond',title:'Quyền ưu tiên',desc:'Ưu tiên mua sản phẩm hot, limited'}
+];
+
+// ========== APP CONTROLLER ==========
 const app = {
-  currentPage:'home',
-  currentProductId:null,
+  currentPage:'home', currentProductId:null,
   filterState:{category:'all',minPrice:0,maxPrice:999999999,sort:'default'},
-  cardTab:'buy',
-  cardSelectedProvider:null,
-  cardSelectedDenom:null,
-  cardQty:1,
-  exchangeSelectedProvider:null,
-  exchangeSelectedDenom:null,
-  currentEventSlide:0,
+  cardTab:'buy', cardSelectedProvider:null, cardSelectedDenom:null, cardQty:1,
+  currentEventSlide:0, chatOpen:false,
 
   init() {
     DB.products = generateMockProducts();
@@ -626,9 +709,7 @@ const app = {
   },
 
   setupGlobalListeners() {
-    document.querySelectorAll('.modal-overlay').forEach(o => {
-      o.addEventListener('click', e => { if(e.target===o) o.classList.remove('active'); });
-    });
+    document.querySelectorAll('.modal-overlay').forEach(o => o.addEventListener('click', e => { if(e.target===o) o.classList.remove('active'); }));
     document.addEventListener('click', e => {
       const sc = document.querySelector('.search-container');
       if(sc && !sc.contains(e.target)) document.getElementById('search-suggestions')?.classList.remove('active');
@@ -645,8 +726,7 @@ const app = {
       const sug = document.getElementById('search-suggestions');
       if(q.length<1){ sug.classList.remove('active'); return; }
       const res = DB.products.filter(p=>p.name.toLowerCase().includes(q.toLowerCase())||p.category.toLowerCase().includes(q.toLowerCase())).slice(0,8);
-      if(res.length===0) sug.innerHTML = `<div class="suggestion-item"><div class="info"><h4>Không tìm thấy kết quả</h4><p>Thử từ khóa khác</p></div></div>`;
-      else sug.innerHTML = res.map(p=>`<div class="suggestion-item" onclick="app.viewProduct(${p.id})"><img src="${p.image}"><div class="info"><h4>${p.name}</h4><p>${p.category} • ${p.price.toLocaleString('vi-VN')}đ</p></div></div>`).join('');
+      sug.innerHTML = res.length===0 ? '<div class="suggestion-item"><div class="info"><h4>Không tìm thấy</h4></div></div>' : res.map(p=>`<div class="suggestion-item" onclick="app.viewProduct(${p.id})"><img src="${p.image}"><div class="info"><h4>${p.name}</h4><p>${p.category} • ${p.price.toLocaleString('vi-VN')}đ</p></div></div>`).join('');
       sug.classList.add('active');
     });
   },
@@ -687,17 +767,20 @@ const app = {
     this.renderUserMenu();
     this.updateCounts();
     if(this.currentPage==='home') this.startEventSlider();
-    if(this.currentPage==='cardSystem') this.bindCardSystemEvents();
-    if(this.currentPage==='account') this.bindAccountEvents();
+    if(this.currentPage==='cardSystem' && this.cardSelectedProvider) this.selectCardProvider(this.cardSelectedProvider, true);
   },
 
-  getSearchQuery() {
-    return document.getElementById('global-search')?.value?.trim() || '';
-  },
+  getSearchQuery() { return document.getElementById('global-search')?.value?.trim() || ''; },
 
-  // ==========================================
-  // USER MENU
-  // ==========================================
+  showModal(id) {
+    if(id==='faqModal') this.renderFAQ();
+    else if(id==='ticketModal') this.renderTicket();
+    else if(id==='newsModal') this.renderNews();
+    document.getElementById(id).classList.add('active');
+  },
+  closeModal(id) { document.getElementById(id).classList.remove('active'); },
+
+  // ========== USER MENU ==========
   renderUserMenu() {
     const wrapper = document.getElementById('user-menu-wrapper');
     if(!wrapper) return;
@@ -715,8 +798,8 @@ const app = {
             <div class="avatar-lg">${initials}</div>
             <h4>${DB.currentUser.name}</h4>
             <p>${DB.currentUser.email}</p>
-            <div style="margin-top:8px;display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.2);padding:3px 10px;border-radius:20px;font-size:.75rem;font-weight:600;">
-              <i class="fas ${levelIcon[DB.memberLevel.level]||'fa-medal'}" style="color:#fbbf24;"></i> ${DB.memberLevel.level} Member
+            <div style="margin-top:8px;display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.2);padding:3px 10px;border-radius:20px;font-size:.75rem;font-weight:600">
+              <i class="fas ${levelIcon[DB.memberLevel.level]||'fa-medal'}" style="color:#fbbf24"></i> ${DB.memberLevel.level} Member
             </div>
           </div>
           <div class="user-dropdown-balance">
@@ -728,12 +811,15 @@ const app = {
             <div class="dropdown-item" onclick="app.navigate('account');setTimeout(()=>app.switchAccountTab('wallet'),100)"><i class="fas fa-wallet"></i> Ví của tôi</div>
             <div class="dropdown-item" onclick="app.navigate('account');setTimeout(()=>app.switchAccountTab('orders'),100)"><i class="fas fa-shopping-bag"></i> Đơn hàng</div>
             <div class="dropdown-item" onclick="app.showWishlist()"><i class="fas fa-heart"></i> Yêu thích (${DB.wishlist.length})</div>
-            <div class="dropdown-item" onclick="app.showToast('Điểm thưởng: ' + DB.memberLevel.points + ' điểm','info')"><i class="fas fa-star"></i> Điểm thưởng: ${DB.memberLevel.points}</div>
+            <div class="dropdown-item" onclick="app.showToast('Điểm thưởng: ' + DB.memberLevel.points,'info')"><i class="fas fa-star"></i> Điểm thưởng: ${DB.memberLevel.points}</div>
+            <div class="dropdown-item" onclick="app.showVoucherList()"><i class="fas fa-tags"></i> Voucher của tôi</div>
+            <div class="dropdown-item" onclick="app.showReferralModal()"><i class="fas fa-users"></i> Giới thiệu bạn bè</div>
+            <div class="dropdown-item" onclick="app.showViewedHistory()"><i class="fas fa-history"></i> Đã xem gần đây</div>
             <div class="dropdown-divider"></div>
             <div class="dropdown-item" onclick="app.navigate('cardSystem')"><i class="fas fa-credit-card"></i> Mua thẻ cào</div>
             <div class="dropdown-item" onclick="app.navigate('cardSystem');setTimeout(()=>app.switchCardTab('exchange'),100)"><i class="fas fa-exchange-alt"></i> Đổi thẻ cào</div>
+            <div class="dropdown-item" onclick="app.showModal('ticketModal')"><i class="fas fa-ticket-alt"></i> Hỗ trợ</div>
             <div class="dropdown-divider"></div>
-            <div class="dropdown-item" onclick="app.showToast('Cài đặt DEMO','info')"><i class="fas fa-cog"></i> Cài đặt</div>
             <div class="dropdown-item logout" onclick="app.logout()"><i class="fas fa-sign-out-alt"></i> Đăng xuất</div>
           </div>
         </div>
@@ -743,28 +829,19 @@ const app = {
     }
   },
 
-  toggleUserMenu(e) {
-    e.stopPropagation();
-    document.getElementById('user-dropdown')?.classList.toggle('active');
-  },
-
+  toggleUserMenu(e) { e.stopPropagation(); document.getElementById('user-dropdown')?.classList.toggle('active'); },
   updateCounts() {
-    const cart = DB.cart.reduce((s,i)=>s+i.qty,0);
-    document.getElementById('cart-count').textContent = cart;
+    document.getElementById('cart-count').textContent = DB.cart.reduce((s,i)=>s+i.qty,0);
     document.getElementById('wishlist-count').textContent = DB.wishlist.length;
   },
 
-  // ==========================================
-  // HOME RENDER
-  // ==========================================
+  // ========== HOME RENDER ==========
   renderHome() {
     const featured = DB.products.filter(p=>p.badges.includes('hot')).slice(0,10);
     const newP = DB.products.filter(p=>p.badges.includes('new')).slice(0,10);
     const best = [...DB.products].sort((a,b)=>b.sold-a.sold).slice(0,10);
     const sale = DB.products.filter(p=>p.discount>20).slice(0,10);
     const flash = DB.products.filter(p=>p.discount>40).slice(0,6);
-    const popularCards = CARD_PROVIDERS.slice(0,6);
-
     return `
     <div class="main-wrapper">
       <aside class="sidebar" id="sidebar">
@@ -783,13 +860,14 @@ const app = {
         </div>
         <div class="sidebar-category" style="margin-top:20px">
           <h3>Hỗ Trợ</h3>
-          <div class="sidebar-item" onclick="app.showToast('Chat hỗ trợ DEMO','info')"><i class="fas fa-headset"></i> Chat Hỗ Trợ</div>
-          <div class="sidebar-item" onclick="app.showToast('FAQ DEMO','info')"><i class="fas fa-question-circle"></i> FAQ</div>
-          <div class="sidebar-item" onclick="app.showToast('Ticket DEMO','info')"><i class="fas fa-ticket-alt"></i> Ticket</div>
+          <div class="sidebar-item" onclick="app.toggleChat()"><i class="fas fa-headset"></i> Chat Hỗ Trợ</div>
+          <div class="sidebar-item" onclick="app.showModal('faqModal')"><i class="fas fa-question-circle"></i> FAQ</div>
+          <div class="sidebar-item" onclick="app.showModal('ticketModal')"><i class="fas fa-ticket-alt"></i> Ticket</div>
+          <div class="sidebar-item" onclick="app.showModal('newsModal')"><i class="fas fa-newspaper"></i> Tin tức</div>
         </div>
       </aside>
       <main class="content-area">
-        <!-- EVENT BANNER SLIDER -->
+        <!-- EVENT SLIDER -->
         <div class="event-banner-slider">
           <div class="event-slide event-slide-bg-1 active">
             <div class="event-slide-content">
@@ -803,111 +881,119 @@ const app = {
             <div class="event-slide-content">
               <span class="badge badge-vip" style="margin-bottom:10px;display:inline-block">👑 VIP MEMBER</span>
               <h2>Thành Viên VIP - Hoàn Tiền 10%</h2>
-              <p>Nâng cấp thành viên VIP, nhận hoàn tiền 10% mọi giao dịch và nhiều đặc quyền khác.</p>
-              <button class="btn" onclick="app.navigate('account')">Nâng Cấp Ngay <i class="fas fa-arrow-right"></i></button>
+              <p>Nâng cấp thành viên VIP, nhận hoàn tiền 10% mọi giao dịch.</p>
+              <button class="btn" onclick="app.showVIPModal()">Khám Phá Ngay <i class="fas fa-arrow-right"></i></button>
             </div>
           </div>
           <div class="event-slide event-slide-bg-3">
             <div class="event-slide-content">
               <span class="badge badge-new" style="margin-bottom:10px;display:inline-block">💳 EXCHANGE</span>
               <h2>Đổi Thẻ Cào - Tỷ Giá 1:1</h2>
-              <p>Đổi thẻ cào thành tiền mặt với tỷ giá tốt nhất thị trường. Nhận tiền ngay!</p>
+              <p>Đổi thẻ cào thành tiền mặt với tỷ giá tốt nhất thị trường.</p>
               <button class="btn" onclick="app.navigate('cardSystem');setTimeout(()=>app.switchCardTab('exchange'),100)">Đổi Ngay <i class="fas fa-arrow-right"></i></button>
+            </div>
+          </div>
+          <div class="event-slide event-slide-bg-4">
+            <div class="event-slide-content">
+              <span class="badge badge-hot" style="margin-bottom:10px;display:inline-block">🎁 REFERRAL</span>
+              <h2>Giới Thiệu Bạn Bè - Nhận 50.000đ</h2>
+              <p>Mời bạn bè tham gia, nhận ngay 50.000đ cho mỗi người.</p>
+              <button class="btn" onclick="app.showReferralModal()">Mời Ngay <i class="fas fa-arrow-right"></i></button>
             </div>
           </div>
           <div class="event-nav">
             <div class="event-dot active" onclick="app.goToEventSlide(0)"></div>
             <div class="event-dot" onclick="app.goToEventSlide(1)"></div>
             <div class="event-dot" onclick="app.goToEventSlide(2)"></div>
+            <div class="event-dot" onclick="app.goToEventSlide(3)"></div>
           </div>
         </div>
 
-        <!-- CATEGORY GRID -->
+        <!-- MEGA CATEGORY GRID -->
         <div class="section">
-          <div class="section-header"><h2><i class="fas fa-th"></i> Danh Mục Nổi Bật</h2></div>
-          <div class="category-grid">
-            ${DB.categories.slice(0,12).map(c=>`<div class="category-card" onclick="app.filterCategory('${c.name}')"><i class="fas ${c.icon}"></i><span>${c.name}</span></div>`).join('')}
+          <div class="section-header"><h2><i class="fas fa-th"></i> Danh Mục Đa Dạng</h2><span class="view-all" onclick="app.navigate('category')">Xem tất cả <i class="fas fa-arrow-right"></i></span></div>
+          <div class="mega-cat-grid">
+            ${DB.categories.slice(0,12).map((c,i)=>`
+              <div class="mega-cat-card cat-color-${(i%12)+1}" onclick="app.filterCategory('${c.name}')">
+                <div class="cat-glow"></div>
+                <div class="cat-icon-box"><i class="fas ${c.icon}"></i></div>
+                <div class="cat-name">${c.name}</div>
+                <div class="cat-count">${DB.products.filter(p=>p.category===c.name).length} sản phẩm</div>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+
+        <!-- VIP MEMBER SECTION -->
+        <div class="vip-section">
+          <div class="vip-section-inner">
+            <div class="vip-left">
+              <i class="fas fa-crown vip-crown-large"></i>
+              <h2>VIP MEMBER</h2>
+              <p class="vip-subtitle">Đặc Quyền Hoàng Gia - Trải Nghiệm Đẳng Cấp</p>
+              <p class="vip-desc">Trở thành thành viên VIP để tận hưởng 20+ đặc quyền độc quyền: hoàn tiền 10% mọi giao dịch, ưu tiên hỗ trợ 24/7, quà tặng sinh nhật, giảm giá độc quyền và nhiều hơn nữa.</p>
+              <div class="vip-actions">
+                <button class="btn btn-vip" onclick="app.showVIPModal()"><i class="fas fa-gem"></i> Khám Phá Đặc Quyền</button>
+                <button class="btn btn-gold" onclick="app.navigate('account')"><i class="fas fa-arrow-up"></i> Nâng Cấp Ngay</button>
+              </div>
+            </div>
+            <div class="vip-right">
+              <div class="vip-privilege-preview">
+                <h4><i class="fas fa-star"></i> Đặc Quyền Nổi Bật</h4>
+                <div class="vip-privilege-list">
+                  ${VIP_PRIVILEGES.slice(0,5).map(p=>`
+                    <div class="vip-privilege-item">
+                      <i class="fas ${p.icon}"></i>
+                      <div><strong>${p.title}</strong> - ${p.desc}</div>
+                    </div>
+                  `).join('')}
+                </div>
+                <div class="vip-tiers-row">
+                  <div class="vip-tier-badge"><span class="tier-icon">🥉</span><span class="tier-name">Bronze</span></div>
+                  <div class="vip-tier-badge"><span class="tier-icon">🥈</span><span class="tier-name">Silver</span></div>
+                  <div class="vip-tier-badge active"><span class="tier-icon">🥇</span><span class="tier-name">Gold</span></div>
+                  <div class="vip-tier-badge"><span class="tier-icon">💎</span><span class="tier-name">Diamond</span></div>
+                  <div class="vip-tier-badge"><span class="tier-icon">👑</span><span class="tier-name">VIP</span></div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 
         <!-- FLASH SALE -->
-        ${flash.length>0?`
-        <div class="section">
-          <div class="section-header">
-            <h2><i class="fas fa-bolt" style="color:#ef4444"></i> FLASH SALE - Giảm Đến 50%</h2>
-          </div>
-          <div class="product-grid">${flash.map(p=>this.renderProductCard(p)).join('')}</div>
-        </div>`:''}
+        ${flash.length>0?`<div class="section"><div class="section-header"><h2><i class="fas fa-bolt" style="color:#ef4444"></i> FLASH SALE</h2></div><div class="product-grid">${flash.map(p=>this.renderProductCard(p)).join('')}</div></div>`:''}
 
         <!-- CARD SYSTEM PROMO -->
         <div class="card-system-section">
-          <h2><i class="fas fa-credit-card"></i> Hệ Thống Thẻ Cào & Gift Card</h2>
-          <p>Mua thẻ cào, gift card với giá ưu đãi. Đổi thẻ cào thành tiền mặt nhanh chóng, an toàn.</p>
-          <div style="display:flex;gap:10px;flex-wrap:wrap">
+          <h2><i class="fas fa-credit-card"></i> Hệ Thống Thẻ Cào</h2>
+          <p style="margin-bottom:20px;color:var(--text-secondary)">Mua thẻ cào, gift card giá ưu đãi. Đổi thẻ cào thành tiền mặt nhanh chóng.</p>
+          <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:25px">
             <button class="btn btn-gold" onclick="app.navigate('cardSystem')"><i class="fas fa-shopping-cart"></i> Mua Thẻ Cào</button>
             <button class="btn btn-outline" onclick="app.navigate('cardSystem');setTimeout(()=>app.switchCardTab('exchange'),100)"><i class="fas fa-exchange-alt"></i> Đổi Thẻ Cào</button>
-          </div>
-          <div class="buy-card-grid" style="margin-top:25px">
-            ${popularCards.map(c=>`
-              <div class="card-provider-card" onclick="app.navigate('cardSystem');setTimeout(()=>{app.cardSelectedProvider='${c.id}';app.cardSelectedDenom=${c.denoms[0]};app.switchCardTab('buy')},100)">
-                <div class="provider-logo" style="background:${c.color}">${c.name.charAt(0)}</div>
-                <h4>${c.name}</h4>
-                <div class="card-denom">Từ ${c.denoms[0].toLocaleString('vi-VN')}đ</div>
-              </div>
-            `).join('')}
           </div>
         </div>
 
         <!-- FEATURED -->
-        <div class="section">
-          <div class="section-header"><h2><i class="fas fa-star"></i> Sản Phẩm Nổi Bật</h2><span class="view-all" onclick="app.navigate('category')">Xem tất cả <i class="fas fa-arrow-right"></i></span></div>
-          <div class="product-grid">${featured.map(p=>this.renderProductCard(p)).join('')}</div>
-        </div>
+        <div class="section"><div class="section-header"><h2><i class="fas fa-star"></i> Sản Phẩm Nổi Bật</h2><span class="view-all" onclick="app.navigate('category')">Xem tất cả <i class="fas fa-arrow-right"></i></span></div><div class="product-grid">${featured.map(p=>this.renderProductCard(p)).join('')}</div></div>
 
         <!-- NEW -->
-        <div class="section">
-          <div class="section-header"><h2><i class="fas fa-sparkles"></i> Sản Phẩm Mới</h2><span class="view-all" onclick="app.navigate('category')">Xem tất cả <i class="fas fa-arrow-right"></i></span></div>
-          <div class="product-grid">${newP.map(p=>this.renderProductCard(p)).join('')}</div>
-        </div>
+        <div class="section"><div class="section-header"><h2><i class="fas fa-sparkles"></i> Sản Phẩm Mới</h2><span class="view-all" onclick="app.navigate('category')">Xem tất cả <i class="fas fa-arrow-right"></i></span></div><div class="product-grid">${newP.map(p=>this.renderProductCard(p)).join('')}</div></div>
 
-        <!-- BEST SELLER -->
-        <div class="section">
-          <div class="section-header"><h2><i class="fas fa-fire"></i> Bán Chạy Nhất</h2><span class="view-all" onclick="app.navigate('category')">Xem tất cả <i class="fas fa-arrow-right"></i></span></div>
-          <div class="product-grid">${best.map(p=>this.renderProductCard(p)).join('')}</div>
-        </div>
+        <!-- BEST -->
+        <div class="section"><div class="section-header"><h2><i class="fas fa-fire"></i> Bán Chạy Nhất</h2><span class="view-all" onclick="app.navigate('category')">Xem tất cả <i class="fas fa-arrow-right"></i></span></div><div class="product-grid">${best.map(p=>this.renderProductCard(p)).join('')}</div></div>
 
         <!-- SALE -->
-        <div class="section">
-          <div class="section-header"><h2><i class="fas fa-tags"></i> Đang Giảm Giá</h2><span class="view-all" onclick="app.navigate('category')">Xem tất cả <i class="fas fa-arrow-right"></i></span></div>
-          <div class="product-grid">${sale.map(p=>this.renderProductCard(p)).join('')}</div>
-        </div>
-
-        <!-- REVIEWS -->
-        <div class="section">
-          <div class="section-header"><h2><i class="fas fa-comments"></i> Đánh Giá Khách Hàng</h2></div>
-          <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:15px">
-            ${[1,2,3].map(i=>`
-              <div class="glass" style="padding:20px;border-radius:var(--radius-md)">
-                <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px">
-                  <div style="width:40px;height:40px;border-radius:50%;background:var(--gradient-main);display:flex;align-items:center;justify-content:center;font-weight:700;color:#fff">KH</div>
-                  <div><strong>Khách Hàng ${i}</strong><br><small style="color:var(--text-muted)">Đã xác minh mua hàng</small></div>
-                </div>
-                <div style="color:#fbbf24;margin-bottom:8px">★★★★★</div>
-                <p style="font-size:.9rem;color:var(--text-secondary)">Sản phẩm tuyệt vời, giao dịch nhanh chóng, hỗ trợ nhiệt tình!</p>
-              </div>
-            `).join('')}
-          </div>
-        </div>
+        <div class="section"><div class="section-header"><h2><i class="fas fa-tags"></i> Đang Giảm Giá</h2><span class="view-all" onclick="app.navigate('category')">Xem tất cả <i class="fas fa-arrow-right"></i></span></div><div class="product-grid">${sale.map(p=>this.renderProductCard(p)).join('')}</div></div>
 
         <!-- FOOTER -->
         <footer style="margin-top:60px;padding:40px 0;border-top:1px solid var(--border-color)">
           <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:30px">
-            <div><h4 style="margin-bottom:15px;color:var(--neon-blue)"><i class="fas fa-bolt"></i> Tạp Hóa Shop</h4><p style="font-size:.85rem;color:var(--text-muted)">Siêu thị số hàng đầu Việt Nam. Cung cấp tài khoản game, thẻ cào, dịch vụ số chất lượng cao.</p></div>
-            <div><h4 style="margin-bottom:15px">Về Chúng Tôi</h4><ul style="font-size:.85rem;color:var(--text-muted);display:flex;flex-direction:column;gap:8px"><li>Giới thiệu</li><li>Liên hệ</li><li>Tuyển dụng</li><li>Blog</li></ul></div>
-            <div><h4 style="margin-bottom:15px">Hỗ Trợ</h4><ul style="font-size:.85rem;color:var(--text-muted);display:flex;flex-direction:column;gap:8px"><li>FAQ</li><li>Hướng dẫn mua hàng</li><li>Chính sách bảo hành</li><li>Chính sách hoàn tiền</li></ul></div>
-            <div><h4 style="margin-bottom:15px">Thanh Toán</h4><div style="display:flex;gap:10px;flex-wrap:wrap"><span style="padding:5px 10px;background:var(--bg-card);border-radius:4px;font-size:.75rem">VISA</span><span style="padding:5px 10px;background:var(--bg-card);border-radius:4px;font-size:.75rem">MOMO</span><span style="padding:5px 10px;background:var(--bg-card);border-radius:4px;font-size:.75rem">BANKING</span><span style="padding:5px 10px;background:var(--bg-card);border-radius:4px;font-size:.75rem">COD</span></div></div>
+            <div><h4 style="margin-bottom:15px;color:var(--neon-blue)"><i class="fas fa-bolt"></i> Tạp Hóa Shop</h4><p style="font-size:.85rem;color:var(--text-muted)">Siêu thị số hàng đầu Việt Nam.</p></div>
+            <div><h4 style="margin-bottom:15px">Về Chúng Tôi</h4><ul style="font-size:.85rem;color:var(--text-muted);display:flex;flex-direction:column;gap:8px"><li style="cursor:pointer" onclick="app.showToast('Giới thiệu DEMO','info')">Giới thiệu</li><li style="cursor:pointer" onclick="app.showToast('Liên hệ DEMO','info')">Liên hệ</li><li style="cursor:pointer" onclick="app.showToast('Blog DEMO','info')">Blog</li></ul></div>
+            <div><h4 style="margin-bottom:15px">Hỗ Trợ</h4><ul style="font-size:.85rem;color:var(--text-muted);display:flex;flex-direction:column;gap:8px"><li style="cursor:pointer" onclick="app.showModal('faqModal')">FAQ</li><li style="cursor:pointer" onclick="app.showModal('ticketModal')">Hướng dẫn mua hàng</li><li style="cursor:pointer" onclick="app.showModal('newsModal')">Chính sách bảo hành</li></ul></div>
+            <div><h4 style="margin-bottom:15px">Liên Kết</h4><ul style="font-size:.85rem;color:var(--text-muted);display:flex;flex-direction:column;gap:8px"><li style="cursor:pointer" onclick="app.showToast('Sitemap DEMO','info')">Sitemap</li><li style="cursor:pointer" onclick="app.showToast('404 Page DEMO','info')">404 Page</li><li style="cursor:pointer" onclick="app.showToast('Bảo trì DEMO','info')">Bảo trì</li></ul></div>
           </div>
-          <div style="text-align:center;margin-top:30px;padding-top:20px;border-top:1px solid var(--border-color);font-size:.8rem;color:var(--text-muted)">© 2024 Tạp Hóa Shop 2.0 - Mega Digital Marketplace. DEMO ONLY.</div>
+          <div style="text-align:center;margin-top:30px;padding-top:20px;border-top:1px solid var(--border-color);font-size:.8rem;color:var(--text-muted)">© 2024 Tạp Hóa Shop 3.0 - Mega Digital Marketplace. DEMO ONLY.</div>
         </footer>
       </main>
     </div>`;
@@ -923,7 +1009,7 @@ const app = {
     const wish = DB.wishlist.includes(p.id);
     return `<div class="product-card" onclick="app.viewProduct(${p.id})">
       <div class="img-wrapper">
-        <img src="${p.image}" alt="${p.name}" loading="lazy">
+        <img src="${p.image}" loading="lazy">
         <div class="badges">
           ${p.badges.includes('hot')?'<span class="badge badge-hot">🔥 HOT</span>':''}
           ${p.badges.includes('new')?'<span class="badge badge-new">MỚI</span>':''}
@@ -940,17 +1026,221 @@ const app = {
     </div>`;
   },
 
-  // ==========================================
-  // PRODUCT DETAIL
-  // ==========================================
+  // ========== VIP MODAL ==========
+  showVIPModal() {
+    const c = document.getElementById('vip-modal-content');
+    c.innerHTML = `
+      <button class="modal-close" onclick="app.closeModal('vipModal')" style="background:rgba(0,0,0,.4);color:#fff"><i class="fas fa-times"></i></button>
+      <div class="vip-modal-header">
+        <i class="fas fa-crown"></i>
+        <h2>ĐẶC QUYỀN VIP MEMBER</h2>
+        <p>20+ đặc quyền độc quyền dành riêng cho thành viên VIP</p>
+      </div>
+      <div class="vip-modal-body">
+        <h3><i class="fas fa-gem"></i> Toàn Bộ Đặc Quyền</h3>
+        <div class="vip-full-privileges">
+          ${VIP_PRIVILEGES.map(p=>`
+            <div class="vip-full-privilege">
+              <div class="pv-icon"><i class="fas ${p.icon}"></i></div>
+              <div class="pv-info"><h4>${p.title}</h4><p>${p.desc}</p></div>
+            </div>
+          `).join('')}
+        </div>
+        <h3><i class="fas fa-layer-group"></i> Các Cấp Độ Thành Viên</h3>
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px;margin-bottom:20px">
+          <div style="background:linear-gradient(135deg,#cd7f32,#8b5a2b);padding:20px;border-radius:12px;text-align:center;color:#fff"><div style="font-size:2rem;margin-bottom:8px">🥉</div><strong>Bronze</strong><p style="font-size:.75rem;opacity:.9">0-500 điểm</p></div>
+          <div style="background:linear-gradient(135deg,#c0c0c0,#808080);padding:20px;border-radius:12px;text-align:center;color:#1a1a2e"><div style="font-size:2rem;margin-bottom:8px">🥈</div><strong>Silver</strong><p style="font-size:.75rem;opacity:.9">500-2000 điểm</p></div>
+          <div style="background:var(--gradient-gold);padding:20px;border-radius:12px;text-align:center;color:#1a1a2e"><div style="font-size:2rem;margin-bottom:8px">🥇</div><strong>Gold</strong><p style="font-size:.75rem;opacity:.9">2000-5000 điểm</p></div>
+          <div style="background:linear-gradient(135deg,#b9f2ff,#00d4ff);padding:20px;border-radius:12px;text-align:center;color:#1a1a2e"><div style="font-size:2rem;margin-bottom:8px">💎</div><strong>Diamond</strong><p style="font-size:.75rem;opacity:.9">5000-10000 điểm</p></div>
+          <div style="background:var(--gradient-royal);padding:20px;border-radius:12px;text-align:center;color:#fff"><div style="font-size:2rem;margin-bottom:8px">👑</div><strong>VIP</strong><p style="font-size:.75rem;opacity:.9">10000+ điểm</p></div>
+        </div>
+        <div style="text-align:center;margin-top:20px;padding:20px;background:linear-gradient(135deg,rgba(251,191,36,.1),rgba(168,85,247,.1));border-radius:12px;border:1px solid rgba(251,191,36,.3)">
+          <p style="margin-bottom:15px;font-weight:600;color:var(--gold)">Sẵn sàng nâng cấp? Chỉ cần tích lũy điểm thưởng khi mua hàng!</p>
+          <button class="btn btn-vip" onclick="app.closeModal('vipModal');app.navigate('account')"><i class="fas fa-arrow-up"></i> Nâng Cấp Ngay</button>
+        </div>
+      </div>
+    `;
+    document.getElementById('vipModal').classList.add('active');
+  },
+
+  // ========== FAQ / TICKET / NEWS ==========
+  renderFAQ() {
+    const faqs = [
+      {q:'Làm thế nào để mua tài khoản game?',a:'Bạn chỉ cần chọn sản phẩm, thêm vào giỏ hàng, thanh toán qua ví điện tử. Sau khi thanh toán thành công, thông tin tài khoản sẽ được gửi qua email.'},
+      {q:'Tôi có thể đổi thẻ cào thành tiền mặt không?',a:'Có. Vào mục "Đổi Thẻ Cào", chọn nhà cung cấp, mệnh giá, nhập mã thẻ và serial. Tiền sẽ được cộng vào ví sau 5-10 phút.'},
+      {q:'Bảo hành tài khoản game như thế nào?',a:'Tất cả tài khoản game được bảo hành trọn đời. Nếu tài khoản bị mất, shop sẽ hỗ trợ khôi phục hoặc đổi mới.'},
+      {q:'Làm sao để trở thành VIP Member?',a:'Tích lũy điểm thưởng khi mua hàng. Đạt 500 điểm = Silver, 2000 = Gold, 5000 = Diamond, 10000 = VIP.'},
+      {q:'Có thể hoàn tiền không?',a:'Có. Hoàn 100% trong 24h nếu sản phẩm không đúng mô tả. Liên hệ CSKH để được hỗ trợ.'},
+      {q:'Nạp tiền vào ví bằng cách nào?',a:'Hiện tại hỗ trợ nạp qua chuyển khoản ngân hàng, Momo, VNPay (DEMO). Liên hệ admin để biết thêm.'},
+      {q:'Thẻ cào mua có được gửi ngay không?',a:'Có. Mã thẻ được gửi tự động qua email ngay sau khi thanh toán thành công.'},
+      {q:'Tôi quên mật khẩu thì làm sao?',a:'Nhấn "Quên mật khẩu" ở trang đăng nhập, nhập email để nhận link đặt lại mật khẩu (DEMO).'}
+    ];
+    const c = document.getElementById('faq-modal-content');
+    c.innerHTML = `
+      <button class="modal-close" onclick="app.closeModal('faqModal')"><i class="fas fa-times"></i></button>
+      <h2 style="text-align:left;margin-bottom:20px"><i class="fas fa-question-circle" style="color:var(--neon-blue)"></i> Câu Hỏi Thường Gặp</h2>
+      <div class="faq-list">
+        ${faqs.map((f,i)=>`
+          <div class="faq-item" id="faq-${i}">
+            <div class="faq-question" onclick="document.getElementById('faq-${i}').classList.toggle('open')">
+              <span>${f.q}</span>
+              <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="faq-answer">${f.a}</div>
+          </div>
+        `).join('')}
+      </div>
+    `;
+  },
+
+  renderTicket() {
+    const c = document.getElementById('ticket-modal-content');
+    c.innerHTML = `
+      <button class="modal-close" onclick="app.closeModal('ticketModal')"><i class="fas fa-times"></i></button>
+      <h2 style="text-align:left;margin-bottom:20px"><i class="fas fa-ticket-alt" style="color:var(--neon-blue)"></i> Gửi Yêu Cầu Hỗ Trợ</h2>
+      <div class="form-group"><label>Tiêu đề <span style="color:#ef4444">*</span></label><input type="text" id="ticket-subject" placeholder="VD: Không nhận được mã thẻ"></div>
+      <div class="form-group"><label>Danh mục <span style="color:#ef4444">*</span></label>
+        <select id="ticket-category">
+          <option value="">-- Chọn danh mục --</option>
+          <option>Lỗi sản phẩm</option><option>Lỗi thanh toán</option><option>Đổi thẻ cào</option>
+          <option>Tài khoản</option><option>Khác</option>
+        </select>
+      </div>
+      <div class="form-group"><label>Mô tả chi tiết <span style="color:#ef4444">*</span></label><textarea id="ticket-desc" rows="5" placeholder="Mô tả vấn đề của bạn..." style="resize:vertical"></textarea></div>
+      <button class="btn btn-primary btn-block" onclick="app.submitTicket()"><i class="fas fa-paper-plane"></i> Gửi Yêu Cầu</button>
+      <p style="text-align:center;font-size:.8rem;color:var(--text-muted);margin-top:10px"><i class="fas fa-info-circle"></i> Phản hồi trong vòng 24h qua email</p>
+      ${DB.tickets.length>0?`<h3 style="margin-top:20px;margin-bottom:10px">Ticket đã gửi (${DB.tickets.length})</h3>${DB.tickets.slice(-3).reverse().map(t=>`<div style="padding:12px;background:var(--bg-card-hover);border-radius:8px;margin-bottom:8px;font-size:.85rem"><strong>${t.subject}</strong><br><span style="color:var(--text-muted)">${t.date} • ${t.status}</span></div>`).join('')}`:''}
+    `;
+  },
+
+  submitTicket() {
+    if(!DB.currentUser) { this.showToast('Vui lòng đăng nhập!', 'error'); return; }
+    const subject = document.getElementById('ticket-subject').value.trim();
+    const category = document.getElementById('ticket-category').value;
+    const desc = document.getElementById('ticket-desc').value.trim();
+    if(!subject || !category || !desc) { this.showToast('Vui lòng nhập đầy đủ', 'error'); return; }
+    DB.tickets.push({ subject, category, desc, date:new Date().toLocaleString('vi-VN'), status:'Đang xử lý', user:DB.currentUser.email });
+    saveAll();
+    this.closeModal('ticketModal');
+    this.showToast('✅ Gửi ticket thành công! Phản hồi qua email.', 'success');
+  },
+
+  renderNews() {
+    const news = [
+      {title:'Khai trương hệ thống đổi thẻ cào tỷ giá 1:1', date:'20/01/2024', excerpt:'Hệ thống đổi thẻ cào chính thức đi vào hoạt động với tỷ giá tốt nhất thị trường.'},
+      {title:'Ra mắt chương trình VIP Member', date:'18/01/2024', excerpt:'20+ đặc quyền độc quyền dành cho thành viên VIP. Nâng cấp ngay để nhận ưu đãi.'},
+      {title:'Flash Sale cuối tuần - Giảm 50%', date:'15/01/2024', excerpt:'Hàng loạt tài khoản game Liên Quân, Free Fire giảm giá sốc chỉ trong 48h.'},
+      {title:'Bổ sung 1000+ sản phẩm mới', date:'12/01/2024', excerpt:'Cập nhật thêm hàng nghìn sản phẩm game, dịch vụ, gift card mới.'},
+      {title:'Chương trình giới thiệu bạn bè', date:'10/01/2024', excerpt:'Nhận 50.000đ cho mỗi người bạn giới thiệu thành công.'}
+    ];
+    const c = document.getElementById('news-modal-content');
+    c.innerHTML = `
+      <button class="modal-close" onclick="app.closeModal('newsModal')"><i class="fas fa-times"></i></button>
+      <h2 style="text-align:left;margin-bottom:20px"><i class="fas fa-newspaper" style="color:var(--neon-blue)"></i> Tin Tức & Thông Báo</h2>
+      ${news.map(n=>`
+        <div style="padding:15px;background:var(--bg-card-hover);border-radius:10px;margin-bottom:10px;cursor:pointer" onclick="app.showToast('Đọc chi tiết DEMO','info')">
+          <h4 style="margin-bottom:5px">${n.title}</h4>
+          <div style="font-size:.8rem;color:var(--text-muted);margin-bottom:8px"><i class="fas fa-calendar"></i> ${n.date}</div>
+          <p style="font-size:.85rem;color:var(--text-secondary)">${n.excerpt}</p>
+        </div>
+      `).join('')}
+    `;
+  },
+
+  // ========== VOUCHER / REFERRAL ==========
+  showVoucherList() {
+    if(DB.vouchers.length===0) {
+      DB.vouchers = [
+        {code:'WELCOME50', desc:'Giảm 50.000đ cho đơn từ 200.000đ', expiry:'31/12/2024'},
+        {code:'VIP10', desc:'Giảm 10% cho thành viên VIP', expiry:'31/12/2024'},
+        {code:'NEWBIE', desc:'Giảm 20.000đ cho khách mới', expiry:'31/12/2024'}
+      ];
+      saveAll();
+    }
+    const c = document.getElementById('quickview-content');
+    c.innerHTML = `
+      <button class="modal-close" onclick="app.closeModal('quickview-modal')"><i class="fas fa-times"></i></button>
+      <h2 style="margin-bottom:20px"><i class="fas fa-tags" style="color:var(--neon-blue)"></i> Voucher Của Tôi</h2>
+      ${DB.vouchers.map(v=>`
+        <div style="background:linear-gradient(135deg,rgba(0,212,255,.1),rgba(168,85,247,.1));border:1px dashed var(--neon-blue);border-radius:12px;padding:15px;margin-bottom:10px;display:flex;justify-content:space-between;align-items:center">
+          <div><div style="font-size:1.2rem;font-weight:800;color:var(--neon-blue);letter-spacing:1px">${v.code}</div><div style="font-size:.85rem;color:var(--text-secondary);margin-top:4px">${v.desc}</div><div style="font-size:.75rem;color:var(--text-muted);margin-top:4px">HSD: ${v.expiry}</div></div>
+          <button class="btn btn-sm btn-primary" onclick="app.showToast('Đã sao chép mã ${v.code}','success')">Sao chép</button>
+        </div>
+      `).join('')}
+    `;
+    document.getElementById('quickview-modal').classList.add('active');
+  },
+
+  showReferralModal() {
+    if(!DB.currentUser) { this.showToast('Vui lòng đăng nhập!', 'error'); return; }
+    const code = 'REF' + DB.currentUser.email.substring(0,6).toUpperCase();
+    const link = `https://taphoashop.vn/ref/${code}`;
+    const c = document.getElementById('quickview-content');
+    c.innerHTML = `
+      <button class="modal-close" onclick="app.closeModal('quickview-modal')"><i class="fas fa-times"></i></button>
+      <h2 style="margin-bottom:20px"><i class="fas fa-users" style="color:var(--neon-blue)"></i> Giới Thiệu Bạn Bè</h2>
+      <div style="background:linear-gradient(135deg,rgba(251,191,36,.1),rgba(168,85,247,.1));border:1px solid rgba(251,191,36,.3);border-radius:12px;padding:20px;margin-bottom:20px;text-align:center">
+        <i class="fas fa-gift" style="font-size:2.5rem;color:var(--gold);margin-bottom:10px"></i>
+        <h3 style="color:var(--gold);margin-bottom:8px">Nhận 50.000đ cho mỗi người bạn</h3>
+        <p style="font-size:.85rem;color:var(--text-secondary)">Chia sẻ mã giới thiệu của bạn. Khi bạn bè đăng ký và mua hàng, bạn nhận 50.000đ vào ví!</p>
+      </div>
+      <div class="form-group"><label>Mã giới thiệu của bạn</label><input type="text" value="${code}" readonly style="font-weight:700;color:var(--gold);letter-spacing:2px;text-align:center;font-size:1.1rem"></div>
+      <div class="form-group"><label>Link giới thiệu</label><input type="text" value="${link}" readonly></div>
+      <button class="btn btn-primary btn-block" onclick="app.showToast('Đã sao chép link giới thiệu!','success')"><i class="fas fa-copy"></i> Sao Chép Link</button>
+      <div style="margin-top:20px;padding:15px;background:var(--bg-card-hover);border-radius:10px;font-size:.85rem;color:var(--text-secondary)">
+        <strong style="color:var(--neon-blue)"><i class="fas fa-chart-line"></i> Thống kê của bạn:</strong><br>
+        • Đã giới thiệu: <strong>0 người</strong><br>
+        • Đã nhận: <strong>0đ</strong>
+      </div>
+    `;
+    document.getElementById('quickview-modal').classList.add('active');
+  },
+
+  showViewedHistory() {
+    if(DB.viewedProducts.length===0) { this.showToast('Chưa xem sản phẩm nào','info'); return; }
+    const items = DB.viewedProducts.map(id=>DB.products.find(p=>p.id===id)).filter(Boolean);
+    const c = document.getElementById('quickview-content');
+    c.innerHTML = `
+      <button class="modal-close" onclick="app.closeModal('quickview-modal')"><i class="fas fa-times"></i></button>
+      <h2 style="margin-bottom:20px"><i class="fas fa-history" style="color:var(--neon-blue)"></i> Đã Xem Gần Đây</h2>
+      <div style="max-height:500px;overflow-y:auto">
+        ${items.map(p=>`
+          <div style="display:flex;gap:15px;padding:15px;border-bottom:1px solid var(--border-color);cursor:pointer" onclick="app.closeModal('quickview-modal');app.viewProduct(${p.id})">
+            <img src="${p.image}" style="width:70px;height:70px;border-radius:8px;object-fit:cover">
+            <div><h4 style="font-size:.95rem">${p.name}</h4><div style="color:var(--neon-blue);font-weight:700">${p.price.toLocaleString('vi-VN')}đ</div></div>
+          </div>
+        `).join('')}
+      </div>
+    `;
+    document.getElementById('quickview-modal').classList.add('active');
+  },
+
+  // ========== CHAT ==========
+  toggleChat() {
+    this.chatOpen = !this.chatOpen;
+    document.getElementById('chat-window').classList.toggle('active');
+  },
+
+  sendChat() {
+    const input = document.getElementById('chat-input');
+    const msg = input.value.trim();
+    if(!msg) return;
+    const msgs = document.getElementById('chat-messages');
+    msgs.innerHTML += `<div class="chat-msg user">${msg}</div>`;
+    input.value = '';
+    msgs.scrollTop = msgs.scrollHeight;
+    setTimeout(()=>{
+      const replies = ['Cảm ơn bạn đã liên hệ! Chúng tôi sẽ phản hồi sớm.','Bạn có thể tham khảo mục FAQ để biết thêm chi tiết.','Đội ngũ CSKH sẽ hỗ trợ bạn trong 1-2 phút nữa.','Bạn cần hỗ trợ về vấn đề gì ạ?'];
+      msgs.innerHTML += `<div class="chat-msg bot">${replies[Math.floor(Math.random()*replies.length)]}</div>`;
+      msgs.scrollTop = msgs.scrollHeight;
+    }, 1000);
+  },
+
+  // ========== PRODUCT DETAIL ==========
   renderProductDetail(id) {
     const p = DB.products.find(x=>x.id===id);
     if(!p) return '<div class="container" style="padding:100px 0;text-align:center"><h2>Không tìm thấy sản phẩm</h2></div>';
-    if(!DB.viewedProducts.includes(id)) {
-      DB.viewedProducts.unshift(id);
-      if(DB.viewedProducts.length>10) DB.viewedProducts.pop();
-      saveAll();
-    }
+    if(!DB.viewedProducts.includes(id)) { DB.viewedProducts.unshift(id); if(DB.viewedProducts.length>10) DB.viewedProducts.pop(); saveAll(); }
     const related = DB.products.filter(x=>x.category===p.category&&x.id!==p.id).slice(0,5);
     const wish = DB.wishlist.includes(p.id);
     return `<div class="container" style="padding:30px 20px">
@@ -959,7 +1249,7 @@ const app = {
         <span style="cursor:pointer;color:var(--neon-blue)" onclick="app.filterCategory('${p.category}')">${p.category}</span> /
         <span>${p.name}</span>
       </div>
-      <div class="product-detail" style="display:grid;grid-template-columns:1fr 1fr;gap:40px">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:40px">
         <div>
           <div style="width:100%;height:400px;border-radius:var(--radius-md);overflow:hidden;margin-bottom:15px;background:var(--bg-card)"><img src="${p.image}" style="width:100%;height:100%;object-fit:cover" id="main-product-img"></div>
           <div style="display:flex;gap:10px">
@@ -984,235 +1274,154 @@ const app = {
           <div style="display:flex;gap:15px;margin-bottom:20px">
             <button class="btn btn-primary" style="flex:1" onclick="app.addToCart(${p.id})"><i class="fas fa-cart-plus"></i> Thêm Vào Giỏ</button>
             <button class="btn btn-success" style="flex:1" onclick="app.buyNow(${p.id})"><i class="fas fa-bolt"></i> Mua Ngay</button>
-            <button class="btn btn-outline ${wish?'active':''}" style="padding:12px 20px;${wish?'background:var(--neon-pink);border-color:var(--neon-pink);color:#fff':''}" onclick="app.toggleWishlist(${p.id},this)"><i class="fas fa-heart"></i></button>
+            <button class="btn btn-outline" style="padding:12px 20px;${wish?'background:var(--neon-pink);border-color:var(--neon-pink);color:#fff':''}" onclick="app.toggleWishlist(${p.id},this)"><i class="fas fa-heart"></i></button>
           </div>
-          <div class="glass" style="padding:15px;border-radius:var(--radius-sm);font-size:.85rem;color:var(--text-secondary)">
-            <i class="fas fa-shield-alt" style="color:var(--neon-blue)"></i> Bảo hành trọn đời • <i class="fas fa-bolt" style="color:#fbbf24"></i> Giao hàng tự động 24/7 • <i class="fas fa-undo" style="color:#10b981"></i> Hoàn tiền
+          <div style="display:flex;gap:10px;flex-wrap:wrap">
+            <button class="btn btn-sm btn-outline" onclick="app.showToast('Đã thêm vào so sánh! (DEMO)','success')"><i class="fas fa-columns"></i> So sánh</button>
+            <button class="btn btn-sm btn-outline" onclick="app.showToast('Cảm ơn báo cáo! (DEMO)','success')"><i class="fas fa-flag"></i> Báo cáo</button>
           </div>
         </div>
-      </div>
-      <div class="tabs" style="margin-top:40px">
-        <div style="display:flex;gap:5px;border-bottom:1px solid var(--border-color);margin-bottom:20px">
-          <button class="tab-btn active" style="padding:12px 24px;background:transparent;color:var(--neon-blue);font-weight:600;border-bottom:2px solid var(--neon-blue)" onclick="app.switchTab(this,'tab-desc')">Mô Tả</button>
-          <button class="tab-btn" style="padding:12px 24px;background:transparent;color:var(--text-secondary);font-weight:600;border-bottom:2px solid transparent" onclick="app.switchTab(this,'tab-reviews')">Đánh Giá (${Math.floor(Math.random()*50)+5})</button>
-          <button class="tab-btn" style="padding:12px 24px;background:transparent;color:var(--text-secondary);font-weight:600;border-bottom:2px solid transparent" onclick="app.switchTab(this,'tab-policy')">Chính Sách</button>
-        </div>
-        <div id="tab-desc" class="tab-content active"><h3 style="margin-bottom:15px">Chi Tiết Sản Phẩm</h3><p style="color:var(--text-secondary);line-height:1.8">${p.description}</p><ul style="margin-top:15px;color:var(--text-secondary);display:flex;flex-direction:column;gap:8px"><li>✅ Sản phẩm chính hãng</li><li>✅ Hỗ trợ đổi trả trong 24h</li><li>✅ Bảo hành trọn đời</li></ul></div>
-        <div id="tab-reviews" class="tab-content" style="display:none"><h3 style="margin-bottom:15px">Đánh Giá</h3>${[1,2,3].map(i=>`<div style="padding:15px 0;border-bottom:1px solid var(--border-color)"><div style="display:flex;align-items:center;gap:10px;margin-bottom:8px"><div style="width:36px;height:36px;border-radius:50%;background:var(--gradient-main);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:.8rem">KH</div><div><strong>Khách Hàng ${i}</strong><br><small style="color:var(--text-muted)">Đã mua hàng</small></div><div style="margin-left:auto;color:#fbbf24">★★★★★</div></div><p style="color:var(--text-secondary);font-size:.9rem">Sản phẩm rất tốt, đúng mô tả!</p></div>`).join('')}</div>
-        <div id="tab-policy" class="tab-content" style="display:none"><h3 style="margin-bottom:15px">Chính Sách</h3><p style="color:var(--text-secondary);line-height:1.8"><strong>1. Bảo hành:</strong> Bảo hành trọn đời.<br><br><strong>2. Hoàn tiền:</strong> Hoàn 100% trong 24h nếu sai mô tả.<br><br><strong>3. Hỗ trợ:</strong> CSKH 24/7.</p></div>
       </div>
       <div class="section" style="margin-top:40px"><div class="section-header"><h2><i class="fas fa-thumbs-up"></i> Sản Phẩm Tương Tự</h2></div><div class="product-grid">${related.map(r=>this.renderProductCard(r)).join('')}</div></div>
     </div>`;
   },
 
-  switchTab(btn, tabId) {
-    const parent = btn.parentElement;
-    parent.querySelectorAll('button').forEach(b=>{b.style.color='var(--text-secondary)';b.style.borderBottomColor='transparent';b.classList.remove('active')});
-    btn.style.color='var(--neon-blue)';btn.style.borderBottomColor='var(--neon-blue)';btn.classList.add('active');
-    parent.parentElement.querySelectorAll('.tab-content').forEach(c=>c.style.display='none');
-    document.getElementById(tabId).style.display='block';
-  },
-
-  // ==========================================
-  // CARD SYSTEM PAGE (Mua thẻ & Đổi thẻ)
-  // ==========================================
+  // ========== CARD SYSTEM ==========
   renderCardSystem() {
     return `<div class="container" style="padding:30px 20px">
       <div style="text-align:center;margin-bottom:30px">
         <h1 style="font-size:2.2rem;font-weight:800;margin-bottom:10px"><span class="text-gold"><i class="fas fa-credit-card"></i> Hệ Thống Thẻ Cào & Gift Card</span></h1>
-        <p style="color:var(--text-secondary);max-width:600px;margin:0 auto">Mua thẻ cào, gift card với giá ưu đãi. Đổi thẻ cào thành tiền mặt nhanh chóng, an toàn, tỷ giá tốt nhất thị trường.</p>
+        <p style="color:var(--text-secondary);max-width:600px;margin:0 auto">Mua thẻ cào, gift card giá ưu đãi. Đổi thẻ cào thành tiền mặt nhanh chóng, an toàn.</p>
       </div>
       <div class="card-system-tabs">
         <button class="card-tab-btn ${this.cardTab==='buy'?'active':''}" onclick="app.switchCardTab('buy')"><i class="fas fa-shopping-cart"></i> Mua Thẻ Cào</button>
         <button class="card-tab-btn ${this.cardTab==='exchange'?'active':''}" onclick="app.switchCardTab('exchange')"><i class="fas fa-exchange-alt"></i> Đổi Thẻ Cào</button>
-        <button class="card-tab-btn ${this.cardTab==='history'?'active':''}" onclick="app.switchCardTab('history')"><i class="fas fa-history"></i> Lịch Sử Giao Dịch</button>
+        <button class="card-tab-btn ${this.cardTab==='history'?'active':''}" onclick="app.switchCardTab('history')"><i class="fas fa-history"></i> Lịch Sử</button>
       </div>
-
-      <div class="card-system-content ${this.cardTab==='buy'?'active':''}" id="card-tab-buy">
+      <div class="card-system-content ${this.cardTab==='buy'?'active':''}">
         <h3 style="margin-bottom:15px"><i class="fas fa-store" style="color:#fbbf24"></i> Chọn Nhà Cung Cấp</h3>
-        <div class="buy-card-grid" id="provider-grid">
+        <div class="buy-card-grid">
           ${CARD_PROVIDERS.map(c=>`
             <div class="card-provider-card ${this.cardSelectedProvider===c.id?'selected':''}" data-provider="${c.id}" onclick="app.selectCardProvider('${c.id}')">
               <div class="provider-logo" style="background:${c.color}">${c.name.charAt(0)}</div>
               <h4>${c.name}</h4>
-              <div class="card-denom">${c.denoms.length} mệnh giá</div>
             </div>
           `).join('')}
         </div>
-
         <div id="denom-section" style="display:${this.cardSelectedProvider?'block':'none'}">
           <h3 style="margin-bottom:15px;margin-top:20px"><i class="fas fa-money-bill-wave" style="color:#fbbf24"></i> Chọn Mệnh Giá</h3>
           <div class="denom-grid" id="denom-grid"></div>
         </div>
-
         <div id="purchase-section" style="display:${this.cardSelectedDenom?'block':'none'};margin-top:20px">
           <div class="card-purchase-panel">
-            <h3><i class="fas fa-shopping-bag"></i> Xác Nhận Đơn Hàng</h3>
+            <h3 style="margin-bottom:15px"><i class="fas fa-shopping-bag"></i> Xác Nhận</h3>
             <div class="card-summary-row"><span>Nhà cung cấp:</span><strong id="summary-provider">-</strong></div>
             <div class="card-summary-row"><span>Mệnh giá:</span><strong id="summary-denom">-</strong></div>
-            <div class="card-summary-row"><span>Giá bán (chiết khấu 5%):</span><strong style="color:#fbbf24" id="summary-price">-</strong></div>
+            <div class="card-summary-row"><span>Giá bán (CK 5%):</span><strong style="color:#fbbf24" id="summary-price">-</strong></div>
             <div class="qty-selector">
               <span style="color:var(--text-muted);font-size:.9rem">Số lượng:</span>
               <button onclick="app.changeCardQty(-1)">-</button>
               <span id="card-qty-display">1</span>
               <button onclick="app.changeCardQty(1)">+</button>
             </div>
-            <div class="card-summary-row total"><span>Tổng thanh toán:</span><strong id="summary-total">-</strong></div>
-            <button class="btn btn-gold btn-block" style="margin-top:20px" onclick="app.purchaseCard()"><i class="fas fa-check-circle"></i> Thanh Toán Ngay (DEMO)</button>
-            <p style="text-align:center;font-size:.8rem;color:var(--text-muted);margin-top:10px"><i class="fas fa-info-circle"></i> Mã thẻ sẽ được gửi qua email sau khi thanh toán. DEMO ONLY.</p>
+            <div class="card-summary-row total"><span>Tổng:</span><strong id="summary-total">-</strong></div>
+            <button class="btn btn-gold btn-block" style="margin-top:20px" onclick="app.purchaseCard()"><i class="fas fa-check-circle"></i> Thanh Toán (DEMO)</button>
           </div>
         </div>
       </div>
-
-      <div class="card-system-content ${this.cardTab==='exchange'?'active':''}" id="card-tab-exchange">
+      <div class="card-system-content ${this.cardTab==='exchange'?'active':''}">
         <div class="exchange-card-container">
           <div class="exchange-form">
-            <h3><i class="fas fa-exchange-alt"></i> Đổi Thẻ Cào Thành Tiền</h3>
-            <div class="exchange-rate-info">
-              <i class="fas fa-chart-line"></i> <strong>Tỷ giá hôm nay:</strong> 1:0.8 (80% mệnh giá). Ví dụ: Thẻ 100.000đ → nhận 80.000đ vào ví.
-            </div>
-            <div class="form-group">
-              <label>Nhà cung cấp <span class="required">*</span></label>
+            <h3 style="margin-bottom:20px"><i class="fas fa-exchange-alt"></i> Đổi Thẻ Cào</h3>
+            <div class="exchange-rate-info"><i class="fas fa-chart-line"></i> <strong>Tỷ giá:</strong> 1:0.8 (80% mệnh giá)</div>
+            <div class="form-group"><label>Nhà cung cấp <span style="color:#ef4444">*</span></label>
               <select id="exchange-provider" onchange="app.onExchangeProviderChange()">
-                <option value="">-- Chọn nhà cung cấp --</option>
+                <option value="">-- Chọn --</option>
                 ${CARD_PROVIDERS.map(c=>`<option value="${c.id}">${c.name}</option>`).join('')}
               </select>
             </div>
-            <div class="form-group">
-              <label>Mệnh giá <span class="required">*</span></label>
-              <select id="exchange-denom"><option value="">-- Chọn mệnh giá --</option></select>
-            </div>
-            <div class="form-group">
-              <label>Mã thẻ (mã số bí mật) <span class="required">*</span></label>
-              <input type="text" id="exchange-code" placeholder="Nhập mã thẻ (VD: 12345678901234)" maxlength="20">
-              <small><i class="fas fa-lock"></i> Mã thẻ được bảo mật, không lưu trữ công khai</small>
-            </div>
-            <div class="form-group">
-              <label>Số Serial <span class="required">*</span></label>
-              <input type="text" id="exchange-serial" placeholder="Nhập số serial" maxlength="20">
-            </div>
-            <button class="btn btn-gold btn-block" onclick="app.processExchange()"><i class="fas fa-paper-plane"></i> Đổi Thẻ Ngay</button>
+            <div class="form-group"><label>Mệnh giá <span style="color:#ef4444">*</span></label><select id="exchange-denom"><option value="">-- Chọn --</option></select></div>
+            <div class="form-group"><label>Mã thẻ <span style="color:#ef4444">*</span></label><input type="text" id="exchange-code" placeholder="Mã số bí mật"></div>
+            <div class="form-group"><label>Serial <span style="color:#ef4444">*</span></label><input type="text" id="exchange-serial" placeholder="Số serial"></div>
+            <button class="btn btn-gold btn-block" onclick="app.processExchange()"><i class="fas fa-paper-plane"></i> Đổi Thẻ</button>
           </div>
           <div class="exchange-result">
             <i class="fas fa-hand-holding-usd" style="font-size:3rem;color:#fbbf24;margin-bottom:15px"></i>
             <h3 style="margin-bottom:10px">Số Tiền Nhận Được</h3>
             <div class="big-amount" id="exchange-amount">0đ</div>
-            <p style="color:var(--text-secondary);font-size:.9rem">Vui lòng điền đầy đủ thông tin để xem số tiền nhận được</p>
-            <div class="note"><i class="fas fa-shield-alt"></i> Giao dịch được bảo mật và xử lý trong 5-10 phút</div>
           </div>
         </div>
         <div class="exchange-history">
-          <h3><i class="fas fa-history"></i> Lịch Sử Đổi Thẻ</h3>
-          ${DB.exchangeHistory.length===0?'<p style="color:var(--text-muted);text-align:center;padding:30px">Chưa có giao dịch nào</p>':DB.exchangeHistory.slice(-10).reverse().map(h=>`
+          <h3 style="margin-bottom:15px"><i class="fas fa-history"></i> Lịch Sử Đổi Thẻ</h3>
+          ${DB.exchangeHistory.length===0?'<p style="color:var(--text-muted);text-align:center;padding:30px">Chưa có giao dịch</p>':DB.exchangeHistory.slice(-10).reverse().map(h=>`
             <div class="history-item">
-              <div class="history-info">
-                <h4>${h.providerName} - ${h.denom.toLocaleString('vi-VN')}đ</h4>
-                <p>Mã: ${h.code.substring(0,4)}****${h.code.substring(h.code.length-4)} • ${h.date}</p>
-              </div>
-              <div style="text-align:right">
-                <div class="history-amount">+${h.received.toLocaleString('vi-VN')}đ</div>
-                <span class="status-badge ${h.status==='success'?'status-success':h.status==='pending'?'status-pending':'status-failed'}">${h.status==='success'?'Thành công':h.status==='pending'?'Đang xử lý':'Thất bại'}</span>
-              </div>
+              <div><h4>${h.providerName} - ${h.denom.toLocaleString('vi-VN')}đ</h4><p style="font-size:.8rem;color:var(--text-muted)">Mã: ${h.code.substring(0,4)}**** • ${h.date}</p></div>
+              <div style="text-align:right"><div style="font-weight:700;color:#10b981">+${h.received.toLocaleString('vi-VN')}đ</div><span class="status-badge ${h.status==='success'?'status-success':'status-failed'}">${h.status==='success'?'Thành công':'Thất bại'}</span></div>
             </div>
           `).join('')}
         </div>
       </div>
-
-      <div class="card-system-content ${this.cardTab==='history'?'active':''}" id="card-tab-history">
+      <div class="card-system-content ${this.cardTab==='history'?'active':''}">
         <h3 style="margin-bottom:15px"><i class="fas fa-history"></i> Lịch Sử Mua Thẻ</h3>
-        ${DB.buyCardHistory.length===0?'<p style="color:var(--text-muted);text-align:center;padding:30px">Chưa có giao dịch mua thẻ nào</p>':DB.buyCardHistory.slice(-10).reverse().map(h=>`
+        ${DB.buyCardHistory.length===0?'<p style="color:var(--text-muted);text-align:center;padding:30px">Chưa có giao dịch</p>':DB.buyCardHistory.slice(-10).reverse().map(h=>`
           <div class="history-item">
-            <div class="history-info">
-              <h4>${h.providerName} - ${h.denom.toLocaleString('vi-VN')}đ (x${h.qty})</h4>
-              <p>Mã đơn: ${h.orderCode} • ${h.date}</p>
-            </div>
-            <div style="text-align:right">
-              <div class="history-amount" style="color:#ef4444">-${h.total.toLocaleString('vi-VN')}đ</div>
-              <span class="status-badge status-success">Hoàn thành</span>
-            </div>
+            <div><h4>${h.providerName} - ${h.denom.toLocaleString('vi-VN')}đ (x${h.qty})</h4><p style="font-size:.8rem;color:var(--text-muted)">Mã: ${h.orderCode} • ${h.date}</p></div>
+            <div style="text-align:right"><div style="font-weight:700;color:#ef4444">-${h.total.toLocaleString('vi-VN')}đ</div><span class="status-badge status-success">Hoàn thành</span></div>
           </div>
         `).join('')}
       </div>
     </div>`;
   },
 
-  switchCardTab(tab) {
-    this.cardTab = tab;
-    this.render();
-  },
+  switchCardTab(tab) { this.cardTab = tab; this.render(); },
 
-  bindCardSystemEvents() {
-    if(this.cardSelectedProvider) {
-      this.selectCardProvider(this.cardSelectedProvider, true);
-    }
-  },
-
-  selectCardProvider(providerId, silent=false) {
-    this.cardSelectedProvider = providerId;
+  selectCardProvider(pid, silent=false) {
+    this.cardSelectedProvider = pid;
     this.cardSelectedDenom = null;
-    document.querySelectorAll('.card-provider-card').forEach(c=>{
-      c.classList.toggle('selected', c.dataset.provider === providerId);
-    });
-    const provider = CARD_PROVIDERS.find(p=>p.id===providerId);
+    document.querySelectorAll('.card-provider-card').forEach(c=>c.classList.toggle('selected', c.dataset.provider===pid));
+    const provider = CARD_PROVIDERS.find(p=>p.id===pid);
     if(!provider) return;
-    const denomGrid = document.getElementById('denom-grid');
-    const denomSection = document.getElementById('denom-section');
-    const purchaseSection = document.getElementById('purchase-section');
-    if(denomGrid) {
-      denomGrid.innerHTML = provider.denoms.map(d=>`
-        <div class="denom-card" data-denom="${d}" onclick="app.selectDenom(${d})">
-          <div class="denom-val">${d.toLocaleString('vi-VN')}đ</div>
-          <div class="denom-price">Giá: ${(d*0.95).toLocaleString('vi-VN')}đ</div>
-        </div>
-      `).join('');
-    }
-    if(denomSection) denomSection.style.display = 'block';
-    if(purchaseSection) purchaseSection.style.display = 'none';
+    const dg = document.getElementById('denom-grid');
+    const ds = document.getElementById('denom-section');
+    const ps = document.getElementById('purchase-section');
+    if(dg) dg.innerHTML = provider.denoms.map(d=>`<div class="denom-card" data-denom="${d}" onclick="app.selectDenom(${d})"><div class="denom-val">${d.toLocaleString('vi-VN')}đ</div><div class="denom-price">Giá: ${(d*0.95).toLocaleString('vi-VN')}đ</div></div>`).join('');
+    if(ds) ds.style.display = 'block';
+    if(ps) ps.style.display = 'none';
     if(!silent) this.showToast(`Đã chọn ${provider.name}`, 'info');
   },
 
   selectDenom(denom) {
     this.cardSelectedDenom = denom;
     this.cardQty = 1;
-    document.querySelectorAll('.denom-card').forEach(d=>{
-      d.classList.toggle('selected', parseInt(d.dataset.denom) === denom);
-    });
+    document.querySelectorAll('.denom-card').forEach(d=>d.classList.toggle('selected', parseInt(d.dataset.denom)===denom));
     const provider = CARD_PROVIDERS.find(p=>p.id===this.cardSelectedProvider);
-    const purchaseSection = document.getElementById('purchase-section');
-    if(purchaseSection) purchaseSection.style.display = 'block';
+    const ps = document.getElementById('purchase-section');
+    if(ps) ps.style.display = 'block';
     document.getElementById('summary-provider').textContent = provider.name;
-    document.getElementById('summary-denom').textContent = denom.toLocaleString('vi-VN') + 'đ';
-    document.getElementById('summary-price').textContent = (denom*0.95).toLocaleString('vi-VN') + 'đ';
+    document.getElementById('summary-denom').textContent = denom.toLocaleString('vi-VN')+'đ';
+    document.getElementById('summary-price').textContent = (denom*0.95).toLocaleString('vi-VN')+'đ';
     document.getElementById('card-qty-display').textContent = 1;
-    document.getElementById('summary-total').textContent = (denom*0.95).toLocaleString('vi-VN') + 'đ';
+    document.getElementById('summary-total').textContent = (denom*0.95).toLocaleString('vi-VN')+'đ';
   },
 
-  changeCardQty(delta) {
-    this.cardQty = Math.max(1, Math.min(10, this.cardQty + delta));
+  changeCardQty(d) {
+    this.cardQty = Math.max(1, Math.min(10, this.cardQty+d));
     document.getElementById('card-qty-display').textContent = this.cardQty;
-    if(this.cardSelectedDenom) {
-      document.getElementById('summary-total').textContent = (this.cardSelectedDenom*0.95*this.cardQty).toLocaleString('vi-VN') + 'đ';
-    }
+    if(this.cardSelectedDenom) document.getElementById('summary-total').textContent = (this.cardSelectedDenom*0.95*this.cardQty).toLocaleString('vi-VN')+'đ';
   },
 
   purchaseCard() {
-    if(!DB.currentUser) { this.showToast('Vui lòng đăng nhập để mua thẻ!', 'error'); this.showAuthModal(); return; }
-    if(!this.cardSelectedProvider || !this.cardSelectedDenom) { this.showToast('Vui lòng chọn đầy đủ thông tin', 'error'); return; }
+    if(!DB.currentUser) { this.showToast('Vui lòng đăng nhập!','error'); this.showAuthModal(); return; }
+    if(!this.cardSelectedProvider || !this.cardSelectedDenom) { this.showToast('Chọn đầy đủ thông tin','error'); return; }
     const provider = CARD_PROVIDERS.find(p=>p.id===this.cardSelectedProvider);
-    const total = this.cardSelectedDenom * 0.95 * this.cardQty;
-    if(DB.walletBalance < total) { this.showToast(`Số dư không đủ! Cần ${total.toLocaleString('vi-VN')}đ. Vui lòng nạp thêm.`, 'error'); return; }
+    const total = this.cardSelectedDenom*0.95*this.cardQty;
+    if(DB.walletBalance<total) { this.showToast(`Số dư không đủ! Cần ${total.toLocaleString('vi-VN')}đ`,'error'); return; }
     DB.walletBalance -= total;
-    const orderCode = 'CARD' + Date.now();
-    DB.buyCardHistory.push({
-      orderCode, providerName: provider.name, denom: this.cardSelectedDenom, qty: this.cardQty,
-      total, date: new Date().toLocaleString('vi-VN'), status:'success'
-    });
-    DB.transactions.unshift({
-      type:'expense', amount: total, description: `Mua thẻ ${provider.name} ${this.cardSelectedDenom.toLocaleString('vi-VN')}đ x${this.cardQty}`,
-      date: new Date().toLocaleString('vi-VN')
-    });
+    const orderCode = 'CARD'+Date.now();
+    DB.buyCardHistory.push({orderCode, providerName:provider.name, denom:this.cardSelectedDenom, qty:this.cardQty, total, date:new Date().toLocaleString('vi-VN'), status:'success'});
+    DB.transactions.unshift({type:'expense', amount:total, description:`Mua thẻ ${provider.name} ${this.cardSelectedDenom.toLocaleString('vi-VN')}đ x${this.cardQty}`, date:new Date().toLocaleString('vi-VN')});
     saveAll();
-    this.showToast(`Mua thẻ thành công! Mã thẻ đã gửi qua email (DEMO). Đã trừ ${total.toLocaleString('vi-VN')}đ`, 'success');
+    this.showToast(`Mua thẻ thành công! Đã trừ ${total.toLocaleString('vi-VN')}đ (DEMO)`,'success');
     this.cardSelectedProvider = null;
     this.cardSelectedDenom = null;
     this.cardQty = 1;
@@ -1222,70 +1431,46 @@ const app = {
   onExchangeProviderChange() {
     const pid = document.getElementById('exchange-provider').value;
     const provider = CARD_PROVIDERS.find(p=>p.id===pid);
-    const denomSelect = document.getElementById('exchange-denom');
-    if(provider) {
-      denomSelect.innerHTML = '<option value="">-- Chọn mệnh giá --</option>' + provider.denoms.map(d=>`<option value="${d}">${d.toLocaleString('vi-VN')}đ</option>`).join('');
-    } else {
-      denomSelect.innerHTML = '<option value="">-- Chọn mệnh giá --</option>';
-    }
+    const ds = document.getElementById('exchange-denom');
+    if(provider) ds.innerHTML = '<option value="">-- Chọn --</option>' + provider.denoms.map(d=>`<option value="${d}">${d.toLocaleString('vi-VN')}đ</option>`).join('');
+    else ds.innerHTML = '<option value="">-- Chọn --</option>';
     this.updateExchangeAmount();
   },
 
   updateExchangeAmount() {
-    const denom = parseInt(document.getElementById('exchange-denom')?.value) || 0;
-    const amountEl = document.getElementById('exchange-amount');
-    if(amountEl) amountEl.textContent = (denom*0.8).toLocaleString('vi-VN') + 'đ';
+    const denom = parseInt(document.getElementById('exchange-denom')?.value)||0;
+    const el = document.getElementById('exchange-amount');
+    if(el) el.textContent = (denom*0.8).toLocaleString('vi-VN')+'đ';
   },
 
   processExchange() {
-    if(!DB.currentUser) { this.showToast('Vui lòng đăng nhập để đổi thẻ!', 'error'); this.showAuthModal(); return; }
+    if(!DB.currentUser) { this.showToast('Vui lòng đăng nhập!','error'); this.showAuthModal(); return; }
     const pid = document.getElementById('exchange-provider').value;
-    const denom = parseInt(document.getElementById('exchange-denom').value) || 0;
+    const denom = parseInt(document.getElementById('exchange-denom').value)||0;
     const code = document.getElementById('exchange-code').value.trim();
     const serial = document.getElementById('exchange-serial').value.trim();
-    if(!pid || !denom || !code || !serial) { this.showToast('Vui lòng nhập đầy đủ thông tin', 'error'); return; }
-    if(code.length < 8 || serial.length < 6) { this.showToast('Mã thẻ hoặc serial không hợp lệ', 'error'); return; }
+    if(!pid || !denom || !code || !serial) { this.showToast('Nhập đầy đủ thông tin','error'); return; }
+    if(code.length<8 || serial.length<6) { this.showToast('Mã/serial không hợp lệ','error'); return; }
     const provider = CARD_PROVIDERS.find(p=>p.id===pid);
-    const received = denom * 0.8;
-    // Demo: 90% success rate
-    const success = Math.random() > 0.1;
-    const record = {
-      providerName: provider.name, denom, code, serial, received, date: new Date().toLocaleString('vi-VN'),
-      status: success ? 'success' : 'failed'
-    };
-    DB.exchangeHistory.push(record);
+    const received = denom*0.8;
+    const success = Math.random()>0.1;
+    DB.exchangeHistory.push({providerName:provider.name, denom, code, serial, received, date:new Date().toLocaleString('vi-VN'), status:success?'success':'failed'});
     if(success) {
       DB.walletBalance += received;
       DB.memberLevel.points += Math.floor(received/1000);
-      DB.transactions.unshift({
-        type:'income', amount: received, description: `Đổi thẻ ${provider.name} ${denom.toLocaleString('vi-VN')}đ`,
-        date: new Date().toLocaleString('vi-VN')
-      });
-      this.showToast(`Đổi thẻ thành công! +${received.toLocaleString('vi-VN')}đ vào ví. Điểm thưởng: +${Math.floor(received/1000)}`, 'success');
-    } else {
-      this.showToast('Đổi thẻ thất bại! Mã thẻ không hợp lệ hoặc đã được sử dụng.', 'error');
-    }
+      this.checkMemberLevel();
+      DB.transactions.unshift({type:'income', amount:received, description:`Đổi thẻ ${provider.name} ${denom.toLocaleString('vi-VN')}đ`, date:new Date().toLocaleString('vi-VN')});
+      this.showToast(`Đổi thẻ thành công! +${received.toLocaleString('vi-VN')}đ`,'success');
+    } else this.showToast('Đổi thẻ thất bại! Mã không hợp lệ.','error');
     saveAll();
     document.getElementById('exchange-code').value = '';
     document.getElementById('exchange-serial').value = '';
-    document.getElementById('exchange-provider').value = '';
-    document.getElementById('exchange-denom').innerHTML = '<option value="">-- Chọn mệnh giá --</option>';
-    this.updateExchangeAmount();
     this.render();
   },
 
-  // ==========================================
-  // ACCOUNT PAGE
-  // ==========================================
+  // ========== ACCOUNT ==========
   renderAccount() {
-    if(!DB.currentUser) {
-      return `<div class="container" style="padding:100px 20px;text-align:center">
-        <i class="fas fa-user-lock" style="font-size:4rem;color:var(--text-muted);margin-bottom:20px"></i>
-        <h2>Vui lòng đăng nhập</h2>
-        <p style="color:var(--text-muted);margin-bottom:20px">Bạn cần đăng nhập để xem trang cá nhân</p>
-        <button class="btn btn-primary" onclick="app.showAuthModal()">Đăng Nhập Ngay</button>
-      </div>`;
-    }
+    if(!DB.currentUser) return `<div class="container" style="padding:100px 20px;text-align:center"><i class="fas fa-user-lock" style="font-size:4rem;color:var(--text-muted);margin-bottom:20px"></i><h2>Vui lòng đăng nhập</h2><p style="color:var(--text-muted);margin-bottom:20px">Bạn cần đăng nhập</p><button class="btn btn-primary" onclick="app.showAuthModal()">Đăng Nhập</button></div>`;
     const u = DB.currentUser;
     const initials = u.name.charAt(0).toUpperCase();
     const levelColors = {Bronze:'#cd7f32',Silver:'#c0c0c0',Gold:'#ffd700',Diamond:'#b9f2ff',VIP:'#a855f7'};
@@ -1295,10 +1480,7 @@ const app = {
     return `<div class="account-page">
       <div class="account-header-card">
         <div class="account-header-inner">
-          <div class="account-avatar">
-            ${initials}
-            <div class="vip-crown" style="background:${levelColors[DB.memberLevel.level]}"><i class="fas ${levelIcon[DB.memberLevel.level]}" style="font-size:.9rem;color:#1a1a2e"></i></div>
-          </div>
+          <div class="account-avatar">${initials}<div class="vip-crown" style="background:${levelColors[DB.memberLevel.level]}"><i class="fas ${levelIcon[DB.memberLevel.level]}" style="font-size:.9rem;color:#1a1a2e"></i></div></div>
           <div class="account-info">
             <h2>${u.name}</h2>
             <p class="email-text"><i class="fas fa-envelope"></i> ${u.email}</p>
@@ -1310,157 +1492,100 @@ const app = {
           </div>
         </div>
       </div>
-
       <div class="account-stats-grid">
-        <div class="account-stat-card">
-          <div class="stat-icon" style="background:rgba(0,212,255,.15);color:var(--neon-blue)"><i class="fas fa-wallet"></i></div>
-          <div class="stat-value" style="color:var(--neon-blue)">${DB.walletBalance.toLocaleString('vi-VN')}đ</div>
-          <div class="stat-label">Số dư khả dụng</div>
-          <div class="stat-action"><button class="btn btn-sm btn-primary" onclick="app.showToast('Nạp tiền DEMO - Vui lòng liên hệ admin','info')"><i class="fas fa-plus"></i> Nạp Tiền</button></div>
-        </div>
-        <div class="account-stat-card">
-          <div class="stat-icon" style="background:rgba(251,191,36,.15);color:#fbbf24"><i class="fas fa-clock"></i></div>
-          <div class="stat-value" style="color:#fbbf24">${DB.pendingBalance.toLocaleString('vi-VN')}đ</div>
-          <div class="stat-label">Số dư đang chờ</div>
-        </div>
-        <div class="account-stat-card">
-          <div class="stat-icon" style="background:rgba(16,185,129,.15);color:#10b981"><i class="fas fa-shopping-bag"></i></div>
-          <div class="stat-value">${userOrders.length}</div>
-          <div class="stat-label">Tổng đơn hàng</div>
-        </div>
-        <div class="account-stat-card">
-          <div class="stat-icon" style="background:rgba(168,85,247,.15);color:var(--neon-purple)"><i class="fas fa-star"></i></div>
-          <div class="stat-value">${DB.memberLevel.points}</div>
-          <div class="stat-label">Điểm thưởng</div>
-        </div>
+        <div class="account-stat-card"><div class="stat-icon" style="background:rgba(0,212,255,.15);color:var(--neon-blue)"><i class="fas fa-wallet"></i></div><div class="stat-value" style="color:var(--neon-blue)">${DB.walletBalance.toLocaleString('vi-VN')}đ</div><div class="stat-label">Số dư khả dụng</div></div>
+        <div class="account-stat-card"><div class="stat-icon" style="background:rgba(251,191,36,.15);color:#fbbf24"><i class="fas fa-clock"></i></div><div class="stat-value" style="color:#fbbf24">${DB.pendingBalance.toLocaleString('vi-VN')}đ</div><div class="stat-label">Đang chờ</div></div>
+        <div class="account-stat-card"><div class="stat-icon" style="background:rgba(16,185,129,.15);color:#10b981"><i class="fas fa-shopping-bag"></i></div><div class="stat-value">${userOrders.length}</div><div class="stat-label">Đơn hàng</div></div>
+        <div class="account-stat-card"><div class="stat-icon" style="background:rgba(168,85,247,.15);color:var(--neon-purple)"><i class="fas fa-star"></i></div><div class="stat-value">${DB.memberLevel.points}</div><div class="stat-label">Điểm thưởng</div></div>
       </div>
-
       <div class="account-tabs">
         <button class="account-tab-btn active" onclick="app.switchAccountTab('wallet',event)"><i class="fas fa-wallet"></i> Ví & Giao Dịch</button>
         <button class="account-tab-btn" onclick="app.switchAccountTab('orders',event)"><i class="fas fa-shopping-bag"></i> Đơn Hàng</button>
-        <button class="account-tab-btn" onclick="app.switchAccountTab('exchange',event)"><i class="fas fa-exchange-alt"></i> Lịch Sử Đổi Thẻ</button>
-        <button class="account-tab-btn" onclick="app.switchAccountTab('buyCard',event)"><i class="fas fa-credit-card"></i> Lịch Sử Mua Thẻ</button>
+        <button class="account-tab-btn" onclick="app.switchAccountTab('exchange',event)"><i class="fas fa-exchange-alt"></i> Đổi Thẻ</button>
+        <button class="account-tab-btn" onclick="app.switchAccountTab('buyCard',event)"><i class="fas fa-credit-card"></i> Mua Thẻ</button>
         <button class="account-tab-btn" onclick="app.switchAccountTab('wishlist',event)"><i class="fas fa-heart"></i> Yêu Thích</button>
         <button class="account-tab-btn" onclick="app.switchAccountTab('profile',event)"><i class="fas fa-user"></i> Hồ Sơ</button>
       </div>
-
       <div class="account-tab-content active" id="acc-tab-wallet">
         <div class="wallet-balance-card">
-          <h3>Số dư ví của bạn</h3>
+          <h3>Số dư ví</h3>
           <div class="big-balance">${DB.walletBalance.toLocaleString('vi-VN')}đ</div>
-          <div class="pending-balance">Đang chờ: ${DB.pendingBalance.toLocaleString('vi-VN')}đ</div>
+          <div style="font-size:.9rem;opacity:.85">Đang chờ: ${DB.pendingBalance.toLocaleString('vi-VN')}đ</div>
           <div class="wallet-actions">
-            <button class="btn" onclick="app.showToast('Nạp tiền DEMO - Vui lòng liên hệ admin','info')"><i class="fas fa-plus-circle"></i> Nạp Tiền</button>
-            <button class="btn" onclick="app.showToast('Rút tiền DEMO - Cần xác minh','info')"><i class="fas fa-arrow-up"></i> Rút Tiền</button>
-            <button class="btn" onclick="app.showToast('Lịch sử giao dịch đầy đủ DEMO','info')"><i class="fas fa-history"></i> Lịch Sử</button>
+            <button class="btn" onclick="app.showToast('Nạp tiền DEMO','info')"><i class="fas fa-plus-circle"></i> Nạp Tiền</button>
+            <button class="btn" onclick="app.showToast('Rút tiền DEMO','info')"><i class="fas fa-arrow-up"></i> Rút Tiền</button>
           </div>
         </div>
         <div class="transaction-list">
-          <div class="transaction-list-header"><i class="fas fa-list"></i> Lịch Sử Giao Dịch Gần Đây</div>
-          ${userTrans.length===0?'<div style="padding:30px;text-align:center;color:var(--text-muted)">Chưa có giao dịch nào</div>':userTrans.map(t=>`
+          <div class="transaction-list-header"><i class="fas fa-list"></i> Giao Dịch Gần Đây</div>
+          ${userTrans.length===0?'<div style="padding:30px;text-align:center;color:var(--text-muted)">Chưa có giao dịch</div>':userTrans.map(t=>`
             <div class="transaction-item">
-              <div class="transaction-info">
-                <div class="transaction-icon ${t.type==='income'?'income':'expense'}"><i class="fas ${t.type==='income'?'fa-arrow-down':'fa-arrow-up'}"></i></div>
-                <div class="transaction-detail"><h4>${t.description}</h4><p>${t.date}</p></div>
-              </div>
+              <div class="transaction-info"><div class="transaction-icon ${t.type==='income'?'income':'expense'}"><i class="fas ${t.type==='income'?'fa-arrow-down':'fa-arrow-up'}"></i></div><div class="transaction-detail"><h4>${t.description}</h4><p>${t.date}</p></div></div>
               <div class="transaction-amount ${t.type}">${t.type==='income'?'+':'-'}${t.amount.toLocaleString('vi-VN')}đ</div>
             </div>
           `).join('')}
         </div>
       </div>
-
       <div class="account-tab-content" id="acc-tab-orders">
         <div class="transaction-list">
-          <div class="transaction-list-header"><i class="fas fa-shopping-bag"></i> Đơn Hàng Của Bạn</div>
-          ${userOrders.length===0?'<div style="padding:30px;text-align:center;color:var(--text-muted)">Chưa có đơn hàng nào</div>':userOrders.slice().reverse().map(o=>`
+          <div class="transaction-list-header"><i class="fas fa-shopping-bag"></i> Đơn Hàng</div>
+          ${userOrders.length===0?'<div style="padding:30px;text-align:center;color:var(--text-muted)">Chưa có đơn hàng</div>':userOrders.slice().reverse().map(o=>`
             <div class="transaction-item">
-              <div class="transaction-info">
-                <div class="transaction-icon income"><i class="fas fa-check"></i></div>
-                <div class="transaction-detail"><h4>Đơn #${o.id} - ${o.items} sản phẩm</h4><p>${o.date}</p></div>
-              </div>
-              <div style="text-align:right">
-                <div class="transaction-amount expense">${o.total.toLocaleString('vi-VN')}đ</div>
-                <span class="status-badge status-success">Hoàn thành</span>
-              </div>
+              <div class="transaction-info"><div class="transaction-icon income"><i class="fas fa-check"></i></div><div class="transaction-detail"><h4>Đơn #${o.id} - ${o.items} SP</h4><p>${o.date}</p></div></div>
+              <div style="text-align:right"><div class="transaction-amount expense">${o.total.toLocaleString('vi-VN')}đ</div><span class="status-badge status-success">Hoàn thành</span></div>
             </div>
           `).join('')}
         </div>
       </div>
-
       <div class="account-tab-content" id="acc-tab-exchange">
         <div class="transaction-list">
-          <div class="transaction-list-header"><i class="fas fa-exchange-alt"></i> Lịch Sử Đổi Thẻ Cào</div>
-          ${DB.exchangeHistory.length===0?'<div style="padding:30px;text-align:center;color:var(--text-muted)">Chưa có giao dịch đổi thẻ</div>':DB.exchangeHistory.slice().reverse().map(h=>`
+          <div class="transaction-list-header"><i class="fas fa-exchange-alt"></i> Lịch Sử Đổi Thẻ</div>
+          ${DB.exchangeHistory.length===0?'<div style="padding:30px;text-align:center;color:var(--text-muted)">Chưa có giao dịch</div>':DB.exchangeHistory.slice().reverse().map(h=>`
             <div class="transaction-item">
-              <div class="transaction-info">
-                <div class="transaction-icon ${h.status==='success'?'income':'expense'}"><i class="fas fa-exchange-alt"></i></div>
-                <div class="transaction-detail"><h4>${h.providerName} - ${h.denom.toLocaleString('vi-VN')}đ</h4><p>Mã: ${h.code.substring(0,4)}****${h.code.substring(h.code.length-4)} • ${h.date}</p></div>
-              </div>
-              <div style="text-align:right">
-                <div class="transaction-amount income">+${h.received.toLocaleString('vi-VN')}đ</div>
-                <span class="status-badge ${h.status==='success'?'status-success':h.status==='pending'?'status-pending':'status-failed'}">${h.status==='success'?'Thành công':h.status==='pending'?'Đang xử lý':'Thất bại'}</span>
-              </div>
+              <div class="transaction-info"><div class="transaction-icon ${h.status==='success'?'income':'expense'}"><i class="fas fa-exchange-alt"></i></div><div class="transaction-detail"><h4>${h.providerName} - ${h.denom.toLocaleString('vi-VN')}đ</h4><p>${h.date}</p></div></div>
+              <div style="text-align:right"><div class="transaction-amount income">+${h.received.toLocaleString('vi-VN')}đ</div><span class="status-badge ${h.status==='success'?'status-success':'status-failed'}">${h.status==='success'?'OK':'Thất bại'}</span></div>
             </div>
           `).join('')}
         </div>
       </div>
-
       <div class="account-tab-content" id="acc-tab-buyCard">
         <div class="transaction-list">
           <div class="transaction-list-header"><i class="fas fa-credit-card"></i> Lịch Sử Mua Thẻ</div>
-          ${DB.buyCardHistory.length===0?'<div style="padding:30px;text-align:center;color:var(--text-muted)">Chưa có giao dịch mua thẻ</div>':DB.buyCardHistory.slice().reverse().map(h=>`
+          ${DB.buyCardHistory.length===0?'<div style="padding:30px;text-align:center;color:var(--text-muted)">Chưa có giao dịch</div>':DB.buyCardHistory.slice().reverse().map(h=>`
             <div class="transaction-item">
-              <div class="transaction-info">
-                <div class="transaction-icon expense"><i class="fas fa-credit-card"></i></div>
-                <div class="transaction-detail"><h4>${h.providerName} ${h.denom.toLocaleString('vi-VN')}đ x${h.qty}</h4><p>Mã đơn: ${h.orderCode} • ${h.date}</p></div>
-              </div>
-              <div style="text-align:right">
-                <div class="transaction-amount expense">-${h.total.toLocaleString('vi-VN')}đ</div>
-                <span class="status-badge status-success">Hoàn thành</span>
-              </div>
+              <div class="transaction-info"><div class="transaction-icon expense"><i class="fas fa-credit-card"></i></div><div class="transaction-detail"><h4>${h.providerName} ${h.denom.toLocaleString('vi-VN')}đ x${h.qty}</h4><p>${h.orderCode} • ${h.date}</p></div></div>
+              <div class="transaction-amount expense">-${h.total.toLocaleString('vi-VN')}đ</div>
             </div>
           `).join('')}
         </div>
       </div>
-
       <div class="account-tab-content" id="acc-tab-wishlist">
-        <div class="product-grid" style="margin-top:10px">
-          ${DB.wishlist.length===0?'<div style="padding:30px;text-align:center;color:var(--text-muted);grid-column:1/-1">Danh sách yêu thích trống</div>':DB.wishlist.map(id=>DB.products.find(p=>p.id===id)).filter(Boolean).map(p=>this.renderProductCard(p)).join('')}
-        </div>
+        <div class="product-grid">${DB.wishlist.length===0?'<div style="padding:30px;text-align:center;color:var(--text-muted);grid-column:1/-1">Danh sách trống</div>':DB.wishlist.map(id=>DB.products.find(p=>p.id===id)).filter(Boolean).map(p=>this.renderProductCard(p)).join('')}</div>
       </div>
-
       <div class="account-tab-content" id="acc-tab-profile">
         <div class="glass" style="padding:30px;border-radius:var(--radius-md)">
           <h3 style="margin-bottom:20px"><i class="fas fa-user-circle" style="color:var(--neon-blue)"></i> Thông Tin Cá Nhân</h3>
-          <div class="form-group"><label>Họ và tên</label><input type="text" value="${u.name}" id="profile-name"></div>
+          <div class="form-group"><label>Họ tên</label><input type="text" value="${u.name}" id="profile-name"></div>
           <div class="form-group"><label>Email</label><input type="email" value="${u.email}" disabled style="opacity:.7"></div>
-          <div class="form-group"><label>Số điện thoại</label><input type="tel" value="${u.phone||''}" placeholder="Chưa cập nhật" id="profile-phone"></div>
-          <div class="form-group"><label>Địa chỉ</label><input type="text" value="${u.address||''}" placeholder="Chưa cập nhật" id="profile-address"></div>
+          <div class="form-group"><label>SĐT</label><input type="tel" value="${u.phone||''}" id="profile-phone" placeholder="Chưa cập nhật"></div>
+          <div class="form-group"><label>Địa chỉ</label><input type="text" value="${u.address||''}" id="profile-address" placeholder="Chưa cập nhật"></div>
           <button class="btn btn-primary" onclick="app.updateProfile()"><i class="fas fa-save"></i> Lưu Thay Đổi</button>
-          <button class="btn btn-outline" style="margin-left:10px" onclick="app.showToast('Đổi mật khẩu DEMO','info')"><i class="fas fa-key"></i> Đổi Mật Khẩu</button>
         </div>
       </div>
     </div>`;
   },
 
   switchAccountTab(tab, e) {
-    if(e) {
-      document.querySelectorAll('.account-tab-btn').forEach(b=>b.classList.remove('active'));
-      e.target.closest('.account-tab-btn').classList.add('active');
-    }
+    if(e) { document.querySelectorAll('.account-tab-btn').forEach(b=>b.classList.remove('active')); e.target.closest('.account-tab-btn').classList.add('active'); }
     document.querySelectorAll('.account-tab-content').forEach(c=>c.classList.remove('active'));
     document.getElementById('acc-tab-'+tab).classList.add('active');
-  },
-
-  bindAccountEvents() {
-    // Already handled inline
   },
 
   updateProfile() {
     const name = document.getElementById('profile-name').value.trim();
     const phone = document.getElementById('profile-phone').value.trim();
     const address = document.getElementById('profile-address').value.trim();
-    if(!name) { this.showToast('Tên không được để trống', 'error'); return; }
+    if(!name) { this.showToast('Tên không được trống','error'); return; }
     DB.currentUser.name = name;
     DB.currentUser.phone = phone;
     DB.currentUser.address = address;
@@ -1468,59 +1593,43 @@ const app = {
     if(idx>-1) DB.users[idx] = DB.currentUser;
     saveAll();
     this.renderUserMenu();
-    this.showToast('Cập nhật hồ sơ thành công!', 'success');
+    this.showToast('Cập nhật thành công!','success');
   },
 
-  // ==========================================
-  // CART
-  // ==========================================
+  // ========== CART ==========
   renderCart() {
-    if(DB.cart.length===0) {
-      return `<div class="container" style="padding:100px 0;text-align:center">
-        <i class="fas fa-shopping-cart" style="font-size:4rem;color:var(--text-muted);margin-bottom:20px"></i>
-        <h2>Giỏ Hàng Trống</h2>
-        <p style="color:var(--text-muted);margin-bottom:20px">Hãy thêm sản phẩm vào giỏ hàng!</p>
-        <button class="btn btn-primary" onclick="app.navigate('home')">Tiếp Tục Mua Sắm</button>
-      </div>`;
-    }
-    const total = DB.cart.reduce((s,i)=>s+i.price*i.qty,0);
+    if(DB.cart.length===0) return `<div class="container" style="padding:100px 0;text-align:center"><i class="fas fa-shopping-cart" style="font-size:4rem;color:var(--text-muted);margin-bottom:20px"></i><h2>Giỏ Hàng Trống</h2><p style="color:var(--text-muted);margin-bottom:20px">Thêm sản phẩm vào giỏ!</p><button class="btn btn-primary" onclick="app.navigate('home')">Tiếp Tục Mua Sắm</button></div>`;
+    const total = DB.cart.reduce((s,i)=>{const p=DB.products.find(x=>x.id===i.id);return s+p.price*i.qty;},0);
     return `<div class="container" style="padding:30px 20px">
       <h1 style="margin-bottom:30px"><i class="fas fa-shopping-cart"></i> Giỏ Hàng (${DB.cart.length})</h1>
-      <div class="cart-layout" style="display:grid;grid-template-columns:1fr 380px;gap:30px">
-        <div>
-          ${DB.cart.map(item=>{
-            const p = DB.products.find(x=>x.id===item.id);
-            return `<div class="cart-item" style="display:flex;gap:15px;padding:15px;background:var(--bg-card);border-radius:var(--radius-md);margin-bottom:15px;border:1px solid var(--border-color)">
-              <img src="${p.image}" style="width:100px;height:100px;border-radius:8px;object-fit:cover">
-              <div style="flex:1">
-                <h4 style="font-size:1rem;margin-bottom:5px">${p.name}</h4>
-                <div style="color:var(--neon-blue);font-weight:700">${p.price.toLocaleString('vi-VN')}đ</div>
-                <div style="display:flex;align-items:center;gap:10px;margin-top:10px">
-                  <button onclick="app.updateCartQty(${p.id},-1)" style="width:30px;height:30px;border-radius:6px;background:var(--bg-card-hover);color:var(--text-primary);border:1px solid var(--border-color)">-</button>
-                  <span style="width:30px;text-align:center;font-weight:600">${item.qty}</span>
-                  <button onclick="app.updateCartQty(${p.id},1)" style="width:30px;height:30px;border-radius:6px;background:var(--bg-card-hover);color:var(--text-primary);border:1px solid var(--border-color)">+</button>
-                  <button onclick="app.removeFromCart(${p.id})" style="margin-left:auto;background:transparent;color:#ef4444;border:none;font-size:1.1rem"><i class="fas fa-trash"></i></button>
-                </div>
-              </div>
-              <div style="font-weight:700;color:var(--neon-blue);align-self:center;font-size:1.1rem">${(p.price*item.qty).toLocaleString('vi-VN')}đ</div>
-            </div>`;
-          }).join('')}
-        </div>
-        <div style="background:var(--bg-card);padding:25px;border-radius:var(--radius-md);border:1px solid var(--border-color);height:fit-content;position:sticky;top:100px">
+      <div class="cart-layout">
+        <div>${DB.cart.map(item=>{
+          const p = DB.products.find(x=>x.id===item.id);
+          return `<div class="cart-item">
+            <img src="${p.image}">
+            <div style="flex:1"><h4 style="font-size:1rem;margin-bottom:5px">${p.name}</h4><div style="color:var(--neon-blue);font-weight:700">${p.price.toLocaleString('vi-VN')}đ</div>
+            <div class="qty-controls">
+              <button onclick="app.updateCartQty(${p.id},-1)">-</button>
+              <span style="width:30px;text-align:center;font-weight:600">${item.qty}</span>
+              <button onclick="app.updateCartQty(${p.id},1)">+</button>
+              <button onclick="app.removeFromCart(${p.id})" style="margin-left:auto;background:transparent;color:#ef4444;border:none;font-size:1.1rem"><i class="fas fa-trash"></i></button>
+            </div></div>
+            <div style="font-weight:700;color:var(--neon-blue);align-self:center;font-size:1.1rem">${(p.price*item.qty).toLocaleString('vi-VN')}đ</div>
+          </div>`;
+        }).join('')}</div>
+        <div class="cart-summary">
           <h3 style="margin-bottom:20px">Tóm Tắt</h3>
-          <div style="display:flex;justify-content:space-between;margin-bottom:12px;color:var(--text-secondary)"><span>Tạm tính</span><span>${total.toLocaleString('vi-VN')}đ</span></div>
-          <div style="display:flex;justify-content:space-between;margin-bottom:12px;color:var(--text-secondary)"><span>Phí dịch vụ</span><span>Miễn phí</span></div>
-          <div style="display:flex;justify-content:space-between;font-size:1.2rem;font-weight:700;border-top:1px solid var(--border-color);padding-top:15px;margin-top:15px"><span>Tổng</span><span style="color:var(--neon-blue)">${total.toLocaleString('vi-VN')}đ</span></div>
+          <div class="summary-row"><span>Tạm tính</span><span>${total.toLocaleString('vi-VN')}đ</span></div>
+          <div class="summary-row"><span>Phí dịch vụ</span><span>Miễn phí</span></div>
+          <div class="summary-row total"><span>Tổng</span><span style="color:var(--neon-blue)">${total.toLocaleString('vi-VN')}đ</span></div>
           <button class="btn btn-primary btn-block" style="margin-top:20px" onclick="app.checkout()"><i class="fas fa-check-circle"></i> Thanh Toán (DEMO)</button>
-          <button class="btn btn-outline btn-block" style="margin-top:10px" onclick="app.navigate('home')">Tiếp Tục Mua Sắm</button>
+          <button class="btn btn-outline btn-block" style="margin-top:10px" onclick="app.navigate('home')">Tiếp Tục</button>
         </div>
       </div>
     </div>`;
   },
 
-  // ==========================================
-  // CATEGORY / SEARCH
-  // ==========================================
+  // ========== CATEGORY ==========
   renderCategoryPage(searchQuery='') {
     let filtered = DB.products;
     if(this.filterState.category!=='all') filtered = filtered.filter(p=>p.category===this.filterState.category);
@@ -1534,72 +1643,54 @@ const app = {
       <h1 style="margin-bottom:20px"><i class="fas fa-search"></i> ${searchQuery?`Kết quả: "${searchQuery}"`:this.filterState.category==='all'?'Tất Cả Sản Phẩm':this.filterState.category} (${filtered.length})</h1>
       <div class="glass" style="padding:15px 20px;border-radius:var(--radius-md);margin-bottom:25px;display:flex;flex-wrap:wrap;gap:15px;align-items:center">
         <select onchange="app.setFilter('category',this.value)" style="padding:8px 15px;background:var(--bg-card);color:var(--text-primary);border:1px solid var(--border-color);border-radius:6px">
-          <option value="all" ${this.filterState.category==='all'?'selected':''}>Tất cả danh mục</option>
+          <option value="all" ${this.filterState.category==='all'?'selected':''}>Tất cả</option>
           ${DB.categories.map(c=>`<option value="${c.name}" ${this.filterState.category===c.name?'selected':''}>${c.name}</option>`).join('')}
         </select>
         <select onchange="app.setFilter('sort',this.value)" style="padding:8px 15px;background:var(--bg-card);color:var(--text-primary);border:1px solid var(--border-color);border-radius:6px">
-          <option value="default">Mặc định</option>
-          <option value="price-asc" ${this.filterState.sort==='price-asc'?'selected':''}>Giá tăng</option>
-          <option value="price-desc" ${this.filterState.sort==='price-desc'?'selected':''}>Giá giảm</option>
-          <option value="newest" ${this.filterState.sort==='newest'?'selected':''}>Mới nhất</option>
-          <option value="bestseller" ${this.filterState.sort==='bestseller'?'selected':''}>Bán chạy</option>
+          <option value="default">Mặc định</option><option value="price-asc">Giá tăng</option><option value="price-desc">Giá giảm</option><option value="newest">Mới nhất</option><option value="bestseller">Bán chạy</option>
         </select>
         <button class="btn btn-sm btn-outline" onclick="app.resetFilters()">Xóa lọc</button>
       </div>
       <div class="product-grid">${filtered.map(p=>this.renderProductCard(p)).join('')}</div>
-      ${filtered.length===0?'<div style="text-align:center;padding:50px;color:var(--text-muted)"><i class="fas fa-search" style="font-size:3rem;margin-bottom:15px"></i><h3>Không tìm thấy</h3></div>':''}
     </div>`;
   },
 
-  setFilter(k,v) {
-    if(k==='minPrice') this.filterState.minPrice = Number(v)||0;
-    else if(k==='maxPrice') this.filterState.maxPrice = Number(v)||999999999;
-    else this.filterState[k] = v;
-    this.navigate('category');
-  },
-
+  setFilter(k,v) { if(k==='minPrice') this.filterState.minPrice=Number(v)||0; else if(k==='maxPrice') this.filterState.maxPrice=Number(v)||999999999; else this.filterState[k]=v; this.navigate('category'); },
   resetFilters() { this.filterState={category:'all',minPrice:0,maxPrice:999999999,sort:'default'}; this.navigate('category'); },
   filterCategory(c) { this.filterState.category=c; this.navigate('category'); },
-  search() {
-    const q = document.getElementById('global-search').value.trim();
-    if(q) { this.navigate('search'); document.getElementById('search-suggestions').classList.remove('active'); }
-  },
+  search() { const q = document.getElementById('global-search').value.trim(); if(q) { this.navigate('search'); document.getElementById('search-suggestions').classList.remove('active'); } },
 
-  // ==========================================
-  // ADMIN
-  // ==========================================
+  // ========== ADMIN ==========
   renderAdmin() {
     const totalRev = DB.orders.reduce((s,o)=>s+o.total,0);
     return `<div class="admin-layout">
       <aside class="admin-sidebar">
-        <div class="logo"><i class="fas fa-bolt" style="color:var(--neon-blue)"></i> <span style="font-weight:800">Admin Panel</span></div>
+        <div class="logo" style="padding:0 20px 20px;border-bottom:1px solid var(--border-color);margin-bottom:20px"><i class="fas fa-bolt" style="color:var(--neon-blue)"></i> <span style="font-weight:800">Admin</span></div>
         <div class="admin-nav-item active"><i class="fas fa-tachometer-alt"></i> Dashboard</div>
-        <div class="admin-nav-item" onclick="app.showToast('Quản lý sản phẩm DEMO','info')"><i class="fas fa-box"></i> Sản Phẩm</div>
+        <div class="admin-nav-item" onclick="app.showToast('Quản lý SP DEMO','info')"><i class="fas fa-box"></i> Sản Phẩm</div>
         <div class="admin-nav-item" onclick="app.showToast('Quản lý đơn hàng DEMO','info')"><i class="fas fa-shopping-bag"></i> Đơn Hàng</div>
-        <div class="admin-nav-item" onclick="app.showToast('Quản lý khách hàng DEMO','info')"><i class="fas fa-users"></i> Khách Hàng</div>
-        <div class="admin-nav-item" onclick="app.showToast('Quản lý tài chính DEMO','info')"><i class="fas fa-wallet"></i> Tài Chính</div>
-        <div class="admin-nav-item" onclick="app.navigate('home')" style="color:#ef4444"><i class="fas fa-sign-out-alt"></i> Thoát Admin</div>
+        <div class="admin-nav-item" onclick="app.showToast('Quản lý KH DEMO','info')"><i class="fas fa-users"></i> Khách Hàng</div>
+        <div class="admin-nav-item" onclick="app.showToast('Quản lý TC DEMO','info')"><i class="fas fa-wallet"></i> Tài Chính</div>
+        <div class="admin-nav-item" onclick="app.navigate('home')" style="color:#ef4444"><i class="fas fa-sign-out-alt"></i> Thoát</div>
       </aside>
       <div class="admin-content">
-        <div class="admin-header"><h1>Dashboard Tổng Quan</h1><div style="font-size:.85rem;color:var(--text-muted)">Xin chào, <strong style="color:var(--neon-blue)">Admin</strong></div></div>
+        <div class="admin-header"><h1>Dashboard</h1></div>
         <div class="stat-cards">
-          <div class="stat-card"><div class="icon" style="background:rgba(0,212,255,.1);color:var(--neon-blue)"><i class="fas fa-dollar-sign"></i></div><div class="value">${totalRev.toLocaleString('vi-VN')}đ</div><div class="label">Tổng Doanh Thu</div></div>
-          <div class="stat-card"><div class="icon" style="background:rgba(168,85,247,.1);color:var(--neon-purple)"><i class="fas fa-shopping-bag"></i></div><div class="value">${DB.orders.length}</div><div class="label">Tổng Đơn Hàng</div></div>
-          <div class="stat-card"><div class="icon" style="background:rgba(236,72,153,.1);color:var(--neon-pink)"><i class="fas fa-users"></i></div><div class="value">${DB.users.length}</div><div class="label">Tổng Khách Hàng</div></div>
-          <div class="stat-card"><div class="icon" style="background:rgba(16,185,129,.1);color:#10b981"><i class="fas fa-box"></i></div><div class="value">${DB.products.length}</div><div class="label">Tổng Sản Phẩm</div></div>
+          <div class="stat-card"><div class="icon" style="background:rgba(0,212,255,.1);color:var(--neon-blue)"><i class="fas fa-dollar-sign"></i></div><div class="value">${totalRev.toLocaleString('vi-VN')}đ</div><div class="label">Doanh Thu</div></div>
+          <div class="stat-card"><div class="icon" style="background:rgba(168,85,247,.1);color:var(--neon-purple)"><i class="fas fa-shopping-bag"></i></div><div class="value">${DB.orders.length}</div><div class="label">Đơn Hàng</div></div>
+          <div class="stat-card"><div class="icon" style="background:rgba(236,72,153,.1);color:var(--neon-pink)"><i class="fas fa-users"></i></div><div class="value">${DB.users.length}</div><div class="label">Khách Hàng</div></div>
+          <div class="stat-card"><div class="icon" style="background:rgba(16,185,129,.1);color:#10b981"><i class="fas fa-box"></i></div><div class="value">${DB.products.length}</div><div class="label">Sản Phẩm</div></div>
         </div>
         <h2 style="margin-bottom:15px">Đơn Hàng Gần Đây</h2>
-        <table><thead><tr><th>Mã Đơn</th><th>Khách Hàng</th><th>Sản Phẩm</th><th>Tổng Tiền</th><th>Trạng Thái</th><th>Ngày</th></tr></thead><tbody>
-          ${DB.orders.slice(-5).reverse().map(o=>`<tr><td>#${o.id}</td><td>${o.user}</td><td>${o.items} SP</td><td style="color:var(--neon-blue);font-weight:600">${o.total.toLocaleString('vi-VN')}đ</td><td><span class="badge badge-new">Hoàn thành</span></td><td>${o.date}</td></tr>`).join('')}
-          ${DB.orders.length===0?'<tr><td colspan="6" style="text-align:center;color:var(--text-muted)">Chưa có đơn hàng</td></tr>':''}
+        <table><thead><tr><th>Mã</th><th>KH</th><th>SP</th><th>Tiền</th><th>Trạng Thái</th><th>Ngày</th></tr></thead><tbody>
+          ${DB.orders.slice(-5).reverse().map(o=>`<tr><td>#${o.id}</td><td>${o.user}</td><td>${o.items}</td><td style="color:var(--neon-blue);font-weight:600">${o.total.toLocaleString('vi-VN')}đ</td><td><span class="badge badge-new">OK</span></td><td>${o.date}</td></tr>`).join('')}
+          ${DB.orders.length===0?'<tr><td colspan="6" style="text-align:center;color:var(--text-muted)">Chưa có đơn</td></tr>':''}
         </tbody></table>
       </div>
     </div>`;
   },
 
-  // ==========================================
-  // AUTH
-  // ==========================================
+  // ========== AUTH ==========
   showAuthModal() {
     if(DB.currentUser) { this.navigate('account'); return; }
     this.renderAuthForm('login');
@@ -1609,75 +1700,53 @@ const app = {
   renderAuthForm(type) {
     const c = document.getElementById('auth-form-container');
     if(type==='login') {
-      c.innerHTML = `
-        <h2>Đăng Nhập</h2>
-        <p class="modal-subtitle">Chào mừng trở lại Tạp Hóa Shop!</p>
+      c.innerHTML = `<h2>Đăng Nhập</h2><p class="modal-subtitle">Chào mừng trở lại!</p>
         <div class="auth-form">
           <div class="form-group"><label>Email</label><input type="email" id="auth-email" placeholder="your@email.com"></div>
           <div class="form-group"><label>Mật Khẩu</label><input type="password" id="auth-password" placeholder="••••••••"></div>
-          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;font-size:.85rem">
-            <label style="display:flex;align-items:center;gap:6px;color:var(--text-secondary);cursor:pointer"><input type="checkbox" style="width:auto"> Ghi nhớ</label>
-            <span style="color:var(--neon-blue);cursor:pointer" onclick="app.showToast('Tính năng quên mật khẩu DEMO','info')">Quên mật khẩu?</span>
-          </div>
           <button class="btn btn-primary btn-block" onclick="app.login()"><i class="fas fa-sign-in-alt"></i> Đăng Nhập</button>
         </div>
-        <div class="auth-switch">Chưa có tài khoản? <span onclick="app.renderAuthForm('register')">Đăng Ký Ngay</span></div>
-      `;
+        <div class="auth-switch">Chưa có tài khoản? <span onclick="app.renderAuthForm('register')">Đăng Ký</span></div>`;
     } else {
-      c.innerHTML = `
-        <h2>Đăng Ký Tài Khoản</h2>
-        <p class="modal-subtitle">Tạo tài khoản để nhận ưu đãi đặc biệt!</p>
+      c.innerHTML = `<h2>Đăng Ký</h2><p class="modal-subtitle">Nhận 500.000đ khi đăng ký!</p>
         <div class="auth-form">
-          <div class="form-group"><label>Họ và Tên <span class="required" style="color:#ef4444">*</span></label><input type="text" id="auth-name" placeholder="Nguyễn Văn A"></div>
-          <div class="form-group"><label>Email <span class="required" style="color:#ef4444">*</span></label><input type="email" id="auth-email" placeholder="your@email.com"></div>
-          <div class="form-group"><label>Số điện thoại</label><input type="tel" id="auth-phone" placeholder="0912345678"></div>
-          <div class="form-group">
-            <label>Mật Khẩu <span class="required" style="color:#ef4444">*</span></label>
-            <input type="password" id="auth-password" placeholder="Tối thiểu 6 ký tự" oninput="app.checkPasswordStrength(this.value)">
-            <div class="password-strength"><div class="password-strength-bar" id="pwd-strength"></div></div>
-            <small id="pwd-hint" style="color:var(--text-muted);font-size:.75rem;margin-top:5px;display:block">Nhập mật khẩu để kiểm tra độ mạnh</small>
-          </div>
-          <div class="form-group"><label>Xác nhận mật khẩu <span class="required" style="color:#ef4444">*</span></label><input type="password" id="auth-password2" placeholder="Nhập lại mật khẩu"></div>
-          <label style="display:flex;align-items:flex-start;gap:8px;font-size:.8rem;color:var(--text-secondary);margin-bottom:15px;cursor:pointer">
-            <input type="checkbox" id="auth-agree" style="width:auto;margin-top:3px">
-            <span>Tôi đồng ý với <a style="color:var(--neon-blue)" onclick="app.showToast('Điều khoản DEMO','info')">Điều khoản dịch vụ</a> và <a style="color:var(--neon-blue)" onclick="app.showToast('Chính sách DEMO','info')">Chính sách bảo mật</a></span>
-          </label>
+          <div class="form-group"><label>Họ Tên <span style="color:#ef4444">*</span></label><input type="text" id="auth-name" placeholder="Nguyễn Văn A"></div>
+          <div class="form-group"><label>Email <span style="color:#ef4444">*</span></label><input type="email" id="auth-email" placeholder="your@email.com"></div>
+          <div class="form-group"><label>SĐT</label><input type="tel" id="auth-phone" placeholder="0912345678"></div>
+          <div class="form-group"><label>Mật Khẩu <span style="color:#ef4444">*</span></label><input type="password" id="auth-password" placeholder="Tối thiểu 6 ký tự" oninput="app.checkPwd(this.value)"><div class="password-strength"><div class="password-strength-bar" id="pwd-strength"></div></div></div>
+          <div class="form-group"><label>Xác Nhận <span style="color:#ef4444">*</span></label><input type="password" id="auth-password2" placeholder="Nhập lại"></div>
+          <label style="display:flex;align-items:flex-start;gap:8px;font-size:.8rem;color:var(--text-secondary);margin-bottom:15px;cursor:pointer"><input type="checkbox" id="auth-agree" style="width:auto;margin-top:3px"><span>Tôi đồng ý với <a style="color:var(--neon-blue)" onclick="app.showToast('Điều khoản DEMO','info')">Điều khoản</a></span></label>
           <button class="btn btn-primary btn-block" onclick="app.register()"><i class="fas fa-user-plus"></i> Tạo Tài Khoản</button>
         </div>
-        <div class="auth-switch">Đã có tài khoản? <span onclick="app.renderAuthForm('login')">Đăng Nhập</span></div>
-      `;
+        <div class="auth-switch">Đã có tài khoản? <span onclick="app.renderAuthForm('login')">Đăng Nhập</span></div>`;
     }
   },
 
-  checkPasswordStrength(pwd) {
-    let strength = 0;
-    if(pwd.length>=6) strength++;
-    if(pwd.length>=10) strength++;
-    if(/[A-Z]/.test(pwd)) strength++;
-    if(/[0-9]/.test(pwd)) strength++;
-    if(/[^A-Za-z0-9]/.test(pwd)) strength++;
+  checkPwd(pwd) {
+    let s = 0;
+    if(pwd.length>=6) s++;
+    if(pwd.length>=10) s++;
+    if(/[A-Z]/.test(pwd)) s++;
+    if(/[0-9]/.test(pwd)) s++;
+    if(/[^A-Za-z0-9]/.test(pwd)) s++;
     const bar = document.getElementById('pwd-strength');
-    const hint = document.getElementById('pwd-hint');
     if(!bar) return;
-    const colors = ['#ef4444','#f97316','#fbbf24','#10b981','#059669'];
-    const labels = ['Rất yếu','Yếu','Trung bình','Mạnh','Rất mạnh'];
-    bar.style.width = (strength*20)+'%';
-    bar.style.background = colors[strength-1]||'#ef4444';
-    if(hint) hint.textContent = strength>0?labels[strength-1]:'Nhập mật khẩu để kiểm tra';
+    bar.style.width = (s*20)+'%';
+    bar.style.background = ['#ef4444','#f97316','#fbbf24','#10b981','#059669'][s-1]||'#ef4444';
   },
 
   login() {
     const email = document.getElementById('auth-email').value.trim();
     const pwd = document.getElementById('auth-password').value;
-    if(!email || !pwd) { this.showToast('Vui lòng nhập đầy đủ', 'error'); return; }
+    if(!email || !pwd) { this.showToast('Nhập đầy đủ','error'); return; }
     const user = DB.users.find(u=>u.email===email && u.password===pwd);
-    if(!user) { this.showToast('Email hoặc mật khẩu sai!', 'error'); return; }
+    if(!user) { this.showToast('Sai email/mật khẩu','error'); return; }
     DB.currentUser = user;
     loadUserData();
     saveAll();
-    this.closeAuthModal();
+    this.closeModal('auth-modal');
     this.render();
-    this.showToast(`Chào mừng ${user.name}!`, 'success');
+    this.showToast(`Chào ${user.name}!`,'success');
   },
 
   register() {
@@ -1687,22 +1756,22 @@ const app = {
     const pwd = document.getElementById('auth-password').value;
     const pwd2 = document.getElementById('auth-password2').value;
     const agree = document.getElementById('auth-agree').checked;
-    if(!name || !email || !pwd || !pwd2) { this.showToast('Vui lòng nhập đầy đủ thông tin', 'error'); return; }
-    if(pwd.length<6) { this.showToast('Mật khẩu phải từ 6 ký tự', 'error'); return; }
-    if(pwd!==pwd2) { this.showToast('Mật khẩu xác nhận không khớp', 'error'); return; }
-    if(!agree) { this.showToast('Vui lòng đồng ý điều khoản', 'error'); return; }
-    if(DB.users.find(u=>u.email===email)) { this.showToast('Email đã được đăng ký!', 'error'); return; }
-    const user = { name, email, phone, password: pwd, address:'', createdAt: new Date().toISOString() };
+    if(!name || !email || !pwd || !pwd2) { this.showToast('Nhập đầy đủ','error'); return; }
+    if(pwd.length<6) { this.showToast('Mật khẩu ≥ 6 ký tự','error'); return; }
+    if(pwd!==pwd2) { this.showToast('Mật khẩu không khớp','error'); return; }
+    if(!agree) { this.showToast('Đồng ý điều khoản','error'); return; }
+    if(DB.users.find(u=>u.email===email)) { this.showToast('Email đã tồn tại','error'); return; }
+    const user = {name, email, phone, password:pwd, address:'', createdAt:new Date().toISOString()};
     DB.users.push(user);
     DB.currentUser = user;
     DB.walletBalance = 500000;
     DB.pendingBalance = 0;
-    DB.memberLevel = { level:'Bronze', points:0 };
+    DB.memberLevel = {level:'Bronze', points:0};
     loadUserData();
     saveAll();
-    this.closeAuthModal();
+    this.closeModal('auth-modal');
     this.render();
-    this.showToast('🎉 Đăng ký thành công! Tặng 500.000đ vào ví (DEMO)', 'success');
+    this.showToast('🎉 Đăng ký thành công! Tặng 500.000đ (DEMO)','success');
   },
 
   logout() {
@@ -1714,65 +1783,39 @@ const app = {
     saveAll();
     document.getElementById('user-dropdown')?.classList.remove('active');
     this.navigate('home');
-    this.showToast('Đã đăng xuất', 'info');
+    this.showToast('Đã đăng xuất','info');
   },
 
-  closeAuthModal() { document.getElementById('auth-modal').classList.remove('active'); },
-
-  // ==========================================
-  // CART ACTIONS
-  // ==========================================
-  addToCart(pid) {
-    const e = DB.cart.find(i=>i.id===pid);
-    if(e) e.qty++;
-    else DB.cart.push({id:pid, qty:1});
-    saveAll();
-    this.updateCounts();
-    this.showToast('Đã thêm vào giỏ!', 'success');
-  },
-  removeFromCart(pid) {
-    DB.cart = DB.cart.filter(i=>i.id!==pid);
-    saveAll();
-    this.render();
-    this.showToast('Đã xóa', 'info');
-  },
-  updateCartQty(pid, d) {
-    const i = DB.cart.find(x=>x.id===pid);
-    if(i) { i.qty+=d; if(i.qty<=0) return this.removeFromCart(pid); }
-    saveAll();
-    this.render();
-  },
+  // ========== CART ACTIONS ==========
+  addToCart(pid) { const e = DB.cart.find(i=>i.id===pid); if(e) e.qty++; else DB.cart.push({id:pid,qty:1}); saveAll(); this.updateCounts(); this.showToast('Đã thêm giỏ!','success'); },
+  removeFromCart(pid) { DB.cart = DB.cart.filter(i=>i.id!==pid); saveAll(); this.render(); this.showToast('Đã xóa','info'); },
+  updateCartQty(pid,d) { const i = DB.cart.find(x=>x.id===pid); if(i) { i.qty+=d; if(i.qty<=0) return this.removeFromCart(pid); } saveAll(); this.render(); },
   buyNow(pid) { this.addToCart(pid); this.navigate('cart'); },
   checkout() {
-    if(!DB.currentUser) { this.showToast('Vui lòng đăng nhập!', 'error'); this.showAuthModal(); return; }
-    const total = DB.cart.reduce((s,i)=>{
-      const p = DB.products.find(x=>x.id===i.id);
-      return s + p.price*i.qty;
-    },0);
-    if(DB.walletBalance<total) { this.showToast(`Số dư không đủ! Cần ${total.toLocaleString('vi-VN')}đ`, 'error'); return; }
+    if(!DB.currentUser) { this.showToast('Đăng nhập!','error'); this.showAuthModal(); return; }
+    const total = DB.cart.reduce((s,i)=>{const p=DB.products.find(x=>x.id===i.id);return s+p.price*i.qty;},0);
+    if(DB.walletBalance<total) { this.showToast(`Số dư không đủ! Cần ${total.toLocaleString('vi-VN')}đ`,'error'); return; }
     DB.walletBalance -= total;
-    const order = { id:'ORD'+Date.now(), user:DB.currentUser.email, items:DB.cart.length, total, date:new Date().toLocaleString('vi-VN'), status:'completed' };
+    const order = {id:'ORD'+Date.now(), user:DB.currentUser.email, items:DB.cart.length, total, date:new Date().toLocaleString('vi-VN'), status:'completed'};
     DB.orders.push(order);
-    DB.transactions.unshift({ type:'expense', amount:total, description:`Thanh toán đơn hàng ${order.id}`, date:new Date().toLocaleString('vi-VN') });
+    DB.transactions.unshift({type:'expense', amount:total, description:`Thanh toán ${order.id}`, date:new Date().toLocaleString('vi-VN')});
     DB.memberLevel.points += Math.floor(total/10000);
     this.checkMemberLevel();
     DB.cart = [];
     saveAll();
     this.render();
-    this.showToast('Thanh toán thành công! (DEMO)', 'success');
+    this.showToast('Thanh toán thành công! (DEMO)','success');
   },
   checkMemberLevel() {
     const pts = DB.memberLevel.points;
-    if(pts>=10000) DB.memberLevel.level = 'VIP';
-    else if(pts>=5000) DB.memberLevel.level = 'Diamond';
-    else if(pts>=2000) DB.memberLevel.level = 'Gold';
-    else if(pts>=500) DB.memberLevel.level = 'Silver';
-    else DB.memberLevel.level = 'Bronze';
+    if(pts>=10000) DB.memberLevel.level='VIP';
+    else if(pts>=5000) DB.memberLevel.level='Diamond';
+    else if(pts>=2000) DB.memberLevel.level='Gold';
+    else if(pts>=500) DB.memberLevel.level='Silver';
+    else DB.memberLevel.level='Bronze';
   },
 
-  // ==========================================
-  // WISHLIST
-  // ==========================================
+  // ========== WISHLIST ==========
   toggleWishlist(pid, btn) {
     const idx = DB.wishlist.indexOf(pid);
     if(idx>-1) { DB.wishlist.splice(idx,1); if(btn) btn.classList.remove('active'); this.showToast('Đã xóa yêu thích','info'); }
@@ -1781,13 +1824,13 @@ const app = {
     this.updateCounts();
   },
   showWishlist() {
-    if(DB.wishlist.length===0) { this.showToast('Danh sách yêu thích trống','info'); return; }
+    if(DB.wishlist.length===0) { this.showToast('Danh sách trống','info'); return; }
     const items = DB.wishlist.map(id=>DB.products.find(p=>p.id===id)).filter(Boolean);
     const c = document.getElementById('quickview-content');
-    c.innerHTML = `<button class="modal-close" onclick="document.getElementById('quickview-modal').classList.remove('active')"><i class="fas fa-times"></i></button>
+    c.innerHTML = `<button class="modal-close" onclick="app.closeModal('quickview-modal')"><i class="fas fa-times"></i></button>
       <h2 style="margin-bottom:20px"><i class="fas fa-heart" style="color:var(--neon-pink)"></i> Yêu Thích (${items.length})</h2>
       <div style="max-height:500px;overflow-y:auto">${items.map(p=>`
-        <div style="display:flex;gap:15px;padding:15px;border-bottom:1px solid var(--border-color);cursor:pointer" onclick="document.getElementById('quickview-modal').classList.remove('active');app.viewProduct(${p.id})">
+        <div style="display:flex;gap:15px;padding:15px;border-bottom:1px solid var(--border-color);cursor:pointer" onclick="app.closeModal('quickview-modal');app.viewProduct(${p.id})">
           <img src="${p.image}" style="width:70px;height:70px;border-radius:8px;object-fit:cover">
           <div><h4 style="font-size:.95rem">${p.name}</h4><div style="color:var(--neon-blue);font-weight:700">${p.price.toLocaleString('vi-VN')}đ</div></div>
         </div>
@@ -1797,24 +1840,18 @@ const app = {
 
   viewProduct(id) { this.navigate('product', id); },
 
-  // ==========================================
-  // UTILS
-  // ==========================================
   toggleTheme() {
     const curr = document.body.getAttribute('data-theme');
     const next = curr==='dark'?'light':'dark';
     document.body.setAttribute('data-theme', next);
-    localStorage.setItem('ths2_theme', next);
+    localStorage.setItem('ths3_theme', next);
     document.getElementById('theme-icon').className = next==='dark'?'fas fa-moon':'fas fa-sun';
   },
   toggleSidebar() {
     const s = document.getElementById('sidebar');
     if(!s) return;
-    if(s.style.display==='block') { s.style.display='none'; }
-    else {
-      s.style.display='block'; s.style.position='fixed'; s.style.left='0'; s.style.top='60px';
-      s.style.bottom='0'; s.style.zIndex='999'; s.style.height='auto';
-    }
+    if(s.style.display==='block') s.style.display='none';
+    else { s.style.display='block'; s.style.position='fixed'; s.style.left='0'; s.style.top='60px'; s.style.bottom='0'; s.style.zIndex='999'; s.style.height='auto'; }
   },
   showToast(msg, type='info') {
     const c = document.getElementById('toast-container');
@@ -1827,12 +1864,10 @@ const app = {
   }
 };
 
-// Load theme
-const savedTheme = localStorage.getItem('ths2_theme') || 'dark';
+const savedTheme = localStorage.getItem('ths3_theme') || 'dark';
 document.body.setAttribute('data-theme', savedTheme);
 if(savedTheme==='light') document.getElementById('theme-icon').className = 'fas fa-sun';
 
-// Init
 document.addEventListener('DOMContentLoaded', () => app.init());
 </script>
 </body>
